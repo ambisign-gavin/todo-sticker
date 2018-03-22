@@ -9,6 +9,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+    target: "electron-main",
     entry: "./src/index.js",
     output: {
         filename: "bundle.js",
@@ -50,9 +51,5 @@ module.exports = {
     //     "react": "React",
     //     "react-dom": "ReactDOM"
     // },
-    devServer: {
-        inline: true,
-        port: 8008,
-    },
     plugins: [HTMLWebpackPluginConfig]
 };
