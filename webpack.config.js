@@ -9,6 +9,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+    mode: "development",
     target: "electron-main",
     entry: "./src/index.js",
     output: {
