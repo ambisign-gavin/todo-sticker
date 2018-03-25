@@ -4,15 +4,24 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development",
     "start": "webpack && electron ."
   },
   "dependencies": {
+    "css-loader": "^0.28.11",
+    "less-loader": "^4.1.0",
+    "material-ui": "^1.0.0-beta.38",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "node-sass": "^4.8.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
+    "sass-loader": "^6.0.7",
     "string": "^3.3.3",
-    "webpack": "^4.2.0"
+    "style-loader": "^0.20.3",
+    "webpack": "^4.2.0",
+    "webpack-dev-server": "^3.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

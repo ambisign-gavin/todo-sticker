@@ -1,4 +1,5 @@
 var path = require("path");
+var webpack = require('webpack');
 // 這邊使用 HtmlWebpackPlugin，將 bundle 好的 <script> 插入到 body。${__dirname} 為 ES6 語法對應到 __dirname  
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -14,7 +15,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: __dirname + "/dist",
+        publicPath: 'http://localhost:3000/static/'
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -30,17 +32,25 @@ module.exports = {
             { 
                 test: /\.js?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader" 
+                loader: "babel-loader"
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
             // Scss
-            // {
-            //     test: /\.scss$/,
-            //     include: path.resolve(__dirname, 'src/css'),
-            //     loaders: ['style-loader', 'css-loader', 'sass-loader']
-            // }
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            //less
+            {
+                test: /\.less$/,
+                loaders: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader']
+            }
         ]
     },
 
@@ -52,5 +62,12 @@ module.exports = {
     //     "react": "React",
     //     "react-dom": "ReactDOM"
     // },
-    plugins: [HTMLWebpackPluginConfig]
+    devServer: {
+        hot: true,
+        port: 3000,
+    },
+    plugins: [
+        HTMLWebpackPluginConfig,
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
