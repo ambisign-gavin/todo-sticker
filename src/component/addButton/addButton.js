@@ -45,11 +45,13 @@ export default class AddButton extends React.Component<Props, States> {
     }
 
     handleOkModal(editInfo: EditInfo) {
-        console.log(editInfo.description);
         let evenState: EventState = {
-            description: editInfo.description
+            description: editInfo.description,
+            notificationDate: editInfo.date,
+            notificationTime: editInfo.time,
         };
         this.props.handleAddEvent(evenState);
+        this.setState({ showEditModal: false });
     }
 
     render() {
