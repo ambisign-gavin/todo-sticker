@@ -10,8 +10,8 @@ export type Actions =
   | AddAction;
 
 export const ActionTypes = {
-    Add: "add",
-}
+    Add: 'add',
+};
 
 export type AddAction = {
     type: string,
@@ -24,5 +24,5 @@ export function addEvent(description: string, notificationTime: ?Date): AddActio
         type: ActionTypes.Add,
         description,
         notificationTime
-    }
+    };
 }

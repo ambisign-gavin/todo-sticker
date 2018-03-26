@@ -4,14 +4,19 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint --fix ./src/*/*/*.js",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development",
     "start": "webpack && electron ."
   },
   "dependencies": {
+    "antd": "^3.3.3",
     "css-loader": "^0.28.11",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "i18n": "^0.8.3",
     "less-loader": "^4.1.0",
     "material-ui": "^1.0.0-beta.38",
     "material-ui-icons": "^1.0.0-beta.36",
+    "moment": "^2.21.0",
     "node-sass": "^4.8.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -21,16 +26,22 @@
     "string": "^3.3.3",
     "style-loader": "^0.20.3",
     "webpack": "^4.2.0",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^3.1.1",
+    "y18n": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "electron": "^1.8.4",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.68.0",
     "html-webpack-plugin": "^3.0.7",
     "source-map-loader": "^0.2.3",

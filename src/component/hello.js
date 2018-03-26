@@ -1,7 +1,5 @@
 // @flow
 import React from 'react';
-import { remote } from 'electron';
-// const { remote } = require('electron')
 
 type Props = {
     name: string
@@ -9,4 +7,4 @@ type Props = {
 
 export default (props: Props) => (
     <div>Hello {props.name}</div>
-)
+);

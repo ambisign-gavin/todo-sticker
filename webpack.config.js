@@ -1,42 +1,47 @@
-var path = require("path");
+var path = require('path');
 var webpack = require('webpack');
 // 這邊使用 HtmlWebpackPlugin，將 bundle 好的 <script> 插入到 body。${__dirname} 為 ES6 語法對應到 __dirname  
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: `${__dirname}/src/index.html`,
-  filename: 'index.html',
-  inject: 'body',
+    template: `${__dirname}/src/index.html`,
+    filename: 'index.html',
+    inject: 'body',
 });
 
 module.exports = {
-    mode: "development",
-    target: "electron-main",
-    entry: "./src/index.js",
+    mode: 'development',
+    target: 'electron-main',
+    entry: './src/index.js',
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist",
+        filename: 'bundle.js',
+        path: __dirname + '/dist',
         publicPath: 'http://localhost:3000/static/'
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: 'source-map',
 
     resolve: {
-        extensions: [".js", ".json"]
+        extensions: ['.js', '.json']
     },
 
     module: {
         rules: [
-            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-            { 
+            {
                 test: /\.js?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader"
+                enforce: 'pre',
+                loader: 'eslint-loader'
+            },
+            {
+                test: /\.js?$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader'
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
             // Scss
             {
                 test: /\.scss$/,

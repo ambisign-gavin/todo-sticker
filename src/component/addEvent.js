@@ -20,7 +20,7 @@ export default class AddEvent extends React.Component<Props, State> {
         super(props);
         this.state = {
             isCanAdd: false
-        }
+        };
         this.handleTextareaChange = this.handleTextareaChange.bind(this);
     }
 
@@ -39,9 +39,10 @@ export default class AddEvent extends React.Component<Props, State> {
         return (
             <div>
                 <textarea onChange={this.handleTextareaChange} />
+                <br/>
                 <button disabled={!this.state.isCanAdd} onClick={() => this.props.handleAddEvent(this.descrtiption)}> 12 </button>
             </div>
-        )
+        );
     }
 }
 
