@@ -5,9 +5,10 @@ import AddIcon from 'material-ui-icons/Add';
 import EditModal from '../eventEditModal/eventEditModal';
 import type { EditInfo } from '../eventEditModal/eventEditModal';
 import Translate from '../../class/translate';
+import type { EventState } from '../../states';
 
 type Props = {
-    handleAddEvent: (descrtiption: string) => void
+    handleAddEvent: (eventState: EventState) => void
 }
 
 type States = {
@@ -44,8 +45,11 @@ export default class AddButton extends React.Component<Props, States> {
     }
 
     handleOkModal(editInfo: EditInfo) {
-        console.log(editInfo.desctiption);
-        this.props.handleAddEvent(editInfo.desctiption);
+        console.log(editInfo.description);
+        let evenState: EventState = {
+            description: editInfo.description
+        };
+        this.props.handleAddEvent(evenState);
     }
 
     render() {

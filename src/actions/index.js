@@ -1,10 +1,6 @@
 // @flow
+import type { EventState } from '../states';
 
-export type EventsState = {
-    id: number,
-    description: string,
-    notificationTime?: ?Date
-}
     
 export type Actions =
   | AddAction;
@@ -15,14 +11,12 @@ export const ActionTypes = {
 
 export type AddAction = {
     type: string,
-    description: string,
-    notificationTime: ?Date
+    eventState: EventState
 }
 
-export function addEvent(description: string, notificationTime: ?Date): AddAction {
+export function addEvent(eventState: EventState): AddAction {
     return {
         type: ActionTypes.Add,
-        description,
-        notificationTime
+        eventState
     };
 }

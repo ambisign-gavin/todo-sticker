@@ -8,7 +8,7 @@ import Translate from '../../class/translate';
 export type EditInfo = {
     date: number,
     time: number,
-    desctiption: string
+    description: string
 }
 
 type Props = {
@@ -86,7 +86,7 @@ export default class EditModal extends React.Component<Props, States> {
         editInfo = {
             date: this.state.date,
             time: this.state.time,
-            desctiption: this.state.desctiption
+            description: this.state.desctiption
         };
         this.props.onSave(editInfo);
     }
