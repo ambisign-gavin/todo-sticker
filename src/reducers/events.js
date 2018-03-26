@@ -10,7 +10,9 @@ function evens(state: EventState[] = [], action: Actions) {
             ...state,
             {
                 id: state.length + 1,
-                description: action.eventState.description
+                description: action.eventState.description,
+                notificationDate: action.eventState.notificationDate,
+                notificationTime: action.eventState.notificationTime,
             }
         ]);
     
