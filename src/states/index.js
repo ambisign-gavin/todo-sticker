@@ -5,3 +5,7 @@ export type EventState = {
     notificationTime?: number,
     description: string
 }
+
+export type AppState = {
+    events: EventState[]
+}
