@@ -11,7 +11,8 @@ type Props = {
 }
 
 type States = {
-    showEditModal: boolean
+    showEditModal: boolean,
+    defaultTimestamp: number
 }
 
 export default class AddButton extends React.Component<Props, States> {
@@ -19,18 +20,23 @@ export default class AddButton extends React.Component<Props, States> {
     handleCloseModal: Function;
     handleOkModal: Function;
 
+    state = {
+        showEditModal: false,
+        defaultTimestamp: new Date().getTime()
+    };
+
     constructor(props: Props) {
         super(props);
-        this.state = {
-            showEditModal: false
-        };
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
         this.handleOkModal = this.handleOkModal.bind(this);
     }
 
     handleOpenModal() {
-        this.setState({ showEditModal: true });
+        this.setState({
+            showEditModal: true,
+            defaultTimestamp: new Date().getTime()
+        });
     }
 
     handleCloseModal() {
@@ -49,8 +55,6 @@ export default class AddButton extends React.Component<Props, States> {
         } = this.props;
         handleAddEvent; // no need to pass to chuld
 
-        let defaultTimestamp = new Date().getTime();
-
         return (
             <div>
                 <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add" {...other}  >
@@ -61,8 +65,8 @@ export default class AddButton extends React.Component<Props, States> {
                     onCancel={this.handleCloseModal}
                     title={Translate.tr('Add Event')}
                     visible={this.state.showEditModal}
-                    defaultDate={defaultTimestamp}
-                    defaultTime={defaultTimestamp}
+                    defaultDate={this.state.defaultTimestamp}
+                    defaultTime={this.state.defaultTimestamp}
                     defaultDescriptin={''}
                 />
             </div>
