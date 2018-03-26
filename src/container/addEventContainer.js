@@ -1,5 +1,6 @@
 // @flow
-import AddEvent from '../component/addEvent';
+import AddEventButton from '../component/addButton/addButton';
+// import AddEventButton from '../component/addEvent';
 import {addEvent} from '../actions';
 import {connect} from 'react-redux';
 
@@ -12,4 +13,4 @@ const mapDispatchToProps = (dispatch) => (
 export default connect(
     null,
     mapDispatchToProps
-)(AddEvent);
+)(AddEventButton);

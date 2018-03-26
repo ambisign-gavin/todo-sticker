@@ -1,6 +1,6 @@
 
 import React from 'react';
-import AddButton from '../addButton/addButton';
+import AddEventContainer from '../../container/addEventContainer';
 import './app.scss';
 
 
@@ -10,7 +10,7 @@ export default class App extends React.Component {
         return (
             <div>
                 App
-                <AddButton className="float-right-btn" />
+                <AddEventContainer className="float-right-btn" />
             </div>
         );
     }
