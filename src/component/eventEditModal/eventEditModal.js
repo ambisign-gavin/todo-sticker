@@ -40,12 +40,6 @@ export default class EditModal extends React.Component<Props, States> {
         defaultDescriptin: '',
     }
 
-    state = {
-        date: new Date().getTime(),
-        time: new Date().getTime(),
-        desctiption: ''
-    };
-
     constructor(props: Props) {
         super(props);
         moment.locale('en');
@@ -53,12 +47,28 @@ export default class EditModal extends React.Component<Props, States> {
         this.handleTimeChanged = this.handleTimeChanged.bind(this);
         this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
         this.handleOk = this.handleOk.bind(this);
+        
+        this.state = {
+            date: props.defaultDate? props.defaultDate: new Date().getTime(),
+            time: props.defaultTime? props.defaultTime: new Date().getTime(),
+            desctiption: ''
+        };
+    }
+    
+    componentWillReceiveProps(nextProps: Props) {
+        if (nextProps.defaultDate && nextProps.defaultDate !== this.props.defaultDate) {
+            this.setState({date: nextProps.defaultDate});
+        }
+        if (nextProps.defaultTime && nextProps.defaultTime !== this.props.defaultTime) {
+            this.setState({time: nextProps.defaultTime});
+        }
+        return true;
     }
 
     handleDateChanged(dates: moment) {
         this.setState(
             {
-                date: dates
+                date: dates.toDate().getTime()
             }
         );
     }
@@ -66,7 +76,7 @@ export default class EditModal extends React.Component<Props, States> {
     handleTimeChanged(time: moment) {
         this.setState(
             {
-                time: time
+                time: time.toDate().getTime()
             }
         );
     }
