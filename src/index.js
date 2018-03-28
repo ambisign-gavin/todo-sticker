@@ -7,8 +7,13 @@ import rootReducer from './reducers';
 import '../node_modules/antd/dist/antd.min.css';
 import '../node_modules/antd/dist/antd.min.js';
 
-const store = createStore(rootReducer);
-store.subscribe(() => {console.log(store.getState());});
+const initStorageData = localStorage.getItem('todos') || '{}';
+
+const store = createStore(rootReducer, JSON.parse(initStorageData));
+store.subscribe(() => {
+    localStorage.setItem('todos', JSON.stringify(store.getState()));
+    console.log(store.getState());
+});
 
 ReactDOM.render(
     <Provider store={store}>
