@@ -7,6 +7,7 @@ export type Actions =
 
 export const ActionTypes = {
     Add: 'add',
+    Edit: 'edit'
 };
 
 export type AddAction = {
@@ -17,6 +18,13 @@ export type AddAction = {
 export function addEvent(eventState: EventState): AddAction {
     return {
         type: ActionTypes.Add,
+        eventState
+    };
+}
+
+export function editEvent(eventState: EventState): AddAction {
+    return {
+        type: ActionTypes.Edit,
         eventState
     };
 }
