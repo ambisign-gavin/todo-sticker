@@ -1,9 +1,10 @@
 // @flow
-import type {Actions} from '../actions';
+import type {Actions, EditAction, DeleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
 
 function todos(state: TodoState[] = [], action: Actions) {
+
     switch (action.type) {
     case ActionTypes.Add:
         return ([
@@ -15,19 +16,26 @@ function todos(state: TodoState[] = [], action: Actions) {
                 notificationTime: action.todoState.notificationTime,
             }
         ]);
-        
+
     case ActionTypes.Edit:
+    {
+        let editAction: EditAction = action;
         return (
             state.map( todoState => {
-                if (todoState.id == action.todoState.id) {
+                if (todoState.id == editAction.todoState.id) {
                     return {
-                        ...action.todoState
+                        ...editAction.todoState
                     };
                 }
                 return todoState;
             })
         );
-    
+    }
+    case ActionTypes.Delete:
+    {
+        let deleteAction: DeleteAction = action;
+        return state.filter(todoState => todoState.id !== deleteAction.id);
+    }
     default:
         return state;
     }

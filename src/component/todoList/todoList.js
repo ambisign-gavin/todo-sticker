@@ -6,6 +6,7 @@ import './todoList.scss';
 import moment from 'moment';
 import EditModal from '../../container/editTodoModalContainer';
 import Translate from '../../class/translate';
+import DeleteButtonContainer from '../../container/DeleteButtonContainer';
 
 type Props = {
     todoLists: TodoState[]
@@ -70,7 +71,7 @@ export default class TodoList extends React.Component<Props, States> {
                     dataSource={this.props.todoLists}
                     renderItem={
                         (item: TodoState) => (
-                            <List.Item actions={[<a onClick={() => this.handleEditTodo(item)} >edit</a>, <a>delete</a>]} >
+                            <List.Item actions={[<a onClick={() => this.handleEditTodo(item)} >edit</a>, <DeleteButtonContainer todoId={item.id} />]} >
                                 <div className="list-row"  >
                                     <div className="clock">
                                         <Icon type="clock-circle-o" />
