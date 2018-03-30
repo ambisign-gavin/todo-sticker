@@ -5,7 +5,6 @@ import type { EventState } from '../../states';
 import './todoList.scss';
 import moment from 'moment';
 import EditModal from '../../container/editTodoModalContainer';
-import type {EditInfo} from '../eventEditModal/eventEditModal';
 import Translate from '../../class/translate';
 
 type Props = {
@@ -39,8 +38,7 @@ export default class TodoList extends React.Component<Props, States> {
         this.handleEditSaved = this.handleEditSaved.bind(this);
     }
 
-    handleEditSaved(editInfo: EditInfo) {
-        console.log(editInfo);
+    handleEditSaved() {
         this.setState ({ visibleModal: false });
     }
 
@@ -52,6 +50,17 @@ export default class TodoList extends React.Component<Props, States> {
             selectedNotificationDate: todo.notificationDate,
             selectedNotificationTime: todo.notificationTime,
         });
+    }
+
+    generateTime(date: ?number, time: ?number) {
+        let notificationString = '';
+        if (date != null) {
+            notificationString += moment(date).format('YYYY/MM/DD');
+        }
+        if (time != null) {
+            notificationString += ' - ' + moment(time).format('HH:mm');
+        }
+        return notificationString;
     }
 
     render() {
@@ -67,7 +76,7 @@ export default class TodoList extends React.Component<Props, States> {
                                         <Icon type="clock-circle-o" />
                                     </div>
                                     <div className="notification-time">
-                                        {moment(item.notificationDate).format('YYYY/MM/DD')} - {moment(item.notificationTime).format('HH:mm')}
+                                        {this.generateTime(item.notificationDate, item.notificationTime)}
                                     </div>
                                     <div className="description">
                                         {item.description}

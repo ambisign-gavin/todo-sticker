@@ -20,9 +20,9 @@ function evens(state: EventState[] = [], action: Actions) {
         return (
             state.map( eventState => {
                 if (eventState.id == action.eventState.id) {
-                    eventState.description = action.eventState.description;
-                    eventState.notificationDate = action.eventState.notificationDate;
-                    eventState.notificationTime = action.eventState.notificationTime;
+                    return {
+                        ...action.eventState
+                    };
                 }
                 return eventState;
             })

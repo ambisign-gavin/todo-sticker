@@ -1,6 +1,6 @@
 
 import React from 'react';
-import AddEventContainer from '../../container/addEventContainer';
+import AddEventButton from '../addButton/addButton';
 import TodoListContainer from '../../container/todoListContainer';
 import './app.scss';
 
@@ -10,7 +10,7 @@ export default class App extends React.Component {
         return (
             <div>
                 App
-                <AddEventContainer className="float-right-btn" />
+                <AddEventButton className="float-right-btn" />
                 <div className="lists-area">
                     <TodoListContainer />
                 </div>

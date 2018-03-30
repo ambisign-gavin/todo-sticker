@@ -2,13 +2,10 @@
 import React from 'react';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
-import EditModal from '../eventEditModal/eventEditModal';
-import type { EditInfo } from '../eventEditModal/eventEditModal';
 import Translate from '../../class/translate';
-import type { EventState } from '../../states';
+import AddModal from '../../container/addTodoModalContainer';
 
 type Props = {
-    handleAddEvent: (eventState: EventState) => void
 }
 
 type States = {
@@ -33,6 +30,10 @@ export default class AddButton extends React.Component<Props, States> {
         this.handleOkModal = this.handleOkModal.bind(this);
     }
 
+    handleOkModal() {
+        this.setState({ showEditModal: false });
+    }
+
     handleOpenModal() {
         this.setState({
             showEditModal: true,
@@ -44,29 +45,14 @@ export default class AddButton extends React.Component<Props, States> {
         this.setState({ showEditModal: false });
     }
 
-    handleOkModal(editInfo: EditInfo) {
-        let evenState: EventState = {
-            description: editInfo.description,
-            notificationDate: editInfo.date,
-            notificationTime: editInfo.time,
-        };
-        this.props.handleAddEvent(evenState);
-        this.setState({ showEditModal: false });
-    }
-
     render() {
-        var {
-            handleAddEvent,
-            ...other
-        } = this.props;
-        handleAddEvent; // no need to pass to chuld
 
         return (
             <div>
-                <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add" {...other}  >
+                <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add" {...this.props}  >
                     <AddIcon />
                 </Button>
-                <EditModal
+                <AddModal
                     onSave={this.handleOkModal}
                     onCancel={this.handleCloseModal}
                     title={Translate.tr('Add Event')}

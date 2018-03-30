@@ -1,5 +1,5 @@
 // @flow
-import AddEventButton from '../component/addButton/addButton';
+import EditModal from '../component/eventEditModal/eventEditModal';
 import type { EventState } from '../states';
 import {addEvent} from '../actions';
 import {connect} from 'react-redux';
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => (
 export default connect(
     null,
     mapDispatchToProps
-)(AddEventButton);
+)(EditModal);

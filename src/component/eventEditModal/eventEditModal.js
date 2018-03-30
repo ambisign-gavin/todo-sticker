@@ -6,13 +6,6 @@ import 'moment/locale/zh-cn';
 import Translate from '../../class/translate';
 import type {EventState} from '../../states';
 
-export type EditInfo = {
-    id?: number,
-    date: number,
-    time: number,
-    description: string
-}
-
 type Props = {
     visible: boolean,
     title: string,
@@ -20,8 +13,9 @@ type Props = {
     defaultDate?: number,
     defaultTime?: number,
     defaultDescription?: string,
-    onSave?: (editInfo: EditInfo) => void,
+    handleAddEvent?: (eventState: EventState) => void,
     handleEditEvent?: (eventState: EventState) => void,
+    onSave?: () => void,
 }
 
 type States = {
@@ -96,28 +90,23 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     handleOk() {
-        if (!this.props.onSave) {
-            return;
-        }
-        let editInfo: EditInfo;
-        editInfo = {
-            date: this.state.date,
-            time: this.state.time,
-            description: this.state.desctiption
+        let todoState: EventState = {
+            description: this.state.desctiption,
+            notificationDate: this.state.date,
+            notificationTime: this.state.time,
         };
-        if (this.props.todoId) {
-            editInfo.id = this.props.todoId;
+        if (this.props.handleAddEvent) {
+            this.props.handleAddEvent(todoState);
         }
         if (this.props.handleEditEvent) {
-            let todoState: EventState = {
-                id: this.props.todoId || 0,
-                date: this.state.date,
-                time: this.state.time,
-                description: this.state.desctiption
-            };
+            todoState.id = this.props.todoId || 0;
             this.props.handleEditEvent(todoState);
         }
-        this.props.onSave(editInfo);
+
+        if (this.props.onSave) {
+            this.props.onSave();
+        }
+        
     }
 
     render() {
