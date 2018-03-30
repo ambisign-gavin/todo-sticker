@@ -73,7 +73,7 @@ export default class AddButton extends React.Component<Props, States> {
                     visible={this.state.showEditModal}
                     defaultDate={this.state.defaultTimestamp}
                     defaultTime={this.state.defaultTimestamp}
-                    defaultDescriptin={''}
+                    defaultDescription={''}
                 />
             </div>
         );

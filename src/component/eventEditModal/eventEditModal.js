@@ -18,7 +18,7 @@ type Props = {
     todoId?: number,
     defaultDate?: number,
     defaultTime?: number,
-    defaultDescriptin?: string,
+    defaultDescription?: string,
     onSave?: (editInfo: EditInfo) => void
 }
 
@@ -45,7 +45,7 @@ export default class EditModal extends React.Component<Props, States> {
     state = {
         date: this.props.defaultDate || new Date().getTime(),
         time: this.props.defaultTime || new Date().getTime(),
-        desctiption: this.props.defaultDescriptin || '',
+        desctiption: this.props.defaultDescription || '',
     };
 
     constructor(props: Props) {
@@ -64,8 +64,8 @@ export default class EditModal extends React.Component<Props, States> {
         if (nextProps.defaultTime && nextProps.defaultTime !== this.props.defaultTime) {
             this.setState({time: nextProps.defaultTime});
         }
-        if (nextProps.defaultDescriptin && nextProps.defaultDescriptin !== this.props.defaultDescriptin) {
-            this.setState({desctiption: nextProps.defaultDescriptin});
+        if (nextProps.defaultDescription && nextProps.defaultDescription !== this.props.defaultDescription) {
+            this.setState({desctiption: nextProps.defaultDescription});
         }
         return true;
     }
@@ -113,7 +113,7 @@ export default class EditModal extends React.Component<Props, States> {
         var {
             defaultDate,
             defaultTime,
-            defaultDescriptin,
+            defaultDescription,
             ...others
         } = this.props;
 
@@ -124,7 +124,7 @@ export default class EditModal extends React.Component<Props, States> {
                 <p>{Translate.tr('notificationTime')}</p>
                 <TimePicker onChange={this.handleTimeChanged} defaultValue={moment(defaultTime)} format={'HH:mm'} />
                 <p>{Translate.tr('eventDescription')}</p>
-                <Input.TextArea defaultValue={defaultDescriptin} onChange={this.handleDescriptionChanged} rows={4} />
+                <Input.TextArea defaultValue={defaultDescription} onChange={this.handleDescriptionChanged} rows={4} />
             </Modal>
         );
     }

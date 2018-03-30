@@ -85,7 +85,7 @@ export default class TodoList extends React.Component<Props, States> {
                     todoId={this.state.selectedId}
                     defaultDate={this.state.selectedNotificationDate || new Date().getTime()}
                     defaultTime={this.state.selectedNotificationTime || new Date().getTime()}
-                    defaultDescriptin={this.state.selectedDescription}
+                    defaultDescription={this.state.selectedDescription}
                 />
             </div>
         );
