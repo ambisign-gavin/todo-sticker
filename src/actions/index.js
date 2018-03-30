@@ -1,5 +1,5 @@
 // @flow
-import type { EventState } from '../states';
+import type { TodoState } from '../states';
 
     
 export type Actions =
@@ -12,19 +12,19 @@ export const ActionTypes = {
 
 export type AddAction = {
     type: string,
-    eventState: EventState
+    todoState: TodoState
 }
 
-export function addEvent(eventState: EventState): AddAction {
+export function addEvent(todoState: TodoState): AddAction {
     return {
         type: ActionTypes.Add,
-        eventState
+        todoState
     };
 }
 
-export function editEvent(eventState: EventState): AddAction {
+export function editEvent(todoState: TodoState): AddAction {
     return {
         type: ActionTypes.Edit,
-        eventState
+        todoState
     };
 }

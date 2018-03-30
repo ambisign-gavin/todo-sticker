@@ -1,8 +1,9 @@
+// @flow
 import { combineReducers } from 'redux';
-import events from './events';
+import todos from './todos';
 
 export default combineReducers(
     {
-        events
+        todos
     }
 );

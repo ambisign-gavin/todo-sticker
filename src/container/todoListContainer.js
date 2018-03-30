@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = (state: AppState) => (
     {
-        todoLists: state.events
+        todoLists: state.todos
     }
 );
 

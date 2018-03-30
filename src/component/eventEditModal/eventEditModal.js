@@ -4,7 +4,7 @@ import React from 'react';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import Translate from '../../class/translate';
-import type {EventState} from '../../states';
+import type {TodoState} from '../../states';
 
 type Props = {
     visible: boolean,
@@ -13,8 +13,8 @@ type Props = {
     defaultDate?: number,
     defaultTime?: number,
     defaultDescription?: string,
-    handleAddEvent?: (eventState: EventState) => void,
-    handleEditEvent?: (eventState: EventState) => void,
+    handleAddEvent?: (eventState: TodoState) => void,
+    handleEditEvent?: (eventState: TodoState) => void,
     onSave?: () => void,
 }
 
@@ -90,7 +90,7 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     handleOk() {
-        let todoState: EventState = {
+        let todoState: TodoState = {
             description: this.state.desctiption,
             notificationDate: this.state.date,
             notificationTime: this.state.time,

@@ -1,5 +1,5 @@
 // @flow
-export type EventState = {
+export type TodoState = {
     id?: number,
     notificationDate?: number,
     notificationTime?: number,
@@ -7,5 +7,5 @@ export type EventState = {
 }
 
 export type AppState = {
-    events: EventState[]
+    todos: TodoState[]
 }

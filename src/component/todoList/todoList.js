@@ -1,14 +1,14 @@
 // @flow
 import React from 'react';
 import { List, Icon } from 'antd';
-import type { EventState } from '../../states';
+import type { TodoState } from '../../states';
 import './todoList.scss';
 import moment from 'moment';
 import EditModal from '../../container/editTodoModalContainer';
 import Translate from '../../class/translate';
 
 type Props = {
-    todoLists: EventState[]
+    todoLists: TodoState[]
 }
 
 type States = {
@@ -42,7 +42,7 @@ export default class TodoList extends React.Component<Props, States> {
         this.setState ({ visibleModal: false });
     }
 
-    handleEditTodo(todo: EventState) {
+    handleEditTodo(todo: TodoState) {
         this.setState({
             visibleModal: true,
             selectedId: todo.id,
@@ -69,8 +69,8 @@ export default class TodoList extends React.Component<Props, States> {
                 <List
                     dataSource={this.props.todoLists}
                     renderItem={
-                        (item: EventState) => (
-                            <List.Item actions={[<a onClick={() => this.handleEditTodo(item)} >edit</a>, <a>more</a>]} >
+                        (item: TodoState) => (
+                            <List.Item actions={[<a onClick={() => this.handleEditTodo(item)} >edit</a>, <a>delete</a>]} >
                                 <div className="list-row"  >
                                     <div className="clock">
                                         <Icon type="clock-circle-o" />
