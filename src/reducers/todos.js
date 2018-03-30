@@ -18,7 +18,6 @@ function todos(state: TodoState[] = [], action: Actions) {
         ]);
 
     case ActionTypes.Edit:
-    {
         let editAction: EditAction = action;
         return (
             state.map( todoState => {
@@ -30,12 +29,9 @@ function todos(state: TodoState[] = [], action: Actions) {
                 return todoState;
             })
         );
-    }
     case ActionTypes.Delete:
-    {
         let deleteAction: DeleteAction = action;
         return state.filter(todoState => todoState.id !== deleteAction.id);
-    }
     default:
         return state;
     }
