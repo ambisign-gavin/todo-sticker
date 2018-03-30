@@ -4,7 +4,7 @@ import { List, Icon } from 'antd';
 import type { EventState } from '../../states';
 import './todoList.scss';
 import moment from 'moment';
-import EditModal from '../eventEditModal/eventEditModal';
+import EditModal from '../../container/editTodoModalContainer';
 import type {EditInfo} from '../eventEditModal/eventEditModal';
 import Translate from '../../class/translate';
 

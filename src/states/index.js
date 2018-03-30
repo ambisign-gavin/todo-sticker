@@ -1,6 +1,6 @@
 // @flow
 export type EventState = {
-    id?: number,
+    id: number,
     notificationDate?: number,
     notificationTime?: number,
     description: string
