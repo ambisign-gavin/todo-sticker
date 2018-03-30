@@ -6,6 +6,7 @@ import 'moment/locale/zh-cn';
 import Translate from '../../class/translate';
 
 export type EditInfo = {
+    id?: number,
     date: number,
     time: number,
     description: string
@@ -14,6 +15,7 @@ export type EditInfo = {
 type Props = {
     visible: boolean,
     title: string,
+    todoId?: number,
     defaultDate?: number,
     defaultTime?: number,
     defaultDescriptin?: string,
@@ -40,6 +42,12 @@ export default class EditModal extends React.Component<Props, States> {
         defaultDescriptin: '',
     }
 
+    state = {
+        date: this.props.defaultDate || new Date().getTime(),
+        time: this.props.defaultTime || new Date().getTime(),
+        desctiption: this.props.defaultDescriptin || '',
+    };
+
     constructor(props: Props) {
         super(props);
         moment.locale('en');
@@ -47,12 +55,6 @@ export default class EditModal extends React.Component<Props, States> {
         this.handleTimeChanged = this.handleTimeChanged.bind(this);
         this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
         this.handleOk = this.handleOk.bind(this);
-        
-        this.state = {
-            date: props.defaultDate? props.defaultDate: new Date().getTime(),
-            time: props.defaultTime? props.defaultTime: new Date().getTime(),
-            desctiption: ''
-        };
     }
     
     componentWillReceiveProps(nextProps: Props) {
@@ -61,6 +63,9 @@ export default class EditModal extends React.Component<Props, States> {
         }
         if (nextProps.defaultTime && nextProps.defaultTime !== this.props.defaultTime) {
             this.setState({time: nextProps.defaultTime});
+        }
+        if (nextProps.defaultDescriptin && nextProps.defaultDescriptin !== this.props.defaultDescriptin) {
+            this.setState({desctiption: nextProps.defaultDescriptin});
         }
         return true;
     }
@@ -98,6 +103,9 @@ export default class EditModal extends React.Component<Props, States> {
             time: this.state.time,
             description: this.state.desctiption
         };
+        if (this.props.todoId) {
+            editInfo.id = this.props.todoId;
+        }
         this.props.onSave(editInfo);
     }
 

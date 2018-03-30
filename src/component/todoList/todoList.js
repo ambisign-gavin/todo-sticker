@@ -5,6 +5,7 @@ import type { EventState } from '../../states';
 import './todoList.scss';
 import moment from 'moment';
 import EditModal from '../eventEditModal/eventEditModal';
+import type {EditInfo} from '../eventEditModal/eventEditModal';
 import Translate from '../../class/translate';
 
 type Props = {
@@ -22,6 +23,7 @@ type States = {
 export default class TodoList extends React.Component<Props, States> {
 
     handleEditTodo: Function;
+    handleEditSaved: Function;
 
     state = {
         visibleModal: false,
@@ -34,6 +36,12 @@ export default class TodoList extends React.Component<Props, States> {
     constructor(props: Props) {
         super(props);
         this.handleEditTodo = this.handleEditTodo.bind(this);
+        this.handleEditSaved = this.handleEditSaved.bind(this);
+    }
+
+    handleEditSaved(editInfo: EditInfo) {
+        console.log(editInfo);
+        this.setState ({ visibleModal: false });
     }
 
     handleEditTodo(todo: EventState) {
@@ -72,7 +80,9 @@ export default class TodoList extends React.Component<Props, States> {
                 <EditModal
                     title={Translate.tr('Edit Todo')}
                     visible={this.state.visibleModal}
+                    onSave={this.handleEditSaved}
                     onCancel={() => this.setState({visibleModal: false})}
+                    todoId={this.state.selectedId}
                     defaultDate={this.state.selectedNotificationDate || new Date().getTime()}
                     defaultTime={this.state.selectedNotificationTime || new Date().getTime()}
                     defaultDescriptin={this.state.selectedDescription}
