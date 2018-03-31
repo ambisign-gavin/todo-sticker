@@ -6,6 +6,11 @@ export type TodoState = {|
     description: string
 |}
 
-export type AppState = {
-    todos: TodoState[]
-}
+export type FilterState = {|
+    dueDate: string
+|}
+
+export type AppState = {|
+    todos: TodoState[],
+    filter: FilterState
+|}
