@@ -1,7 +1,24 @@
-.float-right-btn {
-    float: right;
-}
+.todo-container {
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 10% 10% 80%;
+    grid-template-areas:
+    " . . addButton"
+    "filterButton . . "
+    "listArea listArea listArea";
 
-.lists-area {
-    margin-top: 10%;
+    .add-button {
+        grid-area: addButton;
+    }
+
+    .filter-button {
+        grid-area: filterButton;
+    }
+
+    .lists-area {
+        grid-area: listArea;
+    }
+
 }
