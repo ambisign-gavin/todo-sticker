@@ -48,8 +48,8 @@ export default class AddButton extends React.Component<Props, States> {
     render() {
 
         return (
-            <div>
-                <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add" {...this.props}  >
+            <div {...this.props}>
+                <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add">
                     <AddIcon />
                 </Button>
                 <AddModal
