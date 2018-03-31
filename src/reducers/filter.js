@@ -1,10 +1,10 @@
 // @flow
 import type {FilterState} from '../states/index';
-import {FilterEnum} from '../constant/index';
+import {DueDateFilterEnum} from '../constant/filter';
 import type {FilterActions} from '../actions/filter';
 
 const initialFilter: FilterState = {
-    dueDate: FilterEnum.DueDate.all,
+    dueDate: DueDateFilterEnum.all,
 };
 
 function filter(state: FilterState = initialFilter, action: FilterActions) {

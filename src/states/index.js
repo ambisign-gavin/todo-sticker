@@ -1,4 +1,6 @@
 // @flow
+import type {DueDateFilter} from '../constant/filter';
+
 export type TodoState = {|
     id?: number,
     notificationDate?: number,
@@ -7,7 +9,7 @@ export type TodoState = {|
 |}
 
 export type FilterState = {|
-    dueDate: string
+    dueDate: DueDateFilter
 |}
 
 export type AppState = {|

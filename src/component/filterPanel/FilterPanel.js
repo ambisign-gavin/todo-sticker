@@ -4,7 +4,7 @@ import './FilterPanel.scss';
 import Translate from '../../class/translate';
 import { Radio } from 'antd';
 import Classnames from 'classnames';
-import {FilterEnum} from '../../constant/index';
+import {DueDateFilterEnum} from '../../constant/filter';
 
 type Props = {
     show: boolean,
@@ -28,9 +28,9 @@ export default class FilterPanel extends React.Component<Props> {
         return (
             <div className={className}>
                 <p>{Translate.tr('Due Date')}</p>
-                <Radio.Group defaultValue={FilterEnum.DueDate.today}>
-                    <Radio.Button value={FilterEnum.DueDate.today}>{Translate.tr('Today')}</Radio.Button>
-                    <Radio.Button value={FilterEnum.DueDate.all}>{Translate.tr('All')}</Radio.Button>
+                <Radio.Group defaultValue={DueDateFilterEnum.all}>
+                    <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
+                    <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
                 </Radio.Group>
             </div>
         );
