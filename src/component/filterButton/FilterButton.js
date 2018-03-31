@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import Translate from '../../class/translate';
-import FilterPanel from '../filterPanel/FilterPanel';
+import FilterPanelContainer from '../../container/FilterPanelContainer';
 
 type Props = {
 
@@ -26,7 +26,7 @@ export default class FilterButton extends React.Component<Props, States> {
         return (
             <div {...this.props}>
                 <Button onClick={() => this.setState({showPanel: !this.state.showPanel})} >{Translate.tr('filter')}</Button>
-                <FilterPanel show={this.state.showPanel} />
+                <FilterPanelContainer show={this.state.showPanel} />
             </div>
         );
     }
