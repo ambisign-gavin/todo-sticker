@@ -25,6 +25,7 @@
     "sass-loader": "^6.0.7",
     "string": "^3.3.3",
     "style-loader": "^0.20.3",
+    "uniqid": "^4.1.1",
     "webpack": "^4.2.0",
     "webpack-dev-server": "^3.1.1",
     "y18n": "^4.0.0"

@@ -2,6 +2,7 @@
 import type {Actions, EditAction, DeleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
+import uniqid from 'uniqid';
 
 function todos(state: TodoState[] = [], action: Actions) {
 
@@ -10,7 +11,7 @@ function todos(state: TodoState[] = [], action: Actions) {
         return ([
             ...state,
             {
-                id: state.length + 1,
+                id: uniqid(),
                 description: action.todoState.description,
                 notificationDate: action.todoState.notificationDate,
                 notificationTime: action.todoState.notificationTime,
