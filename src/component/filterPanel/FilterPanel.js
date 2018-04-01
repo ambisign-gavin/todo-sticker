@@ -79,11 +79,21 @@ export default class FilterPanel extends React.Component<Props, States> {
         return (
             <div>
                 <div className={usedClassName} {...others} >
-                    <p>{Translate.tr('Due Date')}</p>
-                    <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
-                        <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
-                        <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
-                    </Radio.Group>
+                    <div className="filter-group" >
+                        <p>{Translate.tr('Due Date:')}</p>
+                        <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
+                            <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
+                            <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
+                        </Radio.Group>
+                    </div>
+                    <hr/>
+                    <div className="filter-group" >
+                        <p>{Translate.tr('Complete Status:')}</p>
+                        <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
+                            <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Complete')}</Radio.Button>
+                            <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('Uncompleted')}</Radio.Button>
+                        </Radio.Group>
+                    </div>
                 </div>
                 {
                     (this.state.show? (<div onClick={this.handleClickOutside} className="mask" />): null)
