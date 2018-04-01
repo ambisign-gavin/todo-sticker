@@ -57,7 +57,7 @@ export default class TodoItem extends React.Component<Props> {
                         <Icon type="clock-circle-o" />
                     </div>
                     <div className="notification-time">
-                        {this.generateTime(todo.notificationDate, todo.notificationTime)}
+                        {this.generateTime(todo.dueDatetime, todo.dueDatetime)}
                     </div>
                     <div className="description">
                         {todo.description}

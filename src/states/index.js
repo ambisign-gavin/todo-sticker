@@ -3,8 +3,7 @@ import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 
 export type TodoState = {|
     id?: string,
-    notificationDate?: number,
-    notificationTime?: number,
+    dueDatetime: number,
     description: string,
     complete?: boolean
 |}

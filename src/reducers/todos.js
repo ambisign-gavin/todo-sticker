@@ -13,8 +13,7 @@ function todos(state: TodoState[] = [], action: Actions) {
             {
                 id: uniqid(),
                 description: action.todoState.description,
-                notificationDate: action.todoState.notificationDate,
-                notificationTime: action.todoState.notificationTime,
+                dueDatetime: action.todoState.dueDatetime,
                 complete: false
             }
         ]);
@@ -32,7 +31,7 @@ function todos(state: TodoState[] = [], action: Actions) {
                 return todoState;
             })
         );
-        
+
     case ActionTypes.Delete:
         let deleteAction: DeleteAction = action;
         return state.filter(todoState => todoState.id !== deleteAction.id);

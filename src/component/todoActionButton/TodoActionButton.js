@@ -65,8 +65,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
                     onSave={() => this.setState({editModalVisible: false})}
                     onCancel={() => this.setState({editModalVisible: false})}
                     todoId={todo.id}
-                    defaultDate={todo.notificationDate || new Date().getTime()}
-                    defaultTime={todo.notificationTime || new Date().getTime()}
+                    defaultDueDatetime={todo.dueDatetime || new Date().getTime()}
                     defaultDescription={todo.description}
                 />
             </div>

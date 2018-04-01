@@ -11,7 +11,7 @@ function filterWithDueDate(todos: TodoState[], filter: DueDateFilter): TodoState
     switch (filter) {
     case DueDateFilterEnum.today:
         let today: string = moment().format('YYYY-MM-DD');
-        return todos.filter(todo => today === moment(todo.notificationDate).format('YYYY-MM-DD'));
+        return todos.filter(todo => today === moment(todo.dueDatetime).format('YYYY-MM-DD'));
     case DueDateFilterEnum.all:
     default:
         return todos;

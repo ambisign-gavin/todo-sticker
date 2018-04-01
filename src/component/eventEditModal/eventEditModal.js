@@ -10,8 +10,7 @@ type Props = {
     visible: boolean,
     title: string,
     todoId?: string,
-    defaultDate?: number,
-    defaultTime?: number,
+    defaultDueDatetime?: number,
     defaultDescription?: string,
     handleAddEvent?: (eventState: TodoState) => void,
     handleEditEvent?: (eventState: TodoState) => void,
@@ -19,8 +18,7 @@ type Props = {
 }
 
 type States = {
-    date: number,
-    time: number,
+    dueDatetime: number,
     desctiption: string
 }
 
@@ -39,8 +37,7 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     state = {
-        date: this.props.defaultDate || new Date().getTime(),
-        time: this.props.defaultTime || new Date().getTime(),
+        dueDatetime: this.props.defaultDueDatetime || new Date().getTime(),
         desctiption: this.props.defaultDescription || '',
     };
 
@@ -54,11 +51,8 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     componentWillReceiveProps(nextProps: Props) {
-        if (nextProps.defaultDate && nextProps.defaultDate !== this.props.defaultDate) {
-            this.setState({date: nextProps.defaultDate});
-        }
-        if (nextProps.defaultTime && nextProps.defaultTime !== this.props.defaultTime) {
-            this.setState({time: nextProps.defaultTime});
+        if (nextProps.defaultDueDatetime && nextProps.defaultDueDatetime !== this.props.defaultDueDatetime) {
+            this.setState({dueDatetime: nextProps.defaultDueDatetime});
         }
         if (nextProps.defaultDescription && nextProps.defaultDescription !== this.props.defaultDescription) {
             this.setState({desctiption: nextProps.defaultDescription});
@@ -67,17 +61,24 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     handleDateChanged(dates: moment) {
+        let dueDate = moment(this.state.dueDatetime);
+        dueDate.set('year', dates.get('year'));
+        dueDate.set('month', dates.get('month'));
+        dueDate.set('date', dates.get('date'));
         this.setState(
             {
-                date: dates.toDate().getTime()
+                dueDatetime: dueDate.toDate().getTime()
             }
         );
     }
 
     handleTimeChanged(time: moment) {
+        let dueDatetime = moment(this.state.dueDatetime);
+        dueDatetime.set('hour', time.get('hour'));
+        dueDatetime.set('minute', time.get('minute'));
         this.setState(
             {
-                time: time.toDate().getTime()
+                dueDatetime: dueDatetime.toDate().getTime()
             }
         );
     }
@@ -92,8 +93,7 @@ export default class EditModal extends React.Component<Props, States> {
     handleOk() {
         let todoState: TodoState = {
             description: this.state.desctiption,
-            notificationDate: this.state.date,
-            notificationTime: this.state.time,
+            dueDatetime: this.state.dueDatetime
         };
         if (this.props.handleAddEvent) {
             this.props.handleAddEvent(todoState);
@@ -111,8 +111,7 @@ export default class EditModal extends React.Component<Props, States> {
 
     render() {
         var {
-            defaultDate,
-            defaultTime,
+            defaultDueDatetime,
             defaultDescription,
             ...others
         } = this.props;
@@ -120,9 +119,9 @@ export default class EditModal extends React.Component<Props, States> {
         return (
             <Modal destroyOnClose={true} onOk={this.handleOk} {...others} >
                 <p>{Translate.tr('notificationDate')}</p>
-                <DatePicker allowClear={false} onChange={this.handleDateChanged} defaultValue={moment(defaultDate)} />
+                <DatePicker allowClear={false} onChange={this.handleDateChanged} defaultValue={moment(defaultDueDatetime)} />
                 <p>{Translate.tr('notificationTime')}</p>
-                <TimePicker allowEmpty={false} onChange={this.handleTimeChanged} defaultValue={moment(defaultTime)} format={'HH:mm'} />
+                <TimePicker allowEmpty={false} onChange={this.handleTimeChanged} defaultValue={moment(defaultDueDatetime)} format={'HH:mm'} />
                 <p>{Translate.tr('eventDescription')}</p>
                 <Input.TextArea defaultValue={defaultDescription} onChange={this.handleDescriptionChanged} rows={4} />
             </Modal>

@@ -57,8 +57,7 @@ export default class AddButton extends React.Component<Props, States> {
                     onCancel={this.handleCloseModal}
                     title={Translate.tr('Add Event')}
                     visible={this.state.showEditModal}
-                    defaultDate={this.state.defaultTimestamp}
-                    defaultTime={this.state.defaultTimestamp}
+                    defaultDueDatetime={this.state.defaultTimestamp}
                     defaultDescription={''}
                 />
             </div>
