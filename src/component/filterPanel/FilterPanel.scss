@@ -13,4 +13,15 @@
     &.close {
         transform: scale(0);
     }
+
+}
+
+.mask {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 99;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }

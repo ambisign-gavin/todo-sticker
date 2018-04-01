@@ -2,32 +2,20 @@
 import React from 'react';
 import { Button } from 'antd';
 import Translate from '../../class/translate';
-import FilterPanelContainer from '../../container/FilterPanelContainer';
 
 type Props = {
-
+    onClick: () => void,
 }
 
-type States = {
-    showPanel: boolean,
-}
-
-export default class FilterButton extends React.Component<Props, States> {
-
-    state: States = {
-        showPanel: false,
-    }
-
-    constructor(props: Props) {
-        super(props);
-    }
+export default class FilterButton extends React.Component<Props> {
 
     render() {
+        let {
+            onClick,
+            ...others
+        } = this.props;
         return (
-            <div {...this.props}>
-                <Button onClick={() => this.setState({showPanel: !this.state.showPanel})} >{Translate.tr('filter')}</Button>
-                <FilterPanelContainer show={this.state.showPanel} />
-            </div>
+            <Button onClick={onClick} {...others} >{Translate.tr('filter')}</Button>
         );
     }
 }

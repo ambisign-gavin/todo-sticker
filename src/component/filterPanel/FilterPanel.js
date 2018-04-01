@@ -9,15 +9,18 @@ import type {DueDateFilter} from '../../constant/filter';
 
 type Props = {
     show: boolean,
-    handleDueDateFilterChanged: (filter: DueDateFilter) => void
+    handleDueDateFilterChanged: (filter: DueDateFilter) => void,
+    onHidden?: () => void
 }
 type States = {
     dueDateFilter: DueDateFilter,
+    show: boolean
 }
 
 export default class FilterPanel extends React.Component<Props, States> {
 
     handleDueDateFilterSelected: Function;
+    handleClickOutside: Function;
 
     static defaultProps = {
         show: false
@@ -25,11 +28,30 @@ export default class FilterPanel extends React.Component<Props, States> {
 
     state = {
         dueDateFilter: DueDateFilterEnum.all,
+        show: false
     }
 
     constructor(props: Props) {
         super(props);
         this.handleDueDateFilterSelected = this. handleDueDateFilterSelected.bind(this);
+        this.handleClickOutside = this. handleClickOutside.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps: Props) {
+        if (nextProps.show !== this.state.show) {
+            this.setState({
+                show: nextProps.show
+            });
+        }
+    }
+
+    handleClickOutside() {
+        this.setState({
+            show: false,
+        });
+        if (this.props.onHidden) {
+            this.props.onHidden();
+        }
     }
 
     handleDueDateFilterSelected(event: any) {
@@ -41,24 +63,31 @@ export default class FilterPanel extends React.Component<Props, States> {
         let {
             handleDueDateFilterChanged,
             show,
+            onHidden,
             ...others
         } = this.props;
-
+        show;
         handleDueDateFilterChanged;
+        onHidden;
 
         let usedClassName = Classnames({
             'filter-panel': true,
-            'close': !show,
+            'close': !this.state.show,
         });
 
 
         return (
-            <div className={usedClassName} {...others} >
-                <p>{Translate.tr('Due Date')}</p>
-                <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
-                    <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
-                    <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
-                </Radio.Group>
+            <div>
+                <div className={usedClassName} {...others} >
+                    <p>{Translate.tr('Due Date')}</p>
+                    <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
+                        <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
+                        <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
+                    </Radio.Group>
+                </div>
+                {
+                    (this.state.show? (<div onClick={this.handleClickOutside} className="mask" />): null)
+                }
             </div>
         );
     }
