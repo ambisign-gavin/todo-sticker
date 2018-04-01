@@ -1,5 +1,5 @@
 // @flow
-import type {DueDateFilter} from '../constant/filter';
+import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 
 export type FilterActions =
     | DueDateFilterAction;
@@ -9,9 +9,21 @@ export type DueDateFilterAction = {|
     filter: DueDateFilter,
 |}
 
+export type CompleteStatusFilterAction = {|
+    type: 'completeStatusFilter',
+    filter: CompleteStatusFilter,
+|}
+
 export function settingDueDateFilter(dueDateFilter: DueDateFilter): DueDateFilterAction {
     return {
         type: 'dueDateFilter',
         filter: dueDateFilter
+    };
+}
+
+export function settingCompleteStatusFilter(completeStatusFilter: CompleteStatusFilter): CompleteStatusFilterAction {
+    return {
+        type: 'completeStatusFilter',
+        filter: completeStatusFilter
     };
 }

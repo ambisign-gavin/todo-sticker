@@ -1,5 +1,5 @@
 // @flow
-import type {DueDateFilter} from '../constant/filter';
+import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 
 export type TodoState = {|
     id?: string,
@@ -10,7 +10,8 @@ export type TodoState = {|
 |}
 
 export type FilterState = {|
-    dueDate: DueDateFilter
+    dueDate: DueDateFilter,
+    completeStatus: CompleteStatusFilter
 |}
 
 export type AppState = {|
