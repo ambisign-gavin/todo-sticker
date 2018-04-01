@@ -15,6 +15,7 @@ function todos(state: TodoState[] = [], action: Actions) {
                 description: action.todoState.description,
                 notificationDate: action.todoState.notificationDate,
                 notificationTime: action.todoState.notificationTime,
+                complete: false
             }
         ]);
 
@@ -24,6 +25,7 @@ function todos(state: TodoState[] = [], action: Actions) {
             state.map( todoState => {
                 if (todoState.id == editAction.todoState.id) {
                     return {
+                        ...todoState,
                         ...editAction.todoState
                     };
                 }

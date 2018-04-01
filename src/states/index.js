@@ -5,7 +5,8 @@ export type TodoState = {|
     id?: number,
     notificationDate?: number,
     notificationTime?: number,
-    description: string
+    description: string,
+    complete?: boolean
 |}
 
 export type FilterState = {|
