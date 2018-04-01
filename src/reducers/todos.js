@@ -32,14 +32,16 @@ function todos(state: TodoState[] = [], action: Actions) {
                 return todoState;
             })
         );
+        
     case ActionTypes.Delete:
         let deleteAction: DeleteAction = action;
         return state.filter(todoState => todoState.id !== deleteAction.id);
+
     case ActionTypes.Complete:
         let completeAction: CompleteAction = action;
         return (
             state.map( todoState => {
-                if (todoState.id == completeAction.id) {
+                if (todoState.id === completeAction.id) {
                     return {
                         ...todoState,
                         complete: true

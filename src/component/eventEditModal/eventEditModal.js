@@ -9,7 +9,7 @@ import type {TodoState} from '../../states';
 type Props = {
     visible: boolean,
     title: string,
-    todoId?: number,
+    todoId?: string,
     defaultDate?: number,
     defaultTime?: number,
     defaultDescription?: string,
@@ -99,7 +99,7 @@ export default class EditModal extends React.Component<Props, States> {
             this.props.handleAddEvent(todoState);
         }
         if (this.props.handleEditEvent) {
-            todoState.id = this.props.todoId || 0;
+            todoState.id = this.props.todoId || '';
             this.props.handleEditEvent(todoState);
         }
 

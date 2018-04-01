@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => (
     {
-        handleCompleteTodo: (id: number) => dispatch(completeTodo(id))
+        handleCompleteTodo: (id: string) => dispatch(completeTodo(id))
     }
 );
 

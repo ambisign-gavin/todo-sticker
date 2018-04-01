@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => (
     {
-        handleDeleteTodo: (id: number) => dispatch(deleteTodo(id))
+        handleDeleteTodo: (id: string) => dispatch(deleteTodo(id))
     }
 );
 

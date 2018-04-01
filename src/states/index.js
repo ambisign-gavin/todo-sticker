@@ -2,7 +2,7 @@
 import type {DueDateFilter} from '../constant/filter';
 
 export type TodoState = {|
-    id?: number,
+    id?: string,
     notificationDate?: number,
     notificationTime?: number,
     description: string,

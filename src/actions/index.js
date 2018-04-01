@@ -26,12 +26,12 @@ export type EditAction = {|
 
 export type DeleteAction = {|
     type: 'delete',
-    id: number
+    id: string
 |}
 
 export type CompleteAction = {|
     type: 'complete',
-    id: number
+    id: string
 |}
 
 export function addEvent(todoState: TodoState): AddAction {
@@ -48,14 +48,14 @@ export function editEvent(todoState: TodoState): EditAction {
     };
 }
 
-export function deleteTodo(id: number): DeleteAction {
+export function deleteTodo(id: string): DeleteAction {
     return {
         type: ActionTypes.Delete,
         id
     };
 }
 
-export function completeTodo(id: number): CompleteAction {
+export function completeTodo(id: string): CompleteAction {
     return {
         type: ActionTypes.Complete,
         id
