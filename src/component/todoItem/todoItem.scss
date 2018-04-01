@@ -20,6 +20,15 @@
     }
 }
 .todo-item {
+    width: 95%;
+    margin: 15px auto;
+    background-color: #ffffff;
+
+    transition: box-shadow 0.4s;
+    &:hover {
+        box-shadow: 2px 5px 5px #8c8c8c;
+    }
+
     &.complete {
         background-color: #4f967a;
         color: white;

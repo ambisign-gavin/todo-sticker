@@ -1,6 +1,5 @@
 .todo-container {
     width: 100%;
-    padding: 10px;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     grid-template-rows: 10% 10% 80%;
@@ -15,10 +14,12 @@
 
     .filter-button {
         grid-area: filterButton;
+        padding: 10px;
     }
 
     .lists-area {
         grid-area: listArea;
+        background-color: #f2f2f2;
     }
 
 }
