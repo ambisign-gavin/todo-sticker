@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
-import { List, Icon } from 'antd';
+import { List } from 'antd';
 import type { TodoState } from '../../states';
 import './todoList.scss';
-import moment from 'moment';
 import EditModal from '../../container/editTodoModalContainer';
 import Translate from '../../class/translate';
-import DeleteButtonContainer from '../../container/DeleteButtonContainer';
+import TodoItem from '../todoItem/todoItem';
 
 type Props = {
     todoLists: TodoState[]
@@ -53,37 +52,15 @@ export default class TodoList extends React.Component<Props, States> {
         });
     }
 
-    generateTime(date: ?number, time: ?number) {
-        let notificationString = '';
-        if (date != null) {
-            notificationString += moment(date).format('YYYY/MM/DD');
-        }
-        if (time != null) {
-            notificationString += ' - ' + moment(time).format('HH:mm');
-        }
-        return notificationString;
-    }
-
     render() {
         return (
             <div>
                 <List
                     dataSource={this.props.todoLists}
                     renderItem={
-                        (item: TodoState) => (
-                            <List.Item actions={[<a onClick={() => this.handleEditTodo(item)} >edit</a>, <DeleteButtonContainer todoId={item.id} />]} >
-                                <div className="list-row"  >
-                                    <div className="clock">
-                                        <Icon type="clock-circle-o" />
-                                    </div>
-                                    <div className="notification-time">
-                                        {this.generateTime(item.notificationDate, item.notificationTime)}
-                                    </div>
-                                    <div className="description">
-                                        {item.description}
-                                    </div>
-                                </div>
-                            </List.Item>
+                        (todo: TodoState) => (
+                            <TodoItem todo={todo} onEditTodo={this.handleEditTodo} />
+
                         )
                     }
                 />
