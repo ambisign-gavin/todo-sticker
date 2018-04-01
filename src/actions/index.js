@@ -4,12 +4,14 @@ import type { TodoState } from '../states';
 export type Actions =
     | AddAction
     | EditAction
-    | DeleteAction;
+    | DeleteAction
+    | CompleteAction;
 
 export const ActionTypes = {
     Add: 'add',
     Edit: 'edit',
-    Delete: 'delete'
+    Delete: 'delete',
+    Complete: 'complete'
 };
 
 export type AddAction = {|
@@ -24,6 +26,11 @@ export type EditAction = {|
 
 export type DeleteAction = {|
     type: 'delete',
+    id: number
+|}
+
+export type CompleteAction = {|
+    type: 'complete',
     id: number
 |}
 
@@ -44,6 +51,13 @@ export function editEvent(todoState: TodoState): EditAction {
 export function deleteTodo(id: number): DeleteAction {
     return {
         type: ActionTypes.Delete,
+        id
+    };
+}
+
+export function completeTodo(id: number): CompleteAction {
+    return {
+        type: ActionTypes.Complete,
         id
     };
 }

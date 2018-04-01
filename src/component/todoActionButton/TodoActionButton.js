@@ -6,6 +6,7 @@ import EditModal from '../../container/editTodoModalContainer';
 import Translate from '../../class/translate';
 import type {TodoState} from '../../states/index';
 import DeleteButtonContainer from '../../container/DeleteButtonContainer';
+import CompleteTodoButtonContainer from '../../container/completeTodoButtonContainer';
 
 type Props = {
     todo: TodoState,
@@ -43,7 +44,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a>Complete</a>
+                    <CompleteTodoButtonContainer todoId={todo.id} />
                 </Menu.Item>
                 <Menu.Item>
                     <a onClick={this.handleEdit} >Edit</a>
