@@ -5,6 +5,7 @@ import { Menu, Dropdown, Button } from 'antd';
 import EditModal from '../../container/editTodoModalContainer';
 import Translate from '../../class/translate';
 import type {TodoState} from '../../states/index';
+import DeleteButtonContainer from '../../container/DeleteButtonContainer';
 
 type Props = {
     todo: TodoState,
@@ -48,7 +49,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
                     <a onClick={this.handleEdit} >Edit</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a>Delete</a>
+                    <DeleteButtonContainer todoId={todo.id} />
                 </Menu.Item>
             </Menu>
         );

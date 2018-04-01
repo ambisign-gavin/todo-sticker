@@ -3,7 +3,6 @@ import React from 'react';
 import { List, Icon } from 'antd';
 import type {TodoState} from '../../states/index';
 import moment from 'moment';
-import DeleteButtonContainer from '../../container/DeleteButtonContainer';
 import './todoItem.scss';
 import TodoActionButton from '../todoActionButton/TodoActionButton';
 
@@ -31,7 +30,7 @@ export default class TodoItem extends React.Component<Props> {
         } = this.props;
 
         return (
-            <List.Item {...others} actions={[<TodoActionButton todo={todo} />, <DeleteButtonContainer todoId={todo.id} />]} >
+            <List.Item {...others} actions={[<TodoActionButton todo={todo} />]} >
                 <div className="list-row"  >
                     <div className="clock">
                         <Icon type="clock-circle-o" />
