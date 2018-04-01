@@ -52,7 +52,7 @@ export default class EditModal extends React.Component<Props, States> {
         this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
         this.handleOk = this.handleOk.bind(this);
     }
-    
+
     componentWillReceiveProps(nextProps: Props) {
         if (nextProps.defaultDate && nextProps.defaultDate !== this.props.defaultDate) {
             this.setState({date: nextProps.defaultDate});
@@ -106,7 +106,7 @@ export default class EditModal extends React.Component<Props, States> {
         if (this.props.onSave) {
             this.props.onSave();
         }
-        
+
     }
 
     render() {
@@ -120,9 +120,9 @@ export default class EditModal extends React.Component<Props, States> {
         return (
             <Modal destroyOnClose={true} onOk={this.handleOk} {...others} >
                 <p>{Translate.tr('notificationDate')}</p>
-                <DatePicker onChange={this.handleDateChanged} defaultValue={moment(defaultDate)} />
+                <DatePicker allowClear={false} onChange={this.handleDateChanged} defaultValue={moment(defaultDate)} />
                 <p>{Translate.tr('notificationTime')}</p>
-                <TimePicker onChange={this.handleTimeChanged} defaultValue={moment(defaultTime)} format={'HH:mm'} />
+                <TimePicker allowEmpty={false} onChange={this.handleTimeChanged} defaultValue={moment(defaultTime)} format={'HH:mm'} />
                 <p>{Translate.tr('eventDescription')}</p>
                 <Input.TextArea defaultValue={defaultDescription} onChange={this.handleDescriptionChanged} rows={4} />
             </Modal>
