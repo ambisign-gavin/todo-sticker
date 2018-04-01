@@ -5,12 +5,20 @@ import type {TodoState} from '../../states/index';
 import moment from 'moment';
 import './todoItem.scss';
 import TodoActionButton from '../todoActionButton/TodoActionButton';
+import Classnames from 'classnames';
 
 type Props = {
     todo: TodoState
 }
 
 export default class TodoItem extends React.Component<Props> {
+
+    generateTodoActions: Function;
+
+    constructor(props: Props) {
+        super(props);
+        this.generateTodoActions = this.generateTodoActions.bind(this);
+    }
 
     generateTime(date: ?number, time: ?number) {
         let notificationString = '';
@@ -23,15 +31,28 @@ export default class TodoItem extends React.Component<Props> {
         return notificationString;
     }
 
+    generateTodoActions() {
+        if (!this.props.todo.complete) {
+            return ([
+                <TodoActionButton todo={this.props.todo} />
+            ]);
+        }
+    }
+
     render() {
         let {
             todo,
             ...others
         } = this.props;
 
+        let statusClass = Classnames({
+            'todo-item': true,
+            'complete': todo.complete,
+        });
+
         return (
-            <List.Item {...others} actions={[<TodoActionButton todo={todo} />]} >
-                <div className="list-row"  >
+            <List.Item {...others} className={statusClass} actions={this.generateTodoActions()} >
+                <div className='list-row'  >
                     <div className="clock">
                         <Icon type="clock-circle-o" />
                     </div>

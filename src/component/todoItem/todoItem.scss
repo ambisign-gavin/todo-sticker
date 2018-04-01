@@ -18,5 +18,11 @@
     .description {
         grid-area: description;
     }
-
+}
+.todo-item {
+    &.complete {
+        background-color: #4f967a;
+        color: white;
+        font-weight: bold;
+    }
 }
