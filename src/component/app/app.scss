@@ -1,15 +1,16 @@
 .todo-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 10% 10% 80%;
+    grid-template-columns: 10% 70% 20%;
+    grid-template-rows: 10% 15% 75%;
     grid-template-areas:
     " . . addButton"
-    "filterButton . . "
+    "filterButton sort-btn sort-btn"
     "listArea listArea listArea";
 
     .add-button {
         grid-area: addButton;
+        justify-self: end;
     }
 
     .filter-button {
@@ -17,9 +18,17 @@
         padding: 10px;
     }
 
+    .sort-btn {
+        grid-area: sort-btn;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        align-self: flex-end;
+        justify-self: end;
+    }
+
     .lists-area {
         grid-area: listArea;
-        background-color: #f2f2f2;
+        background-color: #edf3ff;
     }
 
 }
