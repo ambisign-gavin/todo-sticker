@@ -10,20 +10,31 @@ import Classnames from 'classnames';
 type Props = {
     sortColumn: SortColumn,
     sortByType: SortByType,
-    handleSortColumnSelected: (column: SortColumn) => void
+    handleSortColumnSelected: (column: SortColumn) => void,
+    handleSortByChanged: (sortBy: SortByType) => void,
 }
 
 export default class SortButton extends React.Component<Props> {
 
     onSortColumnSelected: Function;
+    onSortByChanged: Function;
 
     constructor(props: Props) {
         super(props);
         this.onSortColumnSelected = this.onSortColumnSelected.bind(this);
+        this.onSortByChanged = this.onSortByChanged.bind(this);
     }
 
     onSortColumnSelected(selectedMenu: any) {
         this.props.handleSortColumnSelected(selectedMenu.key);
+    }
+
+    onSortByChanged() {
+        if (this.props.sortByType === SortByTypeEnum.asc) {
+            this.props.handleSortByChanged(SortByTypeEnum.desc);
+        } else if (this.props.sortByType === SortByTypeEnum.desc) {
+            this.props.handleSortByChanged(SortByTypeEnum.asc);
+        }
     }
 
     render() {
@@ -38,12 +49,14 @@ export default class SortButton extends React.Component<Props> {
             sortColumn,
             sortByType,
             handleSortColumnSelected,
+            handleSortByChanged,
             ...others
         } = this.props;
-        
+
         sortColumn;
         sortByType;
         handleSortColumnSelected;
+        handleSortByChanged;
 
         let menu = (
             <Menu onClick={this.onSortColumnSelected} >
@@ -62,7 +75,7 @@ export default class SortButton extends React.Component<Props> {
                 <Dropdown overlay={menu} trigger={['click']}>
                     <a>{this.props.sortColumn}</a>
                 </Dropdown>
-                <span className={sortByIconClass}></span>
+                <span onClick={() => this.onSortByChanged()} className={sortByIconClass}></span>
             </div>
         );
     }

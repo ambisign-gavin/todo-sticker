@@ -8,12 +8,17 @@ const initState: SortState = {
     sortColumn: SortColumnEnum.dueDate
 };
 
-export default function sort(sortState: SortState = initState, action: SortActions) {
+export default function sort(sortState: SortState = initState, action: SortActions): SortState {
     switch (action.type) {
     case 'sortColumn':
         return {
             ...sortState,
             sortColumn: action.column
+        };
+    case 'sortBy':
+        return {
+            ...sortState,
+            sortBy: action.sortBy
         };
     default:
         return sortState;

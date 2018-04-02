@@ -49,7 +49,7 @@ export default class App extends React.Component<Props, States> {
                 </div>
 
                 <div className="sort-btn">
-                    <SortButtonContainer style={{display: 'inline'}} sortType={''}/>
+                    <SortButtonContainer style={{display: 'inline'}}/>
                 </div>
             </div>
         );

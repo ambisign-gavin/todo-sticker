@@ -21,3 +21,10 @@ export function settingSortColumn(column: SortColumn): SortColumnAction {
         column: column
     };
 }
+
+export function settingSortBy(sortBy: SortByType): SortByAction {
+    return {
+        type: 'sortBy',
+        sortBy
+    };
+}

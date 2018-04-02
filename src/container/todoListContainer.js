@@ -7,7 +7,7 @@ import {DueDateFilterEnum, CompleteStatusFilterEnum} from '../constant/filter';
 import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 import moment from 'moment';
 import type {SortState} from '../states/index';
-import {SortColumnEnum} from '../constant/sort';
+import {SortColumnEnum, SortByTypeEnum} from '../constant/sort';
 
 function filterWithDueDate(todos: TodoState[], filter: DueDateFilter): TodoState[] {
     switch (filter) {
@@ -51,7 +51,11 @@ function sortByColumn(todos: TodoState[], sortState: SortState): TodoState[] {
             return (a.dueDatetime || 0) - (b.dueDatetime || 0);
         });
     }
-    return todos.map(todo => todo); //return new array
+    let result: TodoState[] = todos.map(todo => todo);
+    if (sortState.sortBy === SortByTypeEnum.desc) {
+        result.reverse();
+    }
+    return result; //return new array
 }
 
 const mapStateToProps = (state: AppState) => (
