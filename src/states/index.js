@@ -1,5 +1,6 @@
 // @flow
 import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
+import type {SortByType, SortColumn} from '../constant/sort';
 
 export type TodoState = {|
     id?: string,
@@ -14,7 +15,13 @@ export type FilterState = {|
     completeStatus: CompleteStatusFilter
 |}
 
+export type SortState = {
+    sortBy: SortByType,
+    sortColumn: SortColumn
+}
+
 export type AppState = {|
     todos: TodoState[],
-    filter: FilterState
+    filter: FilterState,
+    sort: SortState,
 |}

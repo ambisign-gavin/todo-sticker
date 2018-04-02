@@ -6,7 +6,7 @@ import TodoListContainer from '../../container/todoListContainer';
 import './app.scss';
 import FilterButton from '../filterButton/FilterButton';
 import FilterPanelContainer from '../../container/FilterPanelContainer';
-import SortButton from '../sortButton/sortButton';
+import SortButtonContainer from '../../container/sortButtonContainer';
 
 type Props = {
 
@@ -49,7 +49,7 @@ export default class App extends React.Component<Props, States> {
                 </div>
 
                 <div className="sort-btn">
-                    <SortButton style={{display: 'inline'}} sortType={''}/>
+                    <SortButtonContainer style={{display: 'inline'}} sortType={''}/>
                 </div>
             </div>
         );

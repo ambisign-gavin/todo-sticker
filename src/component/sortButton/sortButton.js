@@ -3,25 +3,42 @@ import React from 'react';
 import './sortButton.scss';
 import { Menu, Dropdown } from 'antd';
 import Translate from '../../class/translate';
+import {SortColumnEnum} from '../../constant/sort';
+import type {SortColumn} from '../../constant/sort';
 
 type Props = {
-    sortType: string
+    sortType: string,
+    handleSortColumnSelected: (column: SortColumn) => void
 }
 
 export default class SortButton extends React.Component<Props> {
+
+    onSortColumnSelected: Function;
+
+    constructor(props: Props) {
+        super(props);
+        this.onSortColumnSelected = this.onSortColumnSelected.bind(this);
+    }
+
+    onSortColumnSelected(selectedMenu: any) {
+        this.props.handleSortColumnSelected(selectedMenu.key);
+    }
+
     render() {
         let {
             sortType,
+            handleSortColumnSelected,
             ...others
         } = this.props;
         sortType;
+        handleSortColumnSelected;
 
         let menu = (
-            <Menu>
-                <Menu.Item key="0">
+            <Menu onClick={this.onSortColumnSelected} >
+                <Menu.Item key={SortColumnEnum.dueDate}>
                     <a>{Translate.tr('Due Date')}</a>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key={SortColumnEnum.createTime}>
                     <a>{Translate.tr('Create Time')}</a>
                 </Menu.Item>
             </Menu>
