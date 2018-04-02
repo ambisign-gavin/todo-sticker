@@ -3,6 +3,14 @@ import SortButton from '../component/sortButton/sortButton';
 import {connect} from 'react-redux';
 import type {SortColumn} from '../constant/sort';
 import {settingSortColumn} from '../actions/sort';
+import type {AppState} from '../states/index';
+
+const mapStateToProps = (state: AppState) => (
+    {
+        sortColumn: state.sort.sortColumn,
+        sortByType: state.sort.sortBy
+    }
+);
 
 const mapDispatchToProps = (dispatch) => (
     {
@@ -11,6 +19,6 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(SortButton);

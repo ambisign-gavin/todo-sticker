@@ -3,11 +3,13 @@ import React from 'react';
 import './sortButton.scss';
 import { Menu, Dropdown } from 'antd';
 import Translate from '../../class/translate';
-import {SortColumnEnum} from '../../constant/sort';
-import type {SortColumn} from '../../constant/sort';
+import {SortColumnEnum, SortByTypeEnum} from '../../constant/sort';
+import type {SortColumn, SortByType} from '../../constant/sort';
+import Classnames from 'classnames';
 
 type Props = {
-    sortType: string,
+    sortColumn: SortColumn,
+    sortByType: SortByType,
     handleSortColumnSelected: (column: SortColumn) => void
 }
 
@@ -25,12 +27,22 @@ export default class SortButton extends React.Component<Props> {
     }
 
     render() {
+        let sortByIconClass= Classnames({
+            'sort-icon': true,
+            'glyphicon': true,
+            'glyphicon-sort-by-order': this.props.sortByType === SortByTypeEnum.asc,
+            'glyphicon-sort-by-order-alt': this.props.sortByType === SortByTypeEnum.desc,
+        });
+
         let {
-            sortType,
+            sortColumn,
+            sortByType,
             handleSortColumnSelected,
             ...others
         } = this.props;
-        sortType;
+        
+        sortColumn;
+        sortByType;
         handleSortColumnSelected;
 
         let menu = (
@@ -48,9 +60,9 @@ export default class SortButton extends React.Component<Props> {
             <div {...others} >
                 <p style={{display: 'inline'}} > Sort By </p>
                 <Dropdown overlay={menu} trigger={['click']}>
-                    <a>Click me</a>
+                    <a>{this.props.sortColumn}</a>
                 </Dropdown>
-                <span className="sort-icon glyphicon glyphicon-sort-by-order"></span>
+                <span className={sortByIconClass}></span>
             </div>
         );
     }
