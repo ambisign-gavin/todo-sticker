@@ -6,6 +6,8 @@ import type {TodoState} from '../states/index';
 import {DueDateFilterEnum, CompleteStatusFilterEnum} from '../constant/filter';
 import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 import moment from 'moment';
+import type {SortState} from '../states/index';
+import {SortColumnEnum} from '../constant/sort';
 
 function filterWithDueDate(todos: TodoState[], filter: DueDateFilter): TodoState[] {
     switch (filter) {
@@ -31,16 +33,30 @@ function filterWithCompleteStatus(todos: TodoState[], filter: CompleteStatusFilt
     }
 }
 
-function getListWithFilter(state: AppState): TodoState[] {
+function getListWithFilterAndSort(state: AppState): TodoState[] {
     let todos: TodoState[] = state.todos;
     todos = filterWithDueDate(todos, state.filter.dueDate);
-    todos = filterWithCompleteStatus(todos, state.filter.completeStatus);
+    todos = filterWithCompleteStatus(todos, state.filter.completeStatus).reverse();
+    todos = sortByColumn(todos, state.sort);
     return todos;
+}
+
+function sortByColumn(todos: TodoState[], sortState: SortState): TodoState[] {
+    if (sortState.sortColumn === SortColumnEnum.createTime) {
+        todos.sort(function(a: TodoState, b: TodoState) {
+            return (a.createTime || 0) - (b.createTime || 0);
+        });
+    } else if (sortState.sortColumn === SortColumnEnum.dueDate) {
+        todos.sort(function(a: TodoState, b: TodoState) {
+            return (a.dueDatetime || 0) - (b.dueDatetime || 0);
+        });
+    }
+    return todos.map(todo => todo); //return new array
 }
 
 const mapStateToProps = (state: AppState) => (
     {
-        todoLists: getListWithFilter(state)
+        todoLists: getListWithFilterAndSort(state)
     }
 );
 
