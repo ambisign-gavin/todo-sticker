@@ -14,7 +14,8 @@ function todos(state: TodoState[] = [], action: Actions) {
                 id: uniqid(),
                 description: action.todoState.description,
                 dueDatetime: action.todoState.dueDatetime,
-                complete: false
+                complete: false,
+                createTime: new Date().getTime(),
             }
         ]);
 

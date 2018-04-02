@@ -5,7 +5,8 @@ export type TodoState = {|
     id?: string,
     dueDatetime: number,
     description: string,
-    complete?: boolean
+    complete?: boolean,
+    createTime?: number,
 |}
 
 export type FilterState = {|
