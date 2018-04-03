@@ -3,7 +3,7 @@
 import React from 'react';
 import AddEventButton from '../addButton/addButton';
 import TodoListContainer from '../../container/todoListContainer';
-import './app.scss';
+import './todosPage.scss';
 import FilterButton from '../filterButton/FilterButton';
 import FilterPanelContainer from '../../container/FilterPanelContainer';
 import SortButtonContainer from '../../container/sortButtonContainer';
@@ -16,7 +16,7 @@ type States = {
     showPanel: boolean,
 }
 
-export default class App extends React.Component<Props, States> {
+export default class TodosPage extends React.Component<Props, States> {
 
     handlePanelHidden: Function;
 
