@@ -11,11 +11,11 @@ type Props = {
     show: boolean,
     handleDueDateFilterChanged: (filter: DueDateFilter) => void,
     handleCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => void,
-    onHidden?: () => void
+    onHidden?: () => void,
+    defaultDueDateFilter: DueDateFilter,
+    defaultCompleteStatusFilter: CompleteStatusFilter,
 }
 type States = {
-    dueDateFilter: DueDateFilter,
-    completeStatusFilter: CompleteStatusFilter,
     show: boolean
 }
 
@@ -30,8 +30,6 @@ export default class FilterPanel extends React.Component<Props, States> {
     }
 
     state = {
-        dueDateFilter: DueDateFilterEnum.all,
-        completeStatusFilter: CompleteStatusFilterEnum.all,
         show: false
     }
 
@@ -75,6 +73,8 @@ export default class FilterPanel extends React.Component<Props, States> {
             handleCompleteStatusFilterChanged,
             show,
             onHidden,
+            defaultDueDateFilter,
+            defaultCompleteStatusFilter,
             ...others
         } = this.props;
         show;
@@ -93,7 +93,7 @@ export default class FilterPanel extends React.Component<Props, States> {
                 <div className={usedClassName} {...others} >
                     <div className="filter-group" >
                         <p>{Translate.tr('Due Date:')}</p>
-                        <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={this.state.dueDateFilter}>
+                        <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={defaultDueDateFilter}>
                             <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
                             <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
                         </Radio.Group>
@@ -101,7 +101,7 @@ export default class FilterPanel extends React.Component<Props, States> {
                     <hr/>
                     <div className="filter-group" >
                         <p>{Translate.tr('Complete Status:')}</p>
-                        <Radio.Group onChange={this.handleCompleteStatusFilterSelected} defaultValue={this.state.dueDateFilter}>
+                        <Radio.Group onChange={this.handleCompleteStatusFilterSelected} defaultValue={defaultCompleteStatusFilter}>
                             <Radio.Button value={CompleteStatusFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
                             <Radio.Button value={CompleteStatusFilterEnum.complete}>{Translate.tr('Complete')}</Radio.Button>
                             <Radio.Button value={CompleteStatusFilterEnum.uncomplete}>{Translate.tr('Uncompleted')}</Radio.Button>

@@ -21,7 +21,6 @@ export default class TodoList extends React.Component<Props, {}> {
             pageSize: 10,
             current: 1,
             total: this.props.todoLists.length,
-            simple: true
         };
         return (
             <div>
