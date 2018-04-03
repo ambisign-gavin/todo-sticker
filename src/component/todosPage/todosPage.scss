@@ -1,36 +1,62 @@
+$backgroundColor: #d8d8d8;
+$tooBarColor: #fcfcfc;
+$todosVIewColor: #fcfcfc;
+$shadowColor: #a5a5a5;
+
 .todo-container {
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-columns: 10% 70% 20%;
-    grid-template-rows: 10% 15% 75%;
+    grid-template-rows: 10% 90%;
+    grid-row-gap: 5%;
     grid-template-areas:
-    " . . addButton"
-    "filterButton sort-btn sort-btn"
-    "listArea listArea listArea";
+    " tool-bar tool-bar tool-bar"
+    "todos-view todos-view todos-view";
+    background-color: $backgroundColor;
 
-    .add-button {
-        grid-area: addButton;
-        justify-self: end;
+    .tool-bar {
+        grid-area: tool-bar;
+        display: flex;
+        justify-content: flex-end;
+        background-color: $tooBarColor;
+        box-shadow: 0px 5px 15px $shadowColor;
     }
+
+    .todos-view {
+        grid-area: todos-view;
+    }
+
+
+
+}
+
+.todos-view {
+    display: grid;
+    width: 95%;
+    height: 90%;
+    padding: 5px;
+    justify-self: center;
+    align-self: start;
+    grid-template-columns: 10% 70% 20%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:
+    " filterButton sort-btn sort-btn"
+    "listArea listArea listArea";
+    background-color: $todosVIewColor;
 
     .filter-button {
         grid-area: filterButton;
-        padding: 10px;
+        align-self: end;
     }
 
     .sort-btn {
         grid-area: sort-btn;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        align-self: flex-end;
         justify-self: end;
+        align-self: end;
     }
 
     .lists-area {
         grid-area: listArea;
-        background-color: #edf3ff;
-        height: 100%;
     }
-
 }

@@ -36,20 +36,25 @@ export default class TodosPage extends React.Component<Props, States> {
     }
 
     render() {
+        let toolBar = (
+            <div className="tool-bar"><AddEventButton/></div>
+        );
+
         return (
             <div className="todo-container" >
-                App
-                <AddEventButton className="add-button" />
-                <div className="filter-button">
-                    <FilterButton onClick={() => this.setState({showPanel: !this.state.showPanel})}  />
-                    <FilterPanelContainer onHidden={this.handlePanelHidden} show={this.state.showPanel} />
-                </div>
-                <div className="lists-area">
-                    <TodoListContainer />
-                </div>
+                {toolBar}
+                <div className="todos-view" >
+                    <div className="filter-button">
+                        <FilterButton onClick={() => this.setState({showPanel: !this.state.showPanel})}  />
+                        <FilterPanelContainer onHidden={this.handlePanelHidden} show={this.state.showPanel} />
+                    </div>
+                    <div className="lists-area">
+                        <TodoListContainer />
+                    </div>
 
-                <div className="sort-btn">
-                    <SortButtonContainer style={{display: 'inline'}}/>
+                    <div className="sort-btn">
+                        <SortButtonContainer style={{display: 'inline'}}/>
+                    </div>
                 </div>
             </div>
         );
