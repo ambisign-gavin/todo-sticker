@@ -9,24 +9,59 @@ type Props = {
     todoLists: TodoState[]
 }
 
+type States = {
+    showingTodos: TodoState[]
+}
 
-export default class TodoList extends React.Component<Props, {}> {
+export default class TodoList extends React.Component<Props, States> {
+
+    onPageChanged: Function;
+    defaultPaginIndex: number = 1;
+    defaultPaginSize: number = 3;
+
+    state: States = {
+        showingTodos: []
+    }
 
     constructor(props: Props) {
         super(props);
+        this.onPageChanged = this.onPageChanged.bind(this);
+    }
+
+    componentWillMount() {
+        this.onPageChanged(this.defaultPaginIndex, this.defaultPaginSize);
+    }
+
+    componentWillReceiveProps(nextProps: Props) {
+        if (nextProps.todoLists !== this.props.todoLists) {
+            this.onPageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todoLists);
+        }
+    }
+
+    onPageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todoLists) {
+        let allTodos: TodoState[] = todos;
+        let showingTodos: TodoState[] = [];
+        let startIndex: number = (page - 1) * pageSize;
+        let endIndex: number = (page * pageSize) > allTodos.length? allTodos.length: (page * pageSize);
+        for (let i = startIndex; i < endIndex; i++) {
+            showingTodos.push(allTodos[i]);
+        }
+        this.setState({
+            showingTodos: showingTodos
+        });
     }
 
     render() {
         let pagination = {
-            pageSize: 10,
-            current: 1,
+            defaultPageSize: this.defaultPaginSize,
             total: this.props.todoLists.length,
+            onChange: this.onPageChanged,
         };
         return (
             <div>
                 <List
-                    dataSource={this.props.todoLists}
                     pagination={pagination}
+                    dataSource={this.state.showingTodos}
                     renderItem={
                         (todo: TodoState) => (
                             <TodoItem todo={todo} />
