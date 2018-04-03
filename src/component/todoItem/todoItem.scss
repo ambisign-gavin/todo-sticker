@@ -4,8 +4,9 @@
     grid-template-rows: 25% auto;
     grid-template-columns: 5% 65% 30%;
     grid-column-gap: 10px;
+    grid-row-gap: 5px;
     grid-template-areas:
-        "clock notification-time ."
+        "clock notification-time complete-mark"
         ". description create-time";
 
     .clock {
@@ -26,6 +27,15 @@
         justify-self: end;
         font-size: 12px;
     }
+
+    .complete-mark {
+        justify-self: end;
+        grid-area: complete-mark;
+        background-color: #17843c;
+        border-radius: 5px;
+        color: #fcfcfc;
+        padding: 0 5px;
+    }
 }
 .todo-item {
     padding: 5px;
@@ -36,9 +46,4 @@
         border: 1px solid blue !important;
     }
 
-    &.complete {
-        background-color: #b3e2c1;
-        color: #666666;
-        font-weight: bold;
-    }
 }

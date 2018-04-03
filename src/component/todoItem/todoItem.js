@@ -5,7 +5,6 @@ import type {TodoState} from '../../states/index';
 import moment from 'moment';
 import './todoItem.scss';
 import TodoActionButton from '../todoActionButton/TodoActionButton';
-import Classnames from 'classnames';
 import Translate from '../../class/translate';
 
 type Props = {
@@ -46,13 +45,8 @@ export default class TodoItem extends React.Component<Props> {
             ...others
         } = this.props;
 
-        let statusClass = Classnames({
-            'todo-item': true,
-            'complete': todo.complete,
-        });
-
         return (
-            <List.Item {...others} className={statusClass} actions={this.generateTodoActions()} >
+            <List.Item {...others} className='todo-item' actions={this.generateTodoActions()} >
                 <div className='list-row'  >
                     <div className="clock">
                         <Icon type="clock-circle-o" />
@@ -66,7 +60,11 @@ export default class TodoItem extends React.Component<Props> {
                     <div className="description">
                         {todo.description}
                     </div>
+                    {
+                        todo.complete?<div className='complete-mark' >Complete</div>: null
+                    }
                 </div>
+
             </List.Item>
         );
     }
