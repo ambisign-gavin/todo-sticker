@@ -1,0 +1,18 @@
+.list-view-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 10%;
+    grid-template-areas:
+    "list"
+    "list-pagination";
+
+    .list {
+        grid-area: list;
+    }
+
+    .list-pagination {
+        grid-area: list-pagination;
+        justify-self: center;
+    }
+}

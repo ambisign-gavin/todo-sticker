@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { List } from 'antd';
+import { List, Pagination } from 'antd';
 import type { TodoState } from '../../states';
 import './todoList.scss';
 import TodoItem from '../todoItem/todoItem';
@@ -52,21 +52,22 @@ export default class TodoList extends React.Component<Props, States> {
     }
 
     render() {
-        let pagination = {
-            defaultPageSize: this.defaultPaginSize,
-            total: this.props.todoLists.length,
-            onChange: this.onPageChanged,
-        };
         return (
-            <div>
+            <div className='list-view-container'>
                 <List
-                    pagination={pagination}
+                    className='list'
                     dataSource={this.state.showingTodos}
                     renderItem={
                         (todo: TodoState) => (
                             <TodoItem todo={todo} />
                         )
                     }
+                />
+                <Pagination
+                    className='list-pagination'
+                    total={this.props.todoLists.length}
+                    defaultPageSize={this.defaultPaginSize}
+                    onChange={this.onPageChanged}
                 />
             </div>
         );
