@@ -27,8 +27,6 @@ $shadowColor: #a5a5a5;
         grid-area: todos-view;
     }
 
-
-
 }
 
 .todos-view {
@@ -37,6 +35,7 @@ $shadowColor: #a5a5a5;
     height: 90%;
     justify-self: center;
     align-self: start;
+    grid-row-gap: 10px;
     grid-template-columns: 10% 70% 20%;
     grid-template-rows: 10% 90%;
     grid-template-areas:
@@ -47,12 +46,14 @@ $shadowColor: #a5a5a5;
     .filter-button {
         grid-area: filterButton;
         align-self: end;
+        margin-left: 10px;
     }
 
     .sort-btn {
         grid-area: sort-btn;
         justify-self: end;
         align-self: end;
+        margin-right: 10px;
     }
 
     .lists-area {
