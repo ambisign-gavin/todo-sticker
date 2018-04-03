@@ -32,9 +32,12 @@ export default class TodoItem extends React.Component<Props> {
     generateTodoActions() {
         if (!this.props.todo.complete) {
             return ([
-                <TodoActionButton todo={this.props.todo} />
+                <TodoActionButton todo={this.props.todo} enableEdit enableComplete />
             ]);
         }
+        return ([
+            <TodoActionButton todo={this.props.todo} />
+        ]);
     }
 
     render() {

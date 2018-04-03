@@ -10,6 +10,8 @@ import CompleteTodoButtonContainer from '../../container/completeTodoButtonConta
 
 type Props = {
     todo: TodoState,
+    enableEdit?: boolean,
+    enableComplete?: boolean,
 }
 
 type States = {
@@ -38,17 +40,25 @@ export default class TodoActionButton extends React.Component<Props, States> {
     render() {
         let {
             todo,
+            enableComplete,
+            enableEdit,
             ...others
         } = this.props;
 
         const menu = (
             <Menu>
-                <Menu.Item>
-                    <CompleteTodoButtonContainer todoId={todo.id} />
-                </Menu.Item>
-                <Menu.Item>
-                    <a onClick={this.handleEdit} >Edit</a>
-                </Menu.Item>
+                {enableComplete? (
+                    <Menu.Item>
+                        <CompleteTodoButtonContainer todoId={todo.id} />
+                    </Menu.Item>
+                ): null}
+
+                {enableEdit? (
+                    <Menu.Item>
+                        <a onClick={this.handleEdit} >Edit</a>
+                    </Menu.Item>
+                ): null}
+
                 <Menu.Item>
                     <DeleteButtonContainer todoId={todo.id} />
                 </Menu.Item>
