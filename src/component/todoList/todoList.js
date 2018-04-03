@@ -17,10 +17,17 @@ export default class TodoList extends React.Component<Props, {}> {
     }
 
     render() {
+        let pagination = {
+            pageSize: 10,
+            current: 1,
+            total: this.props.todoLists.length,
+            simple: true
+        };
         return (
             <div>
                 <List
                     dataSource={this.props.todoLists}
+                    pagination={pagination}
                     renderItem={
                         (todo: TodoState) => (
                             <TodoItem todo={todo} />
