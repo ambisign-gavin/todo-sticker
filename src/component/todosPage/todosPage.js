@@ -37,7 +37,7 @@ export default class TodosPage extends React.Component<Props, States> {
 
     render() {
         let toolBar = (
-            <div className="tool-bar"><AddEventButton/></div>
+            <div className="tool-bar"><AddEventButton className="add-btn" /></div>
         );
 
         return (

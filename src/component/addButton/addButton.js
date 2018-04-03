@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import Translate from '../../class/translate';
 import AddModal from '../../container/addTodoModalContainer';
+import './addButton.scss';
 
 type Props = {
 }
@@ -49,9 +49,9 @@ export default class AddButton extends React.Component<Props, States> {
 
         return (
             <div {...this.props}>
-                <Button onClick={this.handleOpenModal} variant="fab" color="primary" aria-label="add">
-                    <AddIcon />
-                </Button>
+                <div onClick={this.handleOpenModal}>
+                    <AddIcon className='add-icon' />
+                </div>
                 <AddModal
                     onSave={this.handleOkModal}
                     onCancel={this.handleCloseModal}
