@@ -6,6 +6,7 @@ import moment from 'moment';
 import './todoItem.scss';
 import TodoActionButton from '../todoActionButton/TodoActionButton';
 import Classnames from 'classnames';
+import Translate from '../../class/translate';
 
 type Props = {
     todo: TodoState
@@ -20,13 +21,10 @@ export default class TodoItem extends React.Component<Props> {
         this.generateTodoActions = this.generateTodoActions.bind(this);
     }
 
-    generateTime(date: ?number, time: ?number) {
+    generateTime(datetime: ?number) {
         let notificationString = '';
-        if (date != null) {
-            notificationString += moment(date).format('YYYY/MM/DD');
-        }
-        if (time != null) {
-            notificationString += ' - ' + moment(time).format('HH:mm');
+        if (datetime != null) {
+            notificationString += moment(datetime).format('YYYY/MM/DD HH:mm');
         }
         return notificationString;
     }
@@ -57,7 +55,10 @@ export default class TodoItem extends React.Component<Props> {
                         <Icon type="clock-circle-o" />
                     </div>
                     <div className="notification-time">
-                        {this.generateTime(todo.dueDatetime, todo.dueDatetime)}
+                        {this.generateTime(todo.dueDatetime)}
+                    </div>
+                    <div className="create-time">
+                        <span>{Translate.tr('Creat at: ')}</span>{this.generateTime(todo.createTime)}
                     </div>
                     <div className="description">
                         {todo.description}
