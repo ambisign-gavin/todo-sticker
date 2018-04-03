@@ -28,13 +28,12 @@
     }
 }
 .todo-item {
-    width: 95%;
-    margin: 15px auto;
-    background-color: #ffffff;
+    padding: 5px;
 
-    transition: box-shadow 0.4s;
+    transition: box-shadow 0.2s;
     &:hover {
-        box-shadow: 2px 5px 5px #8c8c8c;
+        box-shadow: 0px 0px 15px #b2b2b2;
+        border: 1px solid blue !important;
     }
 
     &.complete {
