@@ -6,6 +6,7 @@ declare var Notification: any; //html notification api
 
 export default class NotifyServer {
     notificationQueue: Map<string, Job>;
+    static instance: NotifyServer = new NotifyServer();
 
     constructor() {
         this.notificationQueue = new Map();
@@ -17,7 +18,7 @@ export default class NotifyServer {
             let existJob: Job = this.notificationQueue.get(scheduleId);
             existJob.cancel();
         }
-        
+
         let notifyTime: Date = new Date(timestamp);
         let job: Job = nodeSchedule.scheduleJob(notifyTime, () => {
             new Notification(Translate.tr('Notification from Tips'), {

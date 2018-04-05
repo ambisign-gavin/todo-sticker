@@ -19,10 +19,8 @@ store.subscribe(() => {
     console.log(store.getState());
 });
 
-let notifyServer: NotifyServer = new NotifyServer();
-
 store.getState().todos.map((todo: TodoState) => {
-    notifyServer.addSchedule(todo.id || 'empty', todo.dueDatetime, todo.description);
+    NotifyServer.instance.addSchedule(todo.id || 'empty', todo.dueDatetime, todo.description);
 });
 
 ReactDOM.render(
