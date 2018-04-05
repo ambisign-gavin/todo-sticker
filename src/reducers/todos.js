@@ -3,20 +3,23 @@ import type {Actions, EditAction, DeleteAction, CompleteAction} from '../actions
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
 import uniqid from 'uniqid';
+import NotifyServer from '../class/notify/notifyServer';
 
 function todos(state: TodoState[] = [], action: Actions) {
 
     switch (action.type) {
     case ActionTypes.Add:
+        let newTodo: TodoState = {
+            id: uniqid(),
+            description: action.todoState.description,
+            dueDatetime: action.todoState.dueDatetime,
+            complete: false,
+            createTime: new Date().getTime(),
+        };
+        NotifyServer.instance.addSchedule(newTodo.id || '', newTodo.dueDatetime, newTodo.description);
         return ([
             ...state,
-            {
-                id: uniqid(),
-                description: action.todoState.description,
-                dueDatetime: action.todoState.dueDatetime,
-                complete: false,
-                createTime: new Date().getTime(),
-            }
+            newTodo
         ]);
 
     case ActionTypes.Edit:
