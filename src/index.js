@@ -19,7 +19,15 @@ store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.getState().todos.map((todo: TodoState) => {
+let todayTimestamp: number = new Date().getTime();
+
+store.getState().todos.forEach((todo: TodoState) => {
+    if (todo.complete) {
+        return;
+    }
+    if (todo.dueDatetime <= todayTimestamp) {
+        return;
+    }
     NotifyServer.instance.addSchedule(todo.id || 'empty', todo.dueDatetime, todo.description);
 });
 
