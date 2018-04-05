@@ -24,6 +24,11 @@ function todos(state: TodoState[] = [], action: Actions) {
 
     case ActionTypes.Edit:
         let editAction: EditAction = action;
+        NotifyServer.instance.updateSchedule(
+            (editAction.todoState.id || ''),
+            editAction.todoState.dueDatetime,
+            editAction.todoState.description
+        );
         return (
             state.map( todoState => {
                 if (todoState.id == editAction.todoState.id) {

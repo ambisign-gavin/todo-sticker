@@ -19,13 +19,27 @@ export default class NotifyServer {
             existJob.cancel();
         }
 
-        let notifyTime: Date = new Date(timestamp);
-        let job: Job = nodeSchedule.scheduleJob(notifyTime, () => {
+        this.notificationQueue.set(scheduleId, this.generateScheduleJob(timestamp, message));
+    }
+
+    updateSchedule(scheduleId: string, timestamp: number, message: string) {
+
+        if (!this.notificationQueue.has(scheduleId)) {
+            this.addSchedule(scheduleId, timestamp, message);
+        }
+        let job: Job = this.notificationQueue.get(scheduleId);
+        job.cancel();
+
+        this.notificationQueue.set(scheduleId, this.generateScheduleJob(timestamp, message));
+    }
+
+    generateScheduleJob(timestamp: number, message: string): Job {
+        let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
             new Notification(Translate.tr('Notification from Tips'), {
                 body: message
             });
         });
-        this.notificationQueue.set(scheduleId, job);
+        return job;
     }
 
 }
