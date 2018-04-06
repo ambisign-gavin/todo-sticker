@@ -44,6 +44,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
     handleAddNote() {
         let addNote: AddNote = new AddNote();
         addNote.noteDescription = this.props.todo.description;
+        addNote.id = this.props.todo.id || '';
         ipcRenderer.send(AddNote.ipcChannel, addNote);
     }
 
