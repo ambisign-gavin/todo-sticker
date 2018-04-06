@@ -7,6 +7,8 @@ import Translate from '../../class/translate';
 import type {TodoState} from '../../states/index';
 import DeleteButtonContainer from '../../container/DeleteButtonContainer';
 import CompleteTodoButtonContainer from '../../container/completeTodoButtonContainer';
+import { ipcRenderer } from 'electron';
+import AddNote from '../../ipc/action/addNote';
 
 type Props = {
     todo: TodoState,
@@ -21,6 +23,7 @@ type States = {
 export default class TodoActionButton extends React.Component<Props, States> {
 
     handleEdit: Function;
+    handleAddNote: Function;
 
     state: States = {
         editModalVisible: false,
@@ -29,12 +32,19 @@ export default class TodoActionButton extends React.Component<Props, States> {
     constructor(props: Props) {
         super(props);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleAddNote = this.handleAddNote.bind(this);
     }
 
     handleEdit() {
         this.setState({
             editModalVisible: true
         });
+    }
+
+    handleAddNote() {
+        let addNote: AddNote = new AddNote();
+        addNote.noteDescription = this.props.todo.description;
+        ipcRenderer.send(AddNote.ipcChannel, addNote);
     }
 
     render() {
@@ -58,6 +68,10 @@ export default class TodoActionButton extends React.Component<Props, States> {
                         <a onClick={this.handleEdit} >Edit</a>
                     </Menu.Item>
                 ): null}
+
+                <Menu.Item>
+                    <a onClick={this.handleAddNote} >Add Note</a>
+                </Menu.Item>
 
                 <Menu.Item>
                     <DeleteButtonContainer todoId={todo.id} />
