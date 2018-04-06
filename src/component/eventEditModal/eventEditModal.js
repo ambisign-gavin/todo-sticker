@@ -91,9 +91,13 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     handleOk() {
+        // set seconds to 00
+        let dueDatetime: moment = moment(this.state.dueDatetime);
+        dueDatetime.set('second', 0);
+
         let todoState: TodoState = {
             description: this.state.desctiption,
-            dueDatetime: this.state.dueDatetime
+            dueDatetime: dueDatetime
         };
         if (this.props.handleAddEvent) {
             this.props.handleAddEvent(todoState);
