@@ -1,3 +1,5 @@
+// @flow
+import IpcHandler from './src/ipc/ipcHandler';
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
@@ -6,13 +8,15 @@ const url = require('url');
 // 当 JavaScript 对象被垃圾回收， window 会被自动地关闭
 let win;
 
+declare var __dirname: any;
+
 function createWindow() {
     // 创建浏览器窗口。
     win = new BrowserWindow({ width: 1024, height: 768 });
-    
+
     // 然后加载应用的 index.html。
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'dist/index.html'),
+        pathname: path.join(__dirname, 'dist/app/index.html'),
         protocol: 'file:',
         slashes: true
     }));
@@ -35,6 +39,9 @@ function createWindow() {
 // 部分 API 在 ready 事件触发后才能使用。
 app.on('ready', createWindow);
 
+let icHandler = new IpcHandler();
+icHandler.registerListener();
+
 // 当全部窗口关闭时退出。
 // app.on('window-all-closed', () => {
 //     // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
@@ -54,5 +61,3 @@ app.on('ready', createWindow);
 
 // 在这文件，你可以续写应用剩下主进程代码。
 // 也可以拆分成几个文件，然后用 require 导入。
-
-  
