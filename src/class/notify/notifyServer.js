@@ -33,6 +33,13 @@ export default class NotifyServer {
         this.notificationQueue.set(scheduleId, this.generateScheduleJob(timestamp, message));
     }
 
+    removeSchedule(scheduleId: string): boolean {
+        if (this.notificationQueue.has(scheduleId)) {
+            return this.notificationQueue.delete(scheduleId);
+        }
+        return false;
+    }
+
     generateScheduleJob(timestamp: number, message: string): Job {
         let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
             new Notification(Translate.tr('Notification from Tips'), {

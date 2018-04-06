@@ -43,10 +43,12 @@ function todos(state: TodoState[] = [], action: Actions) {
 
     case ActionTypes.Delete:
         let deleteAction: DeleteAction = action;
+        NotifyServer.instance.removeSchedule(deleteAction.id);
         return state.filter(todoState => todoState.id !== deleteAction.id);
 
     case ActionTypes.Complete:
         let completeAction: CompleteAction = action;
+        NotifyServer.instance.removeSchedule(completeAction.id);
         return (
             state.map( todoState => {
                 if (todoState.id === completeAction.id) {
