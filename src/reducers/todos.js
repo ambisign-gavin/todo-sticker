@@ -16,7 +16,11 @@ function todos(state: TodoState[] = [], action: Actions) {
             complete: false,
             createTime: new Date().getTime(),
         };
-        NotifyServer.instance.addSchedule(newTodo.id || '', newTodo.dueDatetime, newTodo.description);
+
+        if (action.todoState.dueDatetime > new Date().getTime()) {
+            NotifyServer.instance.addSchedule(newTodo.id || '', newTodo.dueDatetime, newTodo.description);
+        }
+        
         return ([
             ...state,
             newTodo
@@ -24,11 +28,16 @@ function todos(state: TodoState[] = [], action: Actions) {
 
     case ActionTypes.Edit:
         let editAction: EditAction = action;
-        NotifyServer.instance.updateSchedule(
-            (editAction.todoState.id || ''),
-            editAction.todoState.dueDatetime,
-            editAction.todoState.description
-        );
+        
+        NotifyServer.instance.removeSchedule(editAction.todoState.id || '');
+        if (editAction.todoState.dueDatetime > new Date().getTime()) {
+            NotifyServer.instance.addSchedule(
+                (editAction.todoState.id || ''),
+                editAction.todoState.dueDatetime,
+                editAction.todoState.description
+            );
+        }
+        
         return (
             state.map( todoState => {
                 if (todoState.id == editAction.todoState.id) {
