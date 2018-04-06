@@ -1,21 +1,30 @@
-var path = require('path');
 var webpack = require('webpack');
 // 這邊使用 HtmlWebpackPlugin，將 bundle 好的 <script> 插入到 body。${__dirname} 為 ES6 語法對應到 __dirname  
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+const AppHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `${__dirname}/src/index.html`,
-    filename: 'index.html',
+    filename: __dirname + '/dist/app/index.html',
     inject: 'body',
+    chunks: ['app'],
+});
+
+const NoteHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: `${__dirname}/src/note/index.html`,
+    filename: __dirname + '/dist/note/index.html',
+    inject: 'body',
+    chunks: ['note'],
 });
 
 module.exports = {
     mode: 'development',
     target: 'electron-main',
-    entry: './src/index.js',
+    entry: {
+        app: './src/index.js',
+        note: './src/note/index.js',
+    },
     output: {
-        filename: 'bundle.js',
-        path: __dirname + '/dist',
+        filename: '[name]/bundle.js',
         publicPath: 'http://localhost:3000/static/'
     },
 
@@ -72,7 +81,8 @@ module.exports = {
         port: 3000,
     },
     plugins: [
-        HTMLWebpackPluginConfig,
+        AppHTMLWebpackPluginConfig,
+        NoteHTMLWebpackPluginConfig,
         new webpack.HotModuleReplacementPlugin()
     ]
 };
