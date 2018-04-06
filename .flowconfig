@@ -14,5 +14,6 @@ module.file_ext=.css
 module.file_ext=.scss
 module.name_mapper.extension='css' -> 'empty/object'
 module.name_mapper.extension='scss' -> 'empty/object'
+munge_underscores=true
 
 [strict]

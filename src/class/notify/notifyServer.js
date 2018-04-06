@@ -5,42 +5,42 @@ import Translate from '../translate';
 declare var Notification: any; //html notification api
 
 export default class NotifyServer {
-    notificationQueue: Map<string, Job>;
+    _notificationQueue: Map<string, Job>;
     static instance: NotifyServer = new NotifyServer();
 
     constructor() {
-        this.notificationQueue = new Map();
+        this._notificationQueue = new Map();
     }
 
     addSchedule(scheduleId: string, timestamp: number, message: string) {
 
-        if (this.notificationQueue.has(scheduleId)) {
-            let existJob: Job = this.notificationQueue.get(scheduleId);
+        if (this._notificationQueue.has(scheduleId)) {
+            let existJob: Job = this._notificationQueue.get(scheduleId);
             existJob.cancel();
         }
 
-        this.notificationQueue.set(scheduleId, this.generateScheduleJob(timestamp, message));
+        this._notificationQueue.set(scheduleId, this._generateScheduleJob(timestamp, message));
     }
 
     updateSchedule(scheduleId: string, timestamp: number, message: string) {
 
-        if (!this.notificationQueue.has(scheduleId)) {
+        if (!this._notificationQueue.has(scheduleId)) {
             this.addSchedule(scheduleId, timestamp, message);
         }
-        let job: Job = this.notificationQueue.get(scheduleId);
+        let job: Job = this._notificationQueue.get(scheduleId);
         job.cancel();
 
-        this.notificationQueue.set(scheduleId, this.generateScheduleJob(timestamp, message));
+        this._notificationQueue.set(scheduleId, this._generateScheduleJob(timestamp, message));
     }
 
     removeSchedule(scheduleId: string): boolean {
-        if (this.notificationQueue.has(scheduleId)) {
-            return this.notificationQueue.delete(scheduleId);
+        if (this._notificationQueue.has(scheduleId)) {
+            return this._notificationQueue.delete(scheduleId);
         }
         return false;
     }
 
-    generateScheduleJob(timestamp: number, message: string): Job {
+    _generateScheduleJob(timestamp: number, message: string): Job {
         let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
             new Notification(Translate.tr('Notification from Tips'), {
                 body: message
