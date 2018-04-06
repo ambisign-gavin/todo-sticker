@@ -97,7 +97,7 @@ export default class EditModal extends React.Component<Props, States> {
 
         let todoState: TodoState = {
             description: this.state.desctiption,
-            dueDatetime: dueDatetime
+            dueDatetime: dueDatetime.toDate().getTime()
         };
         if (this.props.handleAddEvent) {
             this.props.handleAddEvent(todoState);
