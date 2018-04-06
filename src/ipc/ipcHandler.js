@@ -1,6 +1,7 @@
 // @flow
 import { ipcMain, BrowserWindow, WebContents, Electron } from 'electron';
 import AddNote from './action/addNote';
+import { IpcChannels } from './channel';
 
 declare var __dirname: any;
 
@@ -24,7 +25,7 @@ export default class IpcHandler {
         win.webContents.openDevTools();
 
         win.webContents.on('dom-ready', () => {
-            win.webContents.send('noteDescription', addNote.noteDescription);
+            win.webContents.send(IpcChannels.noteDescriptionSend, addNote.noteDescription);
         });
         this.notes.set(addNote.id, win.webContents);
     }

@@ -2,9 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ipcRenderer } from 'electron';
+import { IpcChannels } from '../ipc/channel';
 
 type Props = {
-    
+
 };
 
 type States = {
@@ -25,11 +26,11 @@ class NoteDescription extends React.Component<Props, States> {
     }
     
     componentWillMount() {
-        ipcRenderer.on('noteDescription', this._handleNoteDescriptionSended);
+        ipcRenderer.on(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended);
     }
 
     componentWillUnmount() {
-        ipcRenderer.removeListener('noteDescription', this._handleNoteDescriptionSended);
+        ipcRenderer.removeListener(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended);
     }
 
     _handleNoteDescriptionSended(event: any, nodeDescription: string) {
