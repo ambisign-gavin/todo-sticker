@@ -42,16 +42,18 @@ function getListWithFilterAndSort(state: AppState): TodoState[] {
 }
 
 function sortByColumn(todos: TodoState[], sortState: SortState): TodoState[] {
+    let result: TodoState[] = todos.map(todo => todo);
+    
     if (sortState.sortColumn === SortColumnEnum.createTime) {
-        todos.sort(function(a: TodoState, b: TodoState) {
+        result.sort(function(a: TodoState, b: TodoState) {
             return (a.createTime || 0) - (b.createTime || 0);
         });
     } else if (sortState.sortColumn === SortColumnEnum.dueDate) {
-        todos.sort(function(a: TodoState, b: TodoState) {
+        result.sort(function(a: TodoState, b: TodoState) {
             return (a.dueDatetime || 0) - (b.dueDatetime || 0);
         });
     }
-    let result: TodoState[] = todos.map(todo => todo);
+
     if (sortState.sortBy === SortByTypeEnum.desc) {
         result.reverse();
     }
