@@ -16,7 +16,9 @@ export default class NotifyServer {
 
         if (this._notificationQueue.has(scheduleId)) {
             let existJob: Job = this._notificationQueue.get(scheduleId);
-            existJob.cancel();
+            if (existJob) {
+                existJob.cancel();
+            }
         }
 
         this._notificationQueue.set(scheduleId, this._generateScheduleJob(timestamp, message));
@@ -28,7 +30,9 @@ export default class NotifyServer {
             this.addSchedule(scheduleId, timestamp, message);
         }
         let job: Job = this._notificationQueue.get(scheduleId);
-        job.cancel();
+        if (job) {
+            job.cancel();
+        }
 
         this._notificationQueue.set(scheduleId, this._generateScheduleJob(timestamp, message));
     }
