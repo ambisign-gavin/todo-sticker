@@ -4,6 +4,9 @@ import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
 import uniqid from 'uniqid';
 import NotifyServer from '../class/notify/notifyServer';
+import { ipcRenderer } from 'electron';
+import { TodoDescriptionChangedIPC } from '../ipc/action';
+import { IpcChannels } from '../ipc/channel';
 
 function todos(state: TodoState[] = [], action: Actions) {
 
@@ -29,6 +32,11 @@ function todos(state: TodoState[] = [], action: Actions) {
     case ActionTypes.Edit:
         let editAction: EditAction = action;
         
+        let ipc: TodoDescriptionChangedIPC = new TodoDescriptionChangedIPC();
+        ipc.id = editAction.todoState.id || '';
+        ipc.description = editAction.todoState.description;
+        ipcRenderer.send(IpcChannels.todoDescriptionChanged, ipc);
+        
         NotifyServer.instance.removeSchedule(editAction.todoState.id || '');
         if (editAction.todoState.dueDatetime > new Date().getTime()) {
             NotifyServer.instance.addSchedule(
@@ -37,7 +45,7 @@ function todos(state: TodoState[] = [], action: Actions) {
                 editAction.todoState.description
             );
         }
-        
+
         return (
             state.map( todoState => {
                 if (todoState.id == editAction.todoState.id) {
