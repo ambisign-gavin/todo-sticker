@@ -3,4 +3,8 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f7f7a3;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
 }

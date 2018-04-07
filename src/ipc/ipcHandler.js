@@ -13,6 +13,14 @@ export default class IpcHandler {
     _createNoteAndSendDescription: Function;
     _updateTodoNoteDescription: Function;
     _closeTodoNote: Function;
+    _windowOptions: any = {
+        width: 350, 
+        height: 300, 
+        frame: false, 
+        titleBarStyle: 'hidden',
+        minWidth: 180,
+        minHeight: 150,
+    }
 
     constructor() {
         this.notes = new Map();
@@ -28,14 +36,14 @@ export default class IpcHandler {
     }
 
     _createNoteAndSendDescription(event: Electron.event, addNote: AddNote) {
-        
+
         if (this.notes.has(addNote.id) && this.notes.get(addNote.id)) {
             let win: BrowserWindow = this.notes.get(addNote.id);
             win.focus();
             return;
         }
 
-        let win: BrowserWindow = new BrowserWindow({width: 400, height: 300});
+        let win: BrowserWindow = new BrowserWindow(this._windowOptions);
         win.loadURL(`file://${__dirname}/../../dist/note/index.html`);
         win.webContents.openDevTools();
 
