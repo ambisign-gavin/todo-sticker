@@ -14,10 +14,12 @@ type Props = {
 export default class TodoItem extends React.Component<Props> {
 
     generateTodoActions: Function;
+    narrowDescriptionIfNeed: Function;
 
     constructor(props: Props) {
         super(props);
         this.generateTodoActions = this.generateTodoActions.bind(this);
+        this.narrowDescriptionIfNeed = this.narrowDescriptionIfNeed.bind(this);
     }
 
     generateTime(datetime: ?number) {
@@ -39,6 +41,16 @@ export default class TodoItem extends React.Component<Props> {
         ]);
     }
 
+    narrowDescriptionIfNeed(description: string): string {
+        let splitDescriptions: Array<string> = description.split(/\r\n|\r|\n/);
+        let lineCount: number = splitDescriptions.length;
+        if (lineCount <= 2) {
+            return description;
+        }
+        let showNarrow: string = splitDescriptions[0] + '\r\n' + splitDescriptions[1] + '\r\n ...'  ;
+        return showNarrow;
+    }
+
     render() {
         let {
             todo,
@@ -58,7 +70,7 @@ export default class TodoItem extends React.Component<Props> {
                         <span>{Translate.tr('Creat at: ')}</span>{this.generateTime(todo.createTime)}
                     </div>
                     <div className="description">
-                        {todo.description}
+                        {this.narrowDescriptionIfNeed(todo.description)}
                     </div>
                     {
                         todo.complete?<div className='complete-mark' >Complete</div>: null
