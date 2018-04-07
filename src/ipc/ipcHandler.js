@@ -28,6 +28,13 @@ export default class IpcHandler {
     }
 
     _createNoteAndSendDescription(event: Electron.event, addNote: AddNote) {
+        
+        if (this.notes.has(addNote.id) && this.notes.get(addNote.id)) {
+            let win: BrowserWindow = this.notes.get(addNote.id);
+            win.focus();
+            return;
+        }
+
         let win: BrowserWindow = new BrowserWindow({width: 400, height: 300});
         win.loadURL(`file://${__dirname}/../../dist/note/index.html`);
         win.webContents.openDevTools();
