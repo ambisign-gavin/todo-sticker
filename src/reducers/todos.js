@@ -6,6 +6,7 @@ import uniqid from 'uniqid';
 import NotifyServer from '../class/notify/notifyServer';
 import { ipcRenderer } from 'electron';
 import { TodoDescriptionChangedIPC } from '../ipc/action';
+import type { CloseTodoNoteIpcAction } from '../ipc/action';
 import { IpcChannels } from '../ipc/channel';
 
 function todos(state: TodoState[] = [], action: Actions) {
@@ -60,7 +61,14 @@ function todos(state: TodoState[] = [], action: Actions) {
 
     case ActionTypes.Delete:
         let deleteAction: DeleteAction = action;
+
+        let closeTodoNoteIpcAction: CloseTodoNoteIpcAction = {
+            id: deleteAction.id,
+        };
+        ipcRenderer.send(IpcChannels.closeTodoNote, closeTodoNoteIpcAction);
+        
         NotifyServer.instance.removeSchedule(deleteAction.id);
+
         return state.filter(todoState => todoState.id !== deleteAction.id);
 
     case ActionTypes.Complete:

@@ -1,26 +1,30 @@
 // @flow
-import { ipcMain, BrowserWindow, WebContents, Electron } from 'electron';
+import { ipcMain, BrowserWindow, Electron } from 'electron';
 import AddNote from './action/addNote';
 import { IpcChannels } from './channel';
 import { TodoDescriptionChangedIPC } from './action';
+import type { CloseTodoNoteIpcAction } from './action';
 
 declare var __dirname: any;
 
 export default class IpcHandler {
 
-    notes: Map<string, WebContents>;
+    notes: Map<string, BrowserWindow>;
     _createNoteAndSendDescription: Function;
     _updateTodoNoteDescription: Function;
+    _closeTodoNote: Function;
 
     constructor() {
         this.notes = new Map();
         this._createNoteAndSendDescription = this._createNoteAndSendDescription.bind(this);
         this._updateTodoNoteDescription = this._updateTodoNoteDescription.bind(this);
+        this._closeTodoNote = this._closeTodoNote.bind(this);
     }
 
     registerListener() {
         ipcMain.on(AddNote.ipcChannel, this._createNoteAndSendDescription);
         ipcMain.on(IpcChannels.todoDescriptionChanged, this._updateTodoNoteDescription);
+        ipcMain.on(IpcChannels.closeTodoNote, this._closeTodoNote);
     }
 
     _createNoteAndSendDescription(event: Electron.event, addNote: AddNote) {
@@ -31,15 +35,34 @@ export default class IpcHandler {
         win.webContents.on('dom-ready', () => {
             win.webContents.send(IpcChannels.noteDescriptionSend, addNote.noteDescription);
         });
-        this.notes.set(addNote.id, win.webContents);
+        this.notes.set(addNote.id, win);
+        win.on('closed', () => this._removeTodoNotes(addNote.id));
     }
 
     _updateTodoNoteDescription(event: Electron.event, container: TodoDescriptionChangedIPC) {
         let id = container.id;
-        let webContents: WebContents = this.notes.get(id);
-        if (!webContents) {
+        let win: BrowserWindow = this.notes.get(id);
+        if (!win) {
+            this.notes.delete(id);
             return;
         }
-        webContents.send(IpcChannels.noteDescriptionSend, container.description);
+        win.webContents.send(IpcChannels.noteDescriptionSend, container.description);
+    }
+
+    _closeTodoNote(event: Electron.event, closeTodoNoteIpcAction: CloseTodoNoteIpcAction) {
+        let win: BrowserWindow = this.notes.get(closeTodoNoteIpcAction.id);
+        if (!win) {
+            this.notes.delete(closeTodoNoteIpcAction.id);
+            return;
+        }
+        
+        win.destroy();
+    }
+
+    _removeTodoNotes(id: string) {
+        if (!this.notes.has(id)) {
+            return;
+        }
+        this.notes.delete(id);
     }
 }

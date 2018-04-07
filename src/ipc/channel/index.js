@@ -1,5 +1,6 @@
 // @flow
 export const IpcChannels = {
     noteDescriptionSend: 'noteDescriptionSend',
-    todoDescriptionChanged: 'todoDescriptionChanged'
+    todoDescriptionChanged: 'todoDescriptionChanged',
+    closeTodoNote: 'closeTodoNote'
 };
