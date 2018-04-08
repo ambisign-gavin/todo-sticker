@@ -1,14 +1,20 @@
 .list-row {
     display: grid;
     width: 100%;
-    grid-template-rows: 25% auto;
-    grid-template-columns: 5% 65% 30%;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: 5% 50% 30% 10%;
     grid-column-gap: 10px;
     grid-row-gap: 5px;
     grid-template-areas:
-        "clock notification-time complete-mark"
-        ". description create-time";
+        "clock notification-time complete-mark action-btn"
+        ". description create-time action-btn";
 
+
+    .action-btn {
+        grid-area: action-btn;
+        justify-self: center;
+        align-self: center;
+    }
     .clock {
         grid-area: clock;
         margin-left: 5px;
@@ -20,7 +26,13 @@
 
     .description {
         grid-area: description;
-        white-space: pre-wrap;
+        p {
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+        
     }
 
     .create-time {
@@ -41,7 +53,7 @@
 }
 .todo-item {
     padding: 5px;
-
+    border-bottom: 2px solid #ebebeb;
     transition: box-shadow 0.2s;
     &:hover {
         box-shadow: 0px 0px 15px #b2b2b2;

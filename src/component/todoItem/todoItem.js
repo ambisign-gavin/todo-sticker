@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { List, Icon } from 'antd';
+import { Icon } from 'antd';
 import type {TodoState} from '../../states/index';
 import moment from 'moment';
 import './todoItem.scss';
@@ -32,13 +32,13 @@ export default class TodoItem extends React.Component<Props> {
 
     generateTodoActions() {
         if (!this.props.todo.complete) {
-            return ([
+            return (
                 <TodoActionButton todo={this.props.todo} enableEdit enableComplete />
-            ]);
+            );
         }
-        return ([
+        return (
             <TodoActionButton todo={this.props.todo} />
-        ]);
+        );
     }
 
     narrowDescriptionIfNeed(description: string): string {
@@ -58,7 +58,7 @@ export default class TodoItem extends React.Component<Props> {
         } = this.props;
 
         return (
-            <List.Item {...others} className='todo-item' actions={this.generateTodoActions()} >
+            <div className='todo-item' {...others}>
                 <div className='list-row'  >
                     <div className="clock">
                         <Icon type="clock-circle-o" />
@@ -70,14 +70,16 @@ export default class TodoItem extends React.Component<Props> {
                         <span>{Translate.tr('Creat at: ')}</span>{this.generateTime(todo.createTime)}
                     </div>
                     <div className="description">
-                        {this.narrowDescriptionIfNeed(todo.description)}
+                        <p>{this.narrowDescriptionIfNeed(todo.description)}</p>
+                    </div>
+                    <div className="action-btn">
+                        {this.generateTodoActions()}
                     </div>
                     {
                         todo.complete?<div className='complete-mark' >Complete</div>: null
                     }
                 </div>
-
-            </List.Item>
+            </div>
         );
     }
 }
