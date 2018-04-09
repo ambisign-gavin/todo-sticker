@@ -1,0 +1,10 @@
+{
+  "application/javascript": {
+    "presets": [
+      "env",
+      "react",
+      "flow",
+      "stage-0"
+    ]
+  }
+}

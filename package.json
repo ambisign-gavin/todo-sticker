@@ -1,48 +1,85 @@
 {
   "name": "Tips",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "src/main.js",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --fix ./src/*/*/*.js",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development",
-    "start": "webpack && electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
-    "antd": "^3.3.3",
-    "moment": "^2.21.0",
-    "node-schedule": "^1.3.0",
+    "electron-compile": "^6.4.2",
+    "electron-squirrel-startup": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "uniqid": "^4.1.1"
+    "redux": "^3.7.2"
   },
   "devDependencies": {
-    "webpack": "^4.2.0",
-    "webpack-dev-server": "^3.1.1",
-    "css-loader": "^0.28.11",
-    "eslint-plugin-flowtype": "^2.46.1",
-    "less-loader": "^4.1.0",
-    "node-sass": "^4.8.3",
-    "sass-loader": "^6.0.7",
-    "style-loader": "^0.20.3",
+    "antd": "^3.3.3",
+    "moment": "^2.21.0",
+    "uniqid": "^4.1.1",
+    "node-schedule": "^1.3.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "electron": "^1.8.4",
-    "electron-prebuilt-compile": "^1.8.4",
+    "css-loader": "^0.28.11",
+    "electron-forge": "^5.1.1",
+    "electron-prebuilt-compile": "1.8.4",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.68.0",
     "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.8.3",
+    "sass-loader": "^6.0.7",
     "source-map-loader": "^0.2.3",
-    "webpack-cli": "^2.0.12"
+    "style-loader": "^0.20.3",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "yarn"
+      },
+      "electronWinstallerConfig": {
+        "name": "Tips"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "Tips"
+      }
+    }
   }
 }

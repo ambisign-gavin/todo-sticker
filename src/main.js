@@ -1,5 +1,5 @@
 // @flow
-import IpcHandler from './src/ipc/ipcHandler';
+import IpcHandler from './ipc/ipcHandler';
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
