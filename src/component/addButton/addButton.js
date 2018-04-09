@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import AddIcon from 'material-ui-icons/Add';
 import Translate from '../../class/translate';
 import AddModal from '../../container/addTodoModalContainer';
 import './addButton.scss';
@@ -50,7 +49,7 @@ export default class AddButton extends React.Component<Props, States> {
         return (
             <div {...this.props}>
                 <div onClick={this.handleOpenModal}>
-                    <AddIcon className='add-icon' />
+                    <span className="glyphicon glyphicon-plus-sign add-icon"></span>
                 </div>
                 <AddModal
                     onSave={this.handleOkModal}
