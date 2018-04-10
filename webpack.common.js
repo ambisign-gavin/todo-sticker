@@ -1,6 +1,6 @@
-var webpack = require('webpack');
-// 這邊使用 HtmlWebpackPlugin，將 bundle 好的 <script> 插入到 body。${__dirname} 為 ES6 語法對應到 __dirname  
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const AppHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `${__dirname}/src/index.html`,
@@ -25,11 +25,8 @@ module.exports = {
     },
     output: {
         filename: '[name]/bundle.js',
-        // publicPath: 'http://localhost:3000/static/'
+        path: path.resolve(__dirname, 'dist')
     },
-
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: 'source-map',
 
     resolve: {
         extensions: ['.js', '.json']
@@ -68,21 +65,9 @@ module.exports = {
         ]
     },
 
-    // When importing a module whose path matches one of the following, just
-    // assume a corresponding global variable exists and use that instead.
-    // This is important because it allows us to avoid bundling all of our
-    // dependencies, which allows browsers to cache those libraries between builds.
-    // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM"
-    // },
-    // devServer: {
-    //     hot: true,
-    //     port: 3000,
-    // },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         AppHTMLWebpackPluginConfig,
-        NoteHTMLWebpackPluginConfig,
-        new webpack.HotModuleReplacementPlugin()
+        NoteHTMLWebpackPluginConfig
     ]
 };
