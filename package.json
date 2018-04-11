@@ -1,13 +1,13 @@
 {
   "name": "Tips",
   "version": "1.0.0",
-  "main": "src/main.js",
+  "main": "dist/main.js",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --fix ./src/*/*/*.js",
-    "devServer": "webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
-    "devStart": "webpack --config webpack.dev.js && electron-forge start",
-    "build-production": "webpack --config webpack.prod.js",
+    "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
+    "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron-forge start",
+    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "start": "yarn build-production && electron-forge start",
     "package": "yarn build-production && electron-forge package",
     "make": "electron-forge make"
@@ -28,6 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
     "electron-forge": "^5.1.1",
     "electron-prebuilt-compile": "1.8.4",

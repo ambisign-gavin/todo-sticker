@@ -4,27 +4,30 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const AppHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `${__dirname}/src/index.html`,
-    filename: __dirname + '/dist/app/index.html',
+    filename: __dirname + '/dist/app.html',
     inject: 'body',
     chunks: ['app'],
 });
 
 const NoteHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `${__dirname}/src/note/index.html`,
-    filename: __dirname + '/dist/note/index.html',
+    filename: __dirname + '/dist/note.html',
     inject: 'body',
     chunks: ['note'],
 });
 
 module.exports = {
-    mode: 'development',
     target: 'electron-main',
+    node: {
+        __dirname: false
+    },
     entry: {
+        main: './src/main.js',
         app: './src/index.js',
         note: './src/note/index.js',
     },
     output: {
-        filename: '[name]/bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
 

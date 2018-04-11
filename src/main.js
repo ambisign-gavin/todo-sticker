@@ -1,8 +1,6 @@
 // @flow
 import IpcHandler from './ipc/ipcHandler';
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const url = require('url');
 
 // 保持一个对于 window 对象的全局引用，如果你不这样做，
 // 当 JavaScript 对象被垃圾回收， window 会被自动地关闭
@@ -16,14 +14,12 @@ function createWindow() {
     win = new BrowserWindow({ width: 1024, height: 768 });
 
     // 然后加载应用的 index.html。
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, '../dist/app/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    win.loadURL(`file://${__dirname}/app.html`);
 
     // 打开开发者工具。
-    win.webContents.openDevTools();
+    if (process.env.NODE_ENV === 'development') {
+        win.webContents.openDevTools();
+    }
 
     // 当 window 被关闭，这个事件会被触发。
     win.on('closed', () => {

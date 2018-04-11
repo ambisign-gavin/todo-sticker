@@ -6,6 +6,7 @@ import { TodoDescriptionChangedIPC } from './action';
 import type { CloseTodoNoteIpcAction } from './action';
 
 declare var __dirname: any;
+declare var process: any;
 
 export default class IpcHandler {
 
@@ -44,8 +45,12 @@ export default class IpcHandler {
         }
 
         let win: BrowserWindow = new BrowserWindow(this._windowOptions);
-        win.loadURL(`file://${__dirname}/../../dist/note/index.html`);
-        win.webContents.openDevTools();
+
+        win.loadURL(`file://${__dirname}/note.html`);
+
+        if (process.env.NODE_ENV === 'development') {
+            win.webContents.openDevTools();
+        }
 
         win.webContents.on('dom-ready', () => {
             win.webContents.send(IpcChannels.noteDescriptionSend, addNote.noteDescription);
