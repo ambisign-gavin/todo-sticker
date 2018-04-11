@@ -122,9 +122,9 @@ export default class EditModal extends React.Component<Props, States> {
 
         return (
             <Modal destroyOnClose={true} onOk={this.handleOk} {...others} >
-                <p>{Translate.tr('notificationDate')}</p>
+                <p>{Translate.tr('Due date')}</p>
                 <DatePicker allowClear={false} onChange={this.handleDateChanged} defaultValue={moment(defaultDueDatetime)} />
-                <p>{Translate.tr('notificationTime')}</p>
+                &nbsp;
                 <TimePicker allowEmpty={false} onChange={this.handleTimeChanged} defaultValue={moment(defaultDueDatetime)} format={'HH:mm'} />
                 <p>{Translate.tr('eventDescription')}</p>
                 <Input.TextArea defaultValue={defaultDescription} onChange={this.handleDescriptionChanged} rows={4} />
