@@ -1,4 +1,7 @@
 [ignore]
+<PROJECT_ROOT>/node_modules/electron-packager/test/
+<PROJECT_ROOT>/node_modules/webpack-cli
+<PROJECT_ROOT>/out
 
 [include]
 
