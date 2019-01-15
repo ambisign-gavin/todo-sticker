@@ -4,6 +4,7 @@
   "main": "dist/main.js",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "lint": "eslint --fix ./src/*/*/*.js",
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
     "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron-forge start",
@@ -38,6 +39,7 @@
     "eslint-plugin-react": "^7.7.0",
     "flow-bin": "^0.68.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "less-loader": "^4.1.0",
     "moment": "^2.21.0",
     "node-sass": "^4.8.3",

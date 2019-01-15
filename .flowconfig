@@ -4,6 +4,7 @@
 <PROJECT_ROOT>/out
 
 [include]
+<PROJECT_ROOT>/flow-typed/npm
 
 [libs]
 
