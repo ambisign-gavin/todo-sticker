@@ -2,7 +2,8 @@
 import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 
 export type FilterActions =
-    | DueDateFilterAction;
+    | DueDateFilterAction
+    | CompleteStatusFilterAction;
 
 export type DueDateFilterAction = {|
     type: 'dueDateFilter',

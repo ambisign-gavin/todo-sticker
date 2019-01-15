@@ -1,59 +1,64 @@
 // @flow
-import { createStore, type Store } from 'redux';
 import filter from '../../../src/reducers/filter';
-import { settingDueDateFilter, settingCompleteStatusFilter } from '../../../src/actions/filter';
 import { DueDateFilterEnum, CompleteStatusFilterEnum } from '../../../src/constant/filter';
 
-describe('filter reducer', () => {
-    let store: Store = createStore(filter);
+describe('filter reducer due date', () => {
 
-    it('should return default state when not match actions', () => {
-        store.dispatch({
-            type: 'none'
+    it('should change to today option', () => {
+        let result = filter(undefined, {
+            type: 'dueDateFilter',
+            filter: DueDateFilterEnum.today,
         });
-        expect(store.getState()).toEqual({
-            dueDate: 'all',
-            completeStatus: 'all'
-        });
-    });
-
-    it('should change the filter due date to today option', () => {
-        store.dispatch(settingDueDateFilter(DueDateFilterEnum.today));
-        expect(store.getState()).toEqual({
-            dueDate: 'today',
-            completeStatus: 'all'
+        expect(result).toEqual({
+            dueDate: DueDateFilterEnum.today,
+            completeStatus: CompleteStatusFilterEnum.all
         });
     });
 
-    it('should change the filter due date to all option', () => {
-        store.dispatch(settingDueDateFilter(DueDateFilterEnum.all));
-        expect(store.getState()).toEqual({
-            dueDate: 'all',
-            completeStatus: 'all'
+    it('should change to all option', () => {
+        let result = filter(undefined, {
+            type: 'dueDateFilter',
+            filter: DueDateFilterEnum.all,
+        });
+        expect(result).toEqual({
+            dueDate: DueDateFilterEnum.all,
+            completeStatus: CompleteStatusFilterEnum.all
+        });
+    });
+});
+
+describe('filter reducer complete status', () => {
+
+    it('should change to complete option', () => {
+        let result = filter(undefined, {
+            type: 'completeStatusFilter',
+            filter: CompleteStatusFilterEnum.complete,
+        });
+        expect(result).toEqual({
+            dueDate: DueDateFilterEnum.all,
+            completeStatus: CompleteStatusFilterEnum.complete
         });
     });
 
-    it('should change the filter complete status to complete option', () => {
-        store.dispatch(settingCompleteStatusFilter(CompleteStatusFilterEnum.complete));
-        expect(store.getState()).toEqual({
-            dueDate: 'all',
-            completeStatus: 'complete'
+    it('should change the to uncomplete option', () => {
+        let result = filter(undefined, {
+            type: 'completeStatusFilter',
+            filter: CompleteStatusFilterEnum.uncomplete,
+        });
+        expect(result).toEqual({
+            dueDate: DueDateFilterEnum.all,
+            completeStatus: CompleteStatusFilterEnum.uncomplete
         });
     });
 
-    it('should change the filter complete status to uncomplete option', () => {
-        store.dispatch(settingCompleteStatusFilter(CompleteStatusFilterEnum.uncomplete));
-        expect(store.getState()).toEqual({
-            dueDate: 'all',
-            completeStatus: 'uncomplete'
+    it('should change to all option', () => {
+        let result = filter(undefined, {
+            type: 'completeStatusFilter',
+            filter: CompleteStatusFilterEnum.all,
         });
-    });
-
-    it('should change the filter complete status to all option', () => {
-        store.dispatch(settingCompleteStatusFilter(CompleteStatusFilterEnum.all));
-        expect(store.getState()).toEqual({
-            dueDate: 'all',
-            completeStatus: 'all'
+        expect(result).toEqual({
+            dueDate: DueDateFilterEnum.all,
+            completeStatus: CompleteStatusFilterEnum.all
         });
     });
 
