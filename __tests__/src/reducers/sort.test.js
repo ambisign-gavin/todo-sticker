@@ -1,51 +1,54 @@
 // @flow
-import { createStore, type Store } from 'redux';
 import sort from '../../../src/reducers/sort';
-import { settingSortBy, settingSortColumn } from '../../../src/actions/sort';
 import { SortByTypeEnum, SortColumnEnum } from '../../../src/constant/sort';
 
-describe('sort reducer', () => {
-    let store: Store = createStore(sort);
+describe('sort reducer sort rule', () => {
 
-    it('should return default state when not match actions', () => {
-        store.dispatch({
-            type: 'none'
+    it('should change to desc option', () => {
+        let result = sort(undefined, {
+            type: 'sortBy',
+            sortBy: SortByTypeEnum.desc
         });
-        expect(store.getState()).toEqual({
-            sortBy: 'asc',
-            sortColumn: 'dueDate'
-        });
-    });
-
-    it('should change sort rule to desc option', () => {
-        store.dispatch(settingSortBy(SortByTypeEnum.desc));
-        expect(store.getState()).toEqual({
-            sortBy: 'desc',
-            sortColumn: 'dueDate'
+        expect(result).toEqual({
+            sortBy: SortByTypeEnum.desc,
+            sortColumn: SortColumnEnum.dueDate
         });
     });
 
-    it('should change sort rule to asc option', () => {
-        store.dispatch(settingSortBy(SortByTypeEnum.asc));
-        expect(store.getState()).toEqual({
-            sortBy: 'asc',
-            sortColumn: 'dueDate'
+    it('should change to asc option', () => {
+        let result = sort(undefined, {
+            type: 'sortBy',
+            sortBy: SortByTypeEnum.asc
+        });
+        expect(result).toEqual({
+            sortBy: SortByTypeEnum.asc,
+            sortColumn: SortColumnEnum.dueDate
         });
     });
 
-    it('should change sort column to createTime option', () => {
-        store.dispatch(settingSortColumn(SortColumnEnum.createTime));
-        expect(store.getState()).toEqual({
-            sortBy: 'asc',
-            sortColumn: 'createTime'
+});
+
+describe('sort reducer sort column', () => {
+
+    it('should change to createTime option', () => {
+        let result = sort(undefined, {
+            type: 'sortColumn',
+            column: SortColumnEnum.createTime
+        });
+        expect(result).toEqual({
+            sortBy: SortByTypeEnum.asc,
+            sortColumn: SortColumnEnum.createTime
         });
     });
 
-    it('should change sort column to dueDate option', () => {
-        store.dispatch(settingSortColumn(SortColumnEnum.dueDate));
-        expect(store.getState()).toEqual({
-            sortBy: 'asc',
-            sortColumn: 'dueDate'
+    it('should change to dueDate option', () => {
+        let result = sort(undefined, {
+            type: 'sortColumn',
+            column: SortColumnEnum.dueDate
+        });
+        expect(result).toEqual({
+            sortBy: SortByTypeEnum.asc,
+            sortColumn: SortColumnEnum.dueDate
         });
     });
 
