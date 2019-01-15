@@ -31,9 +31,11 @@ store.getState().todos.forEach((todo: TodoState) => {
     NotifyServer.instance.addSchedule(todo.id || 'empty', todo.dueDatetime, todo.description);
 });
 
-ReactDOM.render(
+const app = document.getElementById('app');
+
+app && ReactDOM.render(
     <Provider store={store}>
         <TodosPage />
     </Provider>,
-    document.getElementById('app')
+    app
 );
