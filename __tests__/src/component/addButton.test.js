@@ -1,0 +1,33 @@
+// @flow
+import React from 'react';
+import { shallow, ShallowWrapper } from 'enzyme';
+import AddButton from '../../../src/component/addButton/addButton';
+import AddModal from '../../../src/container/addTodoModalContainer';
+
+describe('AddButton', () => {
+    let wrapper: ShallowWrapper;
+    beforeAll(() => {
+        wrapper = shallow(<AddButton/>);
+    });
+
+    it('should render correct', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show add modal and setting time', () => {
+        wrapper.find('div').at(1).simulate('click');
+        expect(wrapper.state().showEditModal).toBeTruthy();
+        expect(wrapper.state().defaultTimestamp).toEqual(0);
+    });
+
+    it('should hide add modal when it save triggered', () => {
+        wrapper.find(AddModal).at(0).simulate('save');
+        expect(wrapper.state().showEditModal).toBeFalsy();
+    });
+
+    it('should hide add modal when it cancel triggered', () => {
+        wrapper.find(AddModal).at(0).simulate('save');
+        expect(wrapper.state().showEditModal).toBeFalsy();
+    });
+
+});
