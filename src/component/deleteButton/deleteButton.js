@@ -43,7 +43,7 @@ export default class DeleteTodoButton extends React.Component<Props> {
         handleDeleteTodo;
         todoId;
         return (
-            <a {...others} onClick={this.showConfirm} >delete</a>
+            <a {...others} onClick={this.showConfirm} >{Translate.tr('Delete')}</a>
         );
     }
 }
