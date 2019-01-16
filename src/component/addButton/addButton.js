@@ -2,7 +2,7 @@
 import React from 'react';
 import Translate from '../../class/translate';
 import AddModal from '../../container/addTodoModalContainer';
-import './addButton.scss';
+import styled from 'styled-components';
 
 type Props = {
 }
@@ -48,9 +48,9 @@ export default class AddButton extends React.Component<Props, States> {
 
         return (
             <div {...this.props}>
-                <div onClick={this.handleOpenModal}>
-                    <span className="glyphicon glyphicon-plus-sign add-icon"></span>
-                </div>
+                <AddButtonIcon onClick={this.handleOpenModal}>
+                    <span className="glyphicon glyphicon-plus-sign"></span>
+                </AddButtonIcon>
                 <AddModal
                     onSave={this.handleOkModal}
                     onCancel={this.handleCloseModal}
@@ -63,3 +63,13 @@ export default class AddButton extends React.Component<Props, States> {
         );
     }
 }
+
+const AddButtonIcon = styled.div`
+    font-size: 38px !important;
+    cursor: pointer;
+    
+    &:hover {
+        color: #6494c4;
+    }
+`;
+AddButtonIcon.displayName = 'AddButtonIcon';

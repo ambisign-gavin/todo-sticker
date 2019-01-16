@@ -6,6 +6,7 @@ import AddModal from '../../../src/container/addTodoModalContainer';
 
 describe('AddButton', () => {
     let wrapper: ShallowWrapper;
+
     beforeAll(() => {
         wrapper = shallow(<AddButton/>);
     });
@@ -14,8 +15,14 @@ describe('AddButton', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should change color when hover', () => {
+        expect(wrapper.find('AddButtonIcon')).toHaveStyleRule('color', '#6494c4',{
+            modifier: ':hover',
+        });
+    });
+
     it('should show add modal and setting time', () => {
-        wrapper.find('div').at(1).simulate('click');
+        wrapper.find('AddButtonIcon').simulate('click');
         expect(wrapper.state().showEditModal).toBeTruthy();
         expect(wrapper.state().defaultTimestamp).toEqual(0);
     });
