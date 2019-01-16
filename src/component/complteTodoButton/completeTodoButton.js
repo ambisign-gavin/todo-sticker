@@ -42,7 +42,7 @@ export default class CompleteTodoButton extends React.Component<Props> {
         handleCompleteTodo;
         todoId;
         return (
-            <a {...others} onClick={this.showConfirm} >Complete</a>
+            <a {...others} onClick={this.showConfirm} >{Translate.tr('Complete')}</a>
         );
     }
 }
