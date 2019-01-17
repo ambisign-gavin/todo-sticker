@@ -2,7 +2,7 @@
 import IpcHandler from '../../../src/ipc/ipcHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
 import AddNote from '../../../src/ipc/action/addNote';
-import { TodoDescriptionChangedIPC, type CloseTodoNoteIpcAction } from '../../../src/ipc/action';
+import { TodoDescriptionChangedIPC } from '../../../src/ipc/action';
 jest.mock('electron');
 
 describe('IpcHandler wieh add new note', () => {
