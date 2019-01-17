@@ -3,9 +3,9 @@ import React from 'react';
 import { Icon } from 'antd';
 import type {TodoState} from '../../states/index';
 import moment from 'moment';
-import './todoItem.scss';
 import TodoActionButton from '../todoActionButton/TodoActionButton';
 import Translate from '../../class/translate';
+import styled from 'styled-components';
 
 type Props = {
     todo: TodoState
@@ -58,28 +58,93 @@ export default class TodoItem extends React.Component<Props> {
         } = this.props;
 
         return (
-            <div className='todo-item' {...others}>
-                <div className='list-row'  >
-                    <div className="clock">
+            <TodoItemDiv {...others}>
+                <LowDiv>
+                    <ClockDiv>
                         <Icon type="clock-circle-o" />
-                    </div>
-                    <div className="notification-time">
+                    </ClockDiv>
+                    <div style={{ gridArea: 'notification-time' }}>
                         {this.generateTime(todo.dueDatetime)}
                     </div>
-                    <div className="create-time">
+                    <CreatedTimeDiv>
                         <span>{Translate.tr('Creat at: ')}</span>{this.generateTime(todo.createTime)}
-                    </div>
-                    <div className="description">
+                    </CreatedTimeDiv>
+                    <DescriptionDiv>
                         <p>{this.narrowDescriptionIfNeed(todo.description)}</p>
-                    </div>
-                    <div className="action-btn">
+                    </DescriptionDiv>
+                    <ActionButtonDiv>
                         {this.generateTodoActions()}
-                    </div>
+                    </ActionButtonDiv>
                     {
-                        todo.complete?<div className='complete-mark' >Complete</div>: null
+                        todo.complete?<CompleteMarkDiv>Complete</CompleteMarkDiv>: null
                     }
-                </div>
-            </div>
+                </LowDiv>
+            </TodoItemDiv>
         );
     }
 }
+
+const TodoItemDiv = styled.div`
+    padding: 5px;
+    border-top: 2px solid #ebebeb;
+    transition: box-shadow 0.2s;
+
+    &:first-child {
+        border-top: none;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 15px #b2b2b2;
+        border: 1px solid blue !important;
+    }
+`;
+TodoItemDiv.displayName = 'TodoItemDiv';
+
+const LowDiv = styled.div`
+    display: grid;
+    width: 100%;
+    grid-template-rows: 25% 75%;
+    grid-template-columns: 5% 50% 30% 10%;
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    grid-template-areas:
+        "clock notification-time complete-mark action-btn"
+        ". description create-time action-btn";
+`;
+
+const ActionButtonDiv = styled.div`
+    grid-area: action-btn;
+    justify-self: center;
+    align-self: center;
+`;
+
+const ClockDiv = styled.div`
+    grid-area: clock;
+    margin-left: 5px;
+`;
+
+const DescriptionDiv = styled.div`
+    grid-area: description;
+    p {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+`;
+
+const CreatedTimeDiv = styled.div`
+    grid-area: create-time;
+    justify-self: end;
+    font-size: 12px;
+    align-self: end;
+`;
+
+const CompleteMarkDiv = styled.div`
+    justify-self: end;
+    grid-area: complete-mark;
+    background-color: #17843c;
+    border-radius: 5px;
+    color: #fcfcfc;
+    padding: 0 5px;
+`;

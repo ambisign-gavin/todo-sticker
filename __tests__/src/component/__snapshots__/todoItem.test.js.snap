@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoItem should render correct with completed 1`] = `
+<TodoItemDiv>
+  <todoItem__LowDiv>
+    <todoItem__ClockDiv>
+      <Icon
+        type="clock-circle-o"
+      />
+    </todoItem__ClockDiv>
+    <div
+      style={
+        Object {
+          "gridArea": "notification-time",
+        }
+      }
+    >
+      1970/01/01 08:00
+    </div>
+    <todoItem__CreatedTimeDiv>
+      <span>
+        Creat at: 
+      </span>
+      1970/01/01 08:00
+    </todoItem__CreatedTimeDiv>
+    <todoItem__DescriptionDiv>
+      <p>
+        Hello!
+      </p>
+    </todoItem__DescriptionDiv>
+    <todoItem__ActionButtonDiv>
+      <TodoActionButton
+        todo={
+          Object {
+            "complete": true,
+            "createTime": 0,
+            "description": "Hello!",
+            "dueDatetime": 10,
+            "id": "1",
+          }
+        }
+      />
+    </todoItem__ActionButtonDiv>
+    <todoItem__CompleteMarkDiv>
+      Complete
+    </todoItem__CompleteMarkDiv>
+  </todoItem__LowDiv>
+</TodoItemDiv>
+`;
+
+exports[`TodoItem should render correct with long description 1`] = `
+<TodoItemDiv>
+  <todoItem__LowDiv>
+    <todoItem__ClockDiv>
+      <Icon
+        type="clock-circle-o"
+      />
+    </todoItem__ClockDiv>
+    <div
+      style={
+        Object {
+          "gridArea": "notification-time",
+        }
+      }
+    >
+      1970/01/01 08:00
+    </div>
+    <todoItem__CreatedTimeDiv>
+      <span>
+        Creat at: 
+      </span>
+      1970/01/01 08:00
+    </todoItem__CreatedTimeDiv>
+    <todoItem__DescriptionDiv>
+      <p>
+        Hello!
+LineTwo
+ ...
+      </p>
+    </todoItem__DescriptionDiv>
+    <todoItem__ActionButtonDiv>
+      <TodoActionButton
+        enableComplete={true}
+        enableEdit={true}
+        todo={
+          Object {
+            "complete": false,
+            "createTime": 0,
+            "description": "Hello!
+LineTwo
+LineThree",
+            "dueDatetime": 10,
+            "id": "1",
+          }
+        }
+      />
+    </todoItem__ActionButtonDiv>
+  </todoItem__LowDiv>
+</TodoItemDiv>
+`;
+
+exports[`TodoItem should render correct with short description 1`] = `
+<TodoItemDiv>
+  <todoItem__LowDiv>
+    <todoItem__ClockDiv>
+      <Icon
+        type="clock-circle-o"
+      />
+    </todoItem__ClockDiv>
+    <div
+      style={
+        Object {
+          "gridArea": "notification-time",
+        }
+      }
+    >
+      1970/01/01 08:00
+    </div>
+    <todoItem__CreatedTimeDiv>
+      <span>
+        Creat at: 
+      </span>
+      1970/01/01 08:00
+    </todoItem__CreatedTimeDiv>
+    <todoItem__DescriptionDiv>
+      <p>
+        Hello!
+      </p>
+    </todoItem__DescriptionDiv>
+    <todoItem__ActionButtonDiv>
+      <TodoActionButton
+        enableComplete={true}
+        enableEdit={true}
+        todo={
+          Object {
+            "complete": false,
+            "createTime": 0,
+            "description": "Hello!",
+            "dueDatetime": 10,
+            "id": "1",
+          }
+        }
+      />
+    </todoItem__ActionButtonDiv>
+  </todoItem__LowDiv>
+</TodoItemDiv>
+`;
