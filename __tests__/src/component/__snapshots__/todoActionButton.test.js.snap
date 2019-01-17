@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoActionButton should render correct with complete and edit features are disabled 1`] = `
+<div>
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={
+      <Menu
+        className=""
+        prefixCls="ant-menu"
+        theme="light"
+      >
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Add Note
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <Connect(DeleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+      </Menu>
+    }
+    placement="bottomLeft"
+    prefixCls="ant-dropdown"
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <Icon
+        type="ellipsis"
+      />
+    </Button>
+  </Dropdown>
+  <Connect(EditModal)
+    defaultDescription="Hello!"
+    defaultDueDatetime={10}
+    onCancel={[Function]}
+    onSave={[Function]}
+    title="Edit Todo"
+    todoId="1"
+    visible={false}
+  />
+</div>
+`;
+
+exports[`TodoActionButton should render correct with complete and edit features are enabled 1`] = `
+<div>
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={
+      <Menu
+        className=""
+        prefixCls="ant-menu"
+        theme="light"
+      >
+        <MenuItem>
+          <Connect(CompleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Edit
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Add Note
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <Connect(DeleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+      </Menu>
+    }
+    placement="bottomLeft"
+    prefixCls="ant-dropdown"
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <Icon
+        type="ellipsis"
+      />
+    </Button>
+  </Dropdown>
+  <Connect(EditModal)
+    defaultDescription="Hello!"
+    defaultDueDatetime={10}
+    onCancel={[Function]}
+    onSave={[Function]}
+    title="Edit Todo"
+    todoId="1"
+    visible={false}
+  />
+</div>
+`;
+
+exports[`TodoActionButton should render correct with complete feature is enabled 1`] = `
+<div>
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={
+      <Menu
+        className=""
+        prefixCls="ant-menu"
+        theme="light"
+      >
+        <MenuItem>
+          <Connect(CompleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Add Note
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <Connect(DeleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+      </Menu>
+    }
+    placement="bottomLeft"
+    prefixCls="ant-dropdown"
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <Icon
+        type="ellipsis"
+      />
+    </Button>
+  </Dropdown>
+  <Connect(EditModal)
+    defaultDescription="Hello!"
+    defaultDueDatetime={10}
+    onCancel={[Function]}
+    onSave={[Function]}
+    title="Edit Todo"
+    todoId="1"
+    visible={false}
+  />
+</div>
+`;
+
+exports[`TodoActionButton should render correct with edit feature is enabled 1`] = `
+<div>
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={
+      <Menu
+        className=""
+        prefixCls="ant-menu"
+        theme="light"
+      >
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Edit
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <a
+            onClick={[Function]}
+          >
+            Add Note
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <Connect(DeleteTodoButton)
+            todoId="1"
+          />
+        </MenuItem>
+      </Menu>
+    }
+    placement="bottomLeft"
+    prefixCls="ant-dropdown"
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+  >
+    <Button
+      ghost={false}
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      <Icon
+        type="ellipsis"
+      />
+    </Button>
+  </Dropdown>
+  <Connect(EditModal)
+    defaultDescription="Hello!"
+    defaultDueDatetime={10}
+    onCancel={[Function]}
+    onSave={[Function]}
+    title="Edit Todo"
+    todoId="1"
+    visible={false}
+  />
+</div>
+`;
