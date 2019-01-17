@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterPanel should render correct 1`] = `
+<div>
+  <FilterPanelDiv
+    className=""
+  >
+    <FilterGroupDiv>
+      <p>
+        Due Date:
+      </p>
+      <RadioGroup
+        defaultValue="all"
+        disabled={false}
+        onChange={[Function]}
+      >
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="today"
+        >
+          Today
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="all"
+        >
+          All
+        </RadioButton>
+      </RadioGroup>
+    </FilterGroupDiv>
+    <hr />
+    <FilterGroupDiv>
+      <p>
+        Complete Status:
+      </p>
+      <RadioGroup
+        defaultValue="all"
+        disabled={false}
+        onChange={[Function]}
+      >
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="all"
+        >
+          All
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="complete"
+        >
+          Complete
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="uncomplete"
+        >
+          Uncompleted
+        </RadioButton>
+      </RadioGroup>
+    </FilterGroupDiv>
+  </FilterPanelDiv>
+  <MaskDiv
+    onClick={[Function]}
+  />
+</div>
+`;
