@@ -13,6 +13,10 @@ jest.mock('electron', () => {
 
 describe('todos reducer with add event', () => {
 
+    beforeAll(() => {
+        global.Date.prototype.getTime = jest.fn().mockReturnValue(0);
+    });
+
     it('should add event successful', () => {
         let result = todos(undefined, {
             type: 'add',

@@ -8,6 +8,7 @@ describe('AddButton', () => {
     let wrapper: ShallowWrapper;
 
     beforeAll(() => {
+        global.Date.prototype.getTime = jest.fn().mockReturnValue(0);
         wrapper = shallow(<AddButton/>);
     });
 
