@@ -2,7 +2,6 @@
 import React from 'react';
 import { List, Pagination } from 'antd';
 import type { TodoState } from '../../states';
-import './todoList.scss';
 import TodoItem from '../todoItem/todoItem';
 import styled from 'styled-components';
 
