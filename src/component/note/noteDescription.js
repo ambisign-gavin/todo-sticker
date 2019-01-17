@@ -2,7 +2,7 @@
 import React from 'react';
 import { ipcRenderer } from 'electron';
 import { IpcChannels } from '../../ipc/channel';
-import './noteDescription.scss';
+import styled from 'styled-components';
 
 type Props = {
 
@@ -41,8 +41,13 @@ export default class NoteDescription extends React.Component<Props, States> {
 
     render() {
         return (
-            <div className='noteDescriptionContainer' >{this.state.description}</div>
+            <NoteDescriptionDiv>{this.state.description}</NoteDescriptionDiv>
         );
     }
 
 }
+
+const NoteDescriptionDiv = styled.div`
+    white-space: pre-line;
+    padding: 20px 15px;
+`;
