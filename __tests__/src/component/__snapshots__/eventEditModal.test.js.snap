@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditModal should render correct 1`] = `
+<Modal
+  confirmLoading={false}
+  defaultDescriptin=""
+  destroyOnClose={true}
+  handleAddEvent={[MockFunction]}
+  maskTransitionName="fade"
+  okType="primary"
+  onOk={[Function]}
+  onSave={[MockFunction]}
+  prefixCls="ant-modal"
+  title="Title"
+  todoId="1"
+  transitionName="zoom"
+  visible={true}
+  width={520}
+>
+  <p>
+    Due date
+  </p>
+  <PickerWrapper
+    allowClear={false}
+    defaultValue={"1970-01-01T00:00:00.000Z"}
+    format="YYYY-MM-DD"
+    inputPrefixCls="ant-input"
+    locale={Object {}}
+    onChange={[Function]}
+    onOk={[Function]}
+    onOpenChange={[Function]}
+    popupStyle={Object {}}
+    prefixCls="ant-calendar"
+    transitionName="slide-up"
+  />
+   
+  <TimePicker
+    align={
+      Object {
+        "offset": Array [
+          0,
+          -2,
+        ],
+      }
+    }
+    allowEmpty={false}
+    defaultValue={"1970-01-01T00:00:00.000Z"}
+    disabled={false}
+    focusOnOpen={true}
+    format="HH:mm"
+    hideDisabledOptions={false}
+    onChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="ant-time-picker"
+    transitionName="slide-up"
+  />
+  <p>
+    eventDescription
+  </p>
+  <TextArea
+    defaultValue="Test description"
+    onChange={[Function]}
+    prefixCls="ant-input"
+    rows={4}
+  />
+</Modal>
+`;

@@ -31,8 +31,6 @@ export default class EditModal extends React.Component<Props, States> {
 
     static defaultProps = {
         visible: false,
-        defaultDate: new Date().getTime(),
-        defaultTime: new Date().getTime(),
         defaultDescriptin: '',
     }
 
@@ -61,26 +59,24 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     handleDateChanged(dates: moment) {
-        let dueDate = moment(this.state.dueDatetime);
-        dueDate.set('year', dates.get('year'));
-        dueDate.set('month', dates.get('month'));
-        dueDate.set('date', dates.get('date'));
-        this.setState(
-            {
-                dueDatetime: dueDate.toDate().getTime()
-            }
-        );
+        let dueDate = new Date(this.state.dueDatetime);
+        dueDate.setUTCFullYear(dates.utc().get('year'));
+        dueDate.setUTCMonth(dates.utc().get('month'));
+        dueDate.setUTCDate(dates.utc().get('date'));
+        
+        this.setState({
+            dueDatetime: dueDate.getTime()
+        });
     }
 
     handleTimeChanged(time: moment) {
-        let dueDatetime = moment(this.state.dueDatetime);
-        dueDatetime.set('hour', time.get('hour'));
-        dueDatetime.set('minute', time.get('minute'));
-        this.setState(
-            {
-                dueDatetime: dueDatetime.toDate().getTime()
-            }
-        );
+        let dueDatetime = new Date(this.state.dueDatetime);
+        dueDatetime.setUTCHours(time.utc().get('hour'));
+        dueDatetime.setUTCMinutes(time.utc().get('minute'));
+
+        this.setState({
+            dueDatetime: dueDatetime.getTime()
+        });
     }
 
     handleDescriptionChanged(event: SyntheticEvent<HTMLTextAreaElement>) {
@@ -92,12 +88,12 @@ export default class EditModal extends React.Component<Props, States> {
 
     handleOk() {
         // set seconds to 00
-        let dueDatetime: moment = moment(this.state.dueDatetime);
-        dueDatetime.set('second', 0);
-
+        let dueDatetime = new Date(this.state.dueDatetime);
+        dueDatetime.setUTCSeconds(0);
+        
         let todoState: TodoState = {
             description: this.state.desctiption,
-            dueDatetime: dueDatetime.toDate().getTime()
+            dueDatetime: dueDatetime.getTime()
         };
         if (this.props.handleAddEvent) {
             this.props.handleAddEvent(todoState);
@@ -114,12 +110,12 @@ export default class EditModal extends React.Component<Props, States> {
     }
 
     render() {
-        var {
+        const {
             defaultDueDatetime,
             defaultDescription,
             ...others
         } = this.props;
-
+        
         return (
             <Modal destroyOnClose={true} onOk={this.handleOk} {...others} >
                 <p>{Translate.tr('Due date')}</p>
