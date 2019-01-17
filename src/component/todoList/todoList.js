@@ -4,6 +4,7 @@ import { List, Pagination } from 'antd';
 import type { TodoState } from '../../states';
 import './todoList.scss';
 import TodoItem from '../todoItem/todoItem';
+import styled from 'styled-components';
 
 type Props = {
     todoLists: TodoState[]
@@ -53,9 +54,8 @@ export default class TodoList extends React.Component<Props, States> {
 
     render() {
         return (
-            <div className='list-view-container'>
-                <List
-                    className='list'
+            <TodosListDiv>
+                <TodosList
                     dataSource={this.state.showingTodos}
                     renderItem={
                         (todo: TodoState) => (
@@ -63,14 +63,32 @@ export default class TodoList extends React.Component<Props, States> {
                         )
                     }
                 />
-                <Pagination
-                    className='list-pagination'
+                <ListPagination
                     total={this.props.todoLists.length}
                     defaultPageSize={this.defaultPaginSize}
                     onChange={this.onPageChanged}
                 />
-            </div>
+            </TodosListDiv>
         );
     }
 
 }
+
+const TodosListDiv = styled.div`
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 10%;
+    grid-template-areas:
+    "list"
+    "list-pagination";
+`;
+
+const ListPagination = styled(Pagination)`
+    grid-area: list-pagination;
+    justify-self: center;
+`;
+
+const TodosList = styled(List)`
+    grid-area: list
+`;
