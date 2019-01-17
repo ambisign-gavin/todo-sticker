@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortButton should render correct 1`] = `
+<div>
+  <p
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+     Sort By 
+  </p>
+  <Dropdown
+    mouseEnterDelay={0.15}
+    mouseLeaveDelay={0.1}
+    overlay={
+      <Menu
+        className=""
+        onClick={[Function]}
+        prefixCls="ant-menu"
+        theme="light"
+      >
+        <MenuItem>
+          <a>
+            Due Date
+          </a>
+        </MenuItem>
+        <MenuItem>
+          <a>
+            Create Time
+          </a>
+        </MenuItem>
+      </Menu>
+    }
+    placement="bottomLeft"
+    prefixCls="ant-dropdown"
+    trigger={
+      Array [
+        "click",
+      ]
+    }
+  >
+    <a>
+      createTime
+    </a>
+  </Dropdown>
+  <SortRuleSpan
+    className="glyphicon glyphicon-sort-by-order"
+    onClick={[Function]}
+  />
+</div>
+`;

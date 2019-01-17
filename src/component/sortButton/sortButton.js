@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-import './sortButton.scss';
 import { Menu, Dropdown } from 'antd';
 import Translate from '../../class/translate';
 import {SortColumnEnum, SortByTypeEnum} from '../../constant/sort';
 import type {SortColumn, SortByType} from '../../constant/sort';
 import Classnames from 'classnames';
+import styled from 'styled-components';
 
 type Props = {
     sortColumn: SortColumn,
@@ -39,7 +39,6 @@ export default class SortButton extends React.Component<Props> {
 
     render() {
         let sortByIconClass= Classnames({
-            'sort-icon': true,
             'glyphicon': true,
             'glyphicon-sort-by-order': this.props.sortByType === SortByTypeEnum.asc,
             'glyphicon-sort-by-order-alt': this.props.sortByType === SortByTypeEnum.desc,
@@ -53,7 +52,6 @@ export default class SortButton extends React.Component<Props> {
             ...others
         } = this.props;
 
-        sortColumn;
         sortByType;
         handleSortColumnSelected;
         handleSortByChanged;
@@ -73,10 +71,15 @@ export default class SortButton extends React.Component<Props> {
             <div {...others} >
                 <p style={{display: 'inline'}} > Sort By </p>
                 <Dropdown overlay={menu} trigger={['click']}>
-                    <a>{this.props.sortColumn}</a>
+                    <a>{sortColumn}</a>
                 </Dropdown>
-                <span onClick={() => this.onSortByChanged()} className={sortByIconClass}></span>
+                <SortRuleSpan onClick={() => this.onSortByChanged()} className={sortByIconClass}></SortRuleSpan>
             </div>
         );
     }
 }
+
+const SortRuleSpan = styled.span`
+    font-size: 18px;
+`;
+SortRuleSpan.displayName = 'SortRuleSpan';
