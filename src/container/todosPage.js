@@ -16,25 +16,22 @@ type Props = {
 }
 
 type States = {
-    showPanel: boolean,
+    showFilterPanel: boolean,
 }
 
 class TodosPage extends React.Component<Props, States> {
 
-    handlePanelHidden: Function;
-
     state: States = {
-        showPanel: false,
+        showFilterPanel: false,
     }
 
     constructor(props: Props) {
         super(props);
-        this.handlePanelHidden = this.handlePanelHidden.bind(this);
     }
 
-    handlePanelHidden() {
+    _handleFilterPanelHide() {
         this.setState({
-            showPanel: false
+            showFilterPanel: false
         });
     }
 
@@ -60,11 +57,14 @@ class TodosPage extends React.Component<Props, States> {
                 <TodosView>
                     <FilterButtonDiv>
                         <Button 
-                            onClick={() => this.setState({showPanel: !this.state.showPanel})}
+                            onClick={() => this.setState({showFilterPanel: !this.state.showFilterPanel})}
                         >
                             {Translate.tr('filter')}
                         </Button>
-                        <FilterPanelContainer onHidden={this.handlePanelHidden} show={this.state.showPanel} />
+                        <FilterPanelContainer
+                            onHide={this._handleFilterPanelHide.bind(this)}
+                            show={this.state.showFilterPanel}
+                        />
                     </FilterButtonDiv>
                     <TodoListDiv>
                         <TodoListContainer />

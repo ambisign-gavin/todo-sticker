@@ -32,12 +32,12 @@ describe('TodosPage', () => {
 
     it('should show filter panel', () => {
         wrapper.find(Button).simulate('click');
-        expect(wrapper.state().showPanel).toBeTruthy();
+        expect(wrapper.state().showFilterPanel).toBeTruthy();
     });
 
     it('should hide filter panel', () => {
-        wrapper.find(FilterPanelContainer).simulate('hidden');
-        expect(wrapper.state().showPanel).toBeFalsy();
+        wrapper.find(FilterPanelContainer).simulate('hide');
+        expect(wrapper.state().showFilterPanel).toBeFalsy();
     });
 
     it('should show editable modal', () => {

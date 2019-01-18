@@ -38,7 +38,7 @@ exports[`TodosPage should render correct with origin component 1`] = `
         filter
       </Button>
       <Connect(FilterPanel)
-        onHidden={[Function]}
+        onHide={[Function]}
         show={false}
       />
     </todosPage__FilterButtonDiv>

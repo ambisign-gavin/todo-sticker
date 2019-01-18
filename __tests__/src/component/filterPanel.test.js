@@ -9,15 +9,15 @@ describe('FilterPanel', () => {
     let wrapper: ShallowWrapper;
     let handleDueDateFilterChanged = jest.fn();
     let handleCompleteStatusFilterChanged = jest.fn();
-    let onHidden = jest.fn();
+    let onHide = jest.fn();
 
     beforeAll(() => {
         wrapper = shallow(
             <FilterPanel
                 show={true}
-                handleDueDateFilterChanged={handleDueDateFilterChanged}
-                handleCompleteStatusFilterChanged={handleCompleteStatusFilterChanged}
-                onHidden={onHidden}
+                onDueDateFilterChanged={handleDueDateFilterChanged}
+                onCompleteStatusFilterChanged={handleCompleteStatusFilterChanged}
+                onHide={onHide}
                 defaultDueDateFilter='all'
                 defaultCompleteStatusFilter='all'
             />
@@ -52,8 +52,7 @@ describe('FilterPanel', () => {
 
     it('should trigger onHidden when click outside', () => {
         wrapper.find('MaskDiv').simulate('click');
-        expect(onHidden.mock.calls.length).toEqual(1);
-        expect(wrapper.state().show).toBeFalsy();
+        expect(onHide.mock.calls.length).toEqual(1);
     });
 
 });

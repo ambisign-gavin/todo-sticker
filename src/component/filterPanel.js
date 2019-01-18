@@ -9,105 +9,99 @@ import styled from 'styled-components';
 
 type Props = {
     show: boolean,
-    handleDueDateFilterChanged: (filter: DueDateFilter) => void,
-    handleCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => void,
-    onHidden?: () => void,
+    onDueDateFilterChanged: (filter: DueDateFilter) => void,
+    onCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => void,
+    onHide: () => void,
     defaultDueDateFilter: DueDateFilter,
     defaultCompleteStatusFilter: CompleteStatusFilter,
 }
-type States = {
-    show: boolean
-}
 
-export default class FilterPanel extends React.Component<Props, States> {
-
-    handleDueDateFilterSelected: Function;
-    handleCompleteStatusFilterSelected: Function;
-    handleClickOutside: Function;
+export default class FilterPanel extends React.Component<Props> {
 
     static defaultProps = {
         show: false
     }
 
-    state = {
-        show: this.props.show
+    _handleClickOutside() {
+        this.props.onHide();
     }
 
-    constructor(props: Props) {
-        super(props);
-        this.handleDueDateFilterSelected = this. handleDueDateFilterSelected.bind(this);
-        this.handleCompleteStatusFilterSelected = this.handleCompleteStatusFilterSelected.bind(this);
-        this.handleClickOutside = this. handleClickOutside.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps: Props) {
-        if (nextProps.show !== this.state.show) {
-            this.setState({
-                show: nextProps.show
-            });
-        }
-    }
-
-    handleClickOutside() {
-        this.setState({
-            show: false,
-        });
-        if (this.props.onHidden) {
-            this.props.onHidden();
-        }
-    }
-
-    handleDueDateFilterSelected(event: any) {
+    _handleDueDateFilterSelected(event: any) {
         let seleted: DueDateFilter = event.target.value;
-        this.props.handleDueDateFilterChanged(seleted);
+        this.props.onDueDateFilterChanged(seleted);
     }
 
-    handleCompleteStatusFilterSelected(event: any) {
+    _handleCompleteStatusFilterSelected(event: any) {
         let seleted: CompleteStatusFilter = event.target.value;
-        this.props.handleCompleteStatusFilterChanged(seleted);
+        this.props.onCompleteStatusFilterChanged(seleted);
     }
 
     render() {
         let {
-            handleDueDateFilterChanged,
-            handleCompleteStatusFilterChanged,
+            onDueDateFilterChanged,
+            onCompleteStatusFilterChanged,
             show,
-            onHidden,
+            onHide: onHidden,
             defaultDueDateFilter,
             defaultCompleteStatusFilter,
             ...others
         } = this.props;
-        show;
-        handleDueDateFilterChanged;
-        handleCompleteStatusFilterChanged;
-        onHidden;
 
         let usedClassName = Classnames({
-            'close': !this.state.show,
+            'close': !show,
         });
 
         return (
             <div>
-                <FilterPanelDiv className={usedClassName} {...others} >
+                <FilterPanelDiv 
+                    {...others}
+                    className={usedClassName}
+                >
                     <FilterGroupDiv>
                         <p>{Translate.tr('Due Date:')}</p>
-                        <Radio.Group onChange={this.handleDueDateFilterSelected} defaultValue={defaultDueDateFilter}>
-                            <Radio.Button value={DueDateFilterEnum.today}>{Translate.tr('Today')}</Radio.Button>
-                            <Radio.Button value={DueDateFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
+                        <Radio.Group 
+                            onChange={this._handleDueDateFilterSelected.bind(this)}
+                            defaultValue={defaultDueDateFilter}
+                        >
+                            <Radio.Button
+                                value={DueDateFilterEnum.today}
+                            >
+                                {Translate.tr('Today')}
+                            </Radio.Button>
+                            <Radio.Button
+                                value={DueDateFilterEnum.all}
+                            >
+                                {Translate.tr('All')}
+                            </Radio.Button>
                         </Radio.Group>
                     </FilterGroupDiv>
                     <hr/>
                     <FilterGroupDiv >
                         <p>{Translate.tr('Complete Status:')}</p>
-                        <Radio.Group onChange={this.handleCompleteStatusFilterSelected} defaultValue={defaultCompleteStatusFilter}>
-                            <Radio.Button value={CompleteStatusFilterEnum.all}>{Translate.tr('All')}</Radio.Button>
-                            <Radio.Button value={CompleteStatusFilterEnum.complete}>{Translate.tr('Complete')}</Radio.Button>
-                            <Radio.Button value={CompleteStatusFilterEnum.uncomplete}>{Translate.tr('Uncompleted')}</Radio.Button>
+                        <Radio.Group
+                            onChange={this._handleCompleteStatusFilterSelected.bind(this)}
+                            defaultValue={defaultCompleteStatusFilter}
+                        >
+                            <Radio.Button 
+                                value={CompleteStatusFilterEnum.all}
+                            >
+                                {Translate.tr('All')}
+                            </Radio.Button>
+                            <Radio.Button
+                                value={CompleteStatusFilterEnum.complete}
+                            >
+                                {Translate.tr('Complete')}
+                            </Radio.Button>
+                            <Radio.Button
+                                value={CompleteStatusFilterEnum.uncomplete}
+                            >
+                                {Translate.tr('Uncompleted')}
+                            </Radio.Button>
                         </Radio.Group>
                     </FilterGroupDiv>
                 </FilterPanelDiv>
                 {
-                    (this.state.show? (<MaskDiv onClick={this.handleClickOutside} />): null)
+                    (show? (<MaskDiv onClick={this._handleClickOutside.bind(this)} />): null)
                 }
             </div>
         );

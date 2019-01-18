@@ -14,8 +14,8 @@ const mapStateToProps = (state: AppState) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        handleDueDateFilterChanged: (filter: DueDateFilter) => dispatch(settingDueDateFilter(filter)),
-        handleCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => dispatch(settingCompleteStatusFilter(filter))
+        onDueDateFilterChanged: (filter: DueDateFilter) => dispatch(settingDueDateFilter(filter)),
+        onCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => dispatch(settingCompleteStatusFilter(filter))
     }
 );
 
