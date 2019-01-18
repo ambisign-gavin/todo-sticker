@@ -3,7 +3,13 @@
 exports[`TodosPage should render correct 1`] = `
 <todosPage__TodosContainer>
   <todosPage__ToolBar>
-    <todosPage__AddEventToolButton />
+    <AddButton
+      onClick={[Function]}
+    >
+      <span
+        className="glyphicon glyphicon-plus-sign"
+      />
+    </AddButton>
   </todosPage__ToolBar>
   <todosPage__TodosView>
     <todosPage__FilterButtonDiv>

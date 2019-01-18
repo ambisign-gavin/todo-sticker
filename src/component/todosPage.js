@@ -1,12 +1,13 @@
 //@flow
 
 import React from 'react';
-import AddEventButton from './addButton';
 import TodoListContainer from '../container/todoListContainer';
 import FilterButton from './filterButton';
 import FilterPanelContainer from '../container/filterPanelContainer';
 import SortButtonContainer from '../container/sortButtonContainer';
 import styled from 'styled-components';
+import { TodoEditableModal } from './eventEditModal';
+import Translate from '../class/translate';
 
 type Props = {
 
@@ -35,9 +36,20 @@ export default class TodosPage extends React.Component<Props, States> {
         });
     }
 
+    _handleOpenAddModal() {
+        TodoEditableModal.show({
+            onSave: () => console.log('1'),
+            title: Translate.tr('Add Event'),
+        });
+    }
+
     render() {
         let toolBar = (
-            <ToolBar><AddEventToolButton/></ToolBar>
+            <ToolBar>
+                <AddButton onClick={this._handleOpenAddModal.bind(this)} >
+                    <span className="glyphicon glyphicon-plus-sign"></span>
+                </AddButton>
+            </ToolBar>
         );
 
         return (
@@ -72,10 +84,16 @@ const TodosContainer = styled.div`
     background-color: #d8d8d8;
 `;
 
-const AddEventToolButton = styled(AddEventButton)`
+const AddButton = styled.div`
     align-self: center;
     margin-right: 10px;
+    font-size: 38px !important;
+    cursor: pointer;
+    &:hover {
+        color: #6494c4;
+    }
 `;
+AddButton.displayName = 'AddButton';
 
 const ToolBar = styled.div`
     grid-area: tool-bar;
