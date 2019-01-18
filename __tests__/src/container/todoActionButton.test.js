@@ -6,7 +6,8 @@ import { Dropdown, Menu } from 'antd';
 import { ipcRenderer } from 'electron';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
 import configureStore from 'redux-mock-store';
-import { editTodo } from '../../../src/actions';
+import { editTodo, completeTodo } from '../../../src/actions';
+import ConfirmButton from '../../../src/component/confirmButton';
 
 jest.mock('electron', () => {
     let ipcRenderer = {
@@ -40,12 +41,22 @@ describe('TodoActionButton', () => {
         wrapper = wrapperContainer.shallow();
     });
 
+    afterEach(() => {
+        store.clearActions();
+    });
+
     it('should render correct with complete and edit features are enabled', () => {
         wrapper.setProps({
             enableEdit: true,
             enableComplete: true,
         });
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should dispatch completeTodo', () => {
+        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
+        menu.find(Menu.Item).at(0).find(ConfirmButton).prop('config').onOk();
+        expect(store.getActions()).toEqual([completeTodo('1')]);
     });
 
     it('should show editable modal', () => {

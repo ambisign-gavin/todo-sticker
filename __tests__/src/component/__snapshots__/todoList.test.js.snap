@@ -329,6 +329,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -353,9 +354,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                     theme="light"
                                                   >
                                                     <MenuItem>
-                                                      <Connect(CompleteTodoButton)
-                                                        todoId="1"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Complete",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure complete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Complete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                     <MenuItem>
                                                       <a
@@ -402,9 +412,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                       theme="light"
                                                     >
                                                       <MenuItem>
-                                                        <Connect(CompleteTodoButton)
-                                                          todoId="1"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Complete",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure complete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Complete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                       <MenuItem>
                                                         <a
@@ -583,9 +602,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -618,9 +646,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -771,6 +808,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -795,9 +833,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                     theme="light"
                                                   >
                                                     <MenuItem>
-                                                      <Connect(CompleteTodoButton)
-                                                        todoId="2"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Complete",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure complete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Complete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                     <MenuItem>
                                                       <a
@@ -844,9 +891,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                       theme="light"
                                                     >
                                                       <MenuItem>
-                                                        <Connect(CompleteTodoButton)
-                                                          todoId="2"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Complete",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure complete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Complete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                       <MenuItem>
                                                         <a
@@ -1025,9 +1081,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -1060,9 +1125,18 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -1211,6 +1285,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             todo={
                                               Object {
@@ -2076,6 +2151,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -2100,9 +2176,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                     theme="light"
                                                   >
                                                     <MenuItem>
-                                                      <Connect(CompleteTodoButton)
-                                                        todoId="1"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Complete",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure complete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Complete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                     <MenuItem>
                                                       <a
@@ -2149,9 +2234,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                       theme="light"
                                                     >
                                                       <MenuItem>
-                                                        <Connect(CompleteTodoButton)
-                                                          todoId="1"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Complete",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure complete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Complete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                       <MenuItem>
                                                         <a
@@ -2330,9 +2424,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -2365,9 +2468,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -2518,6 +2630,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -2542,9 +2655,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                     theme="light"
                                                   >
                                                     <MenuItem>
-                                                      <Connect(CompleteTodoButton)
-                                                        todoId="2"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Complete",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure complete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Complete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                     <MenuItem>
                                                       <a
@@ -2591,9 +2713,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                       theme="light"
                                                     >
                                                       <MenuItem>
-                                                        <Connect(CompleteTodoButton)
-                                                          todoId="2"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Complete",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure complete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Complete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                       <MenuItem>
                                                         <a
@@ -2772,9 +2903,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -2807,9 +2947,18 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         theme="light"
                                                       >
                                                         <MenuItem>
-                                                          <Connect(CompleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Complete",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure complete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Complete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                         <MenuItem>
                                                           <a
@@ -2958,6 +3107,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                           }
                                         >
                                           <TodoActionButton
+                                            completeTodo={[Function]}
                                             editTodo={[Function]}
                                             todo={
                                               Object {

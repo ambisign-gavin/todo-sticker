@@ -5,18 +5,19 @@ import { Menu, Dropdown, Button } from 'antd';
 import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
 import DeleteButtonContainer from './deleteButtonContainer';
-import CompleteTodoButtonContainer from './completeTodoButtonContainer';
 import { ipcRenderer } from 'electron';
 import AddNote from '../ipc/action/addNote';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
-import { editTodo } from '../actions';
+import { editTodo, completeTodo } from '../actions';
+import ConfirmButton from '../component/confirmButton';
 
 type Props = {
     todo: TodoState,
     enableEdit?: boolean,
     enableComplete?: boolean,
     editTodo: (todoState: TodoState) => void,
+    completeTodo: (id: string) => void,
 }
 
 type States = {
@@ -54,6 +55,7 @@ class TodoActionButton extends React.Component<Props, States> {
             enableComplete,
             enableEdit,
             editTodo,
+            completeTodo,
             ...others
         } = this.props;
 
@@ -61,7 +63,19 @@ class TodoActionButton extends React.Component<Props, States> {
             <Menu>
                 {enableComplete? (
                     <Menu.Item>
-                        <CompleteTodoButtonContainer todoId={todo.id} />
+                        <ConfirmButton
+                            config={{
+                                title: Translate.tr('Are you sure complete this todo?'),
+                                okText: Translate.tr('Complete'),
+                                cancelText: Translate.tr('No'),
+                                onOk: () => { 
+                                    completeTodo(todo.id || '');
+                                    return Promise.resolve();
+                                }
+                            }}
+                        >
+                            {Translate.tr('Complete')}
+                        </ConfirmButton>
                     </Menu.Item>
                 ): null}
 
@@ -91,7 +105,8 @@ class TodoActionButton extends React.Component<Props, States> {
 }
 
 const mapDispatchToProps = {
-    editTodo
+    editTodo,
+    completeTodo
 };
 
 export default connect(

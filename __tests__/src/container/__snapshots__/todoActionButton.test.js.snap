@@ -80,9 +80,18 @@ exports[`TodoActionButton should render correct with complete and edit features 
         theme="light"
       >
         <MenuItem>
-          <Connect(CompleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Complete",
+                "onOk": [Function],
+                "title": "Are you sure complete this todo?",
+              }
+            }
+          >
+            Complete
+          </ConfirmButton>
         </MenuItem>
         <MenuItem>
           <a
@@ -149,9 +158,18 @@ exports[`TodoActionButton should render correct with complete feature is enabled
         theme="light"
       >
         <MenuItem>
-          <Connect(CompleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Complete",
+                "onOk": [Function],
+                "title": "Are you sure complete this todo?",
+              }
+            }
+          >
+            Complete
+          </ConfirmButton>
         </MenuItem>
         <MenuItem>
           <a
