@@ -1,12 +1,12 @@
 // @flow
 import EditModal from '../component/eventEditModal';
 import type { TodoState } from '../states';
-import { editEvent } from '../actions';
+import { editTodo } from '../actions';
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch) => (
     {
-        handleEditEvent: (todoState: TodoState) => dispatch(editEvent(todoState))
+        handleEditEvent: (todoState: TodoState) => dispatch(editTodo(todoState))
     }
 );
 

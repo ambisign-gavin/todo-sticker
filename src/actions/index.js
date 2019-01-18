@@ -41,7 +41,7 @@ export function addTodo(todoState: TodoState): AddAction {
     };
 }
 
-export function editEvent(todoState: TodoState): EditAction {
+export function editTodo(todoState: TodoState): EditAction {
     return {
         type: ActionTypes.Edit,
         todoState

@@ -1,5 +1,5 @@
 // @flow
-import { addTodo, editEvent, deleteTodo, completeTodo } from '../../../src/actions';
+import { addTodo, editTodo, deleteTodo, completeTodo } from '../../../src/actions';
 import { type TodoState } from '../../../src/states';
 
 describe('index action', () => {
@@ -20,7 +20,7 @@ describe('index action', () => {
     });
 
     it('should edit event', () => {
-        expect(editEvent(todoState)).toEqual({
+        expect(editTodo(todoState)).toEqual({
             type: 'edit',
             todoState
         });
