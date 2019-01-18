@@ -103,7 +103,7 @@ exports[`TodoList should render correct with empty 1`] = `
   todoLists={Array []}
 >
   <TodoList
-    todoLists={
+    todos={
       Array [
         Object {
           "complete": false,
@@ -143,11 +143,11 @@ exports[`TodoList should render correct with empty 1`] = `
       ]
     }
   >
-    <todoList__TodosListDiv>
+    <todoList__TodosListGrid>
       <div
         className="c0"
       >
-        <todoList__TodosList
+        <todoList__ListRow
           dataSource={
             Array [
               Object {
@@ -1737,8 +1737,8 @@ exports[`TodoList should render correct with empty 1`] = `
               </div>
             </div>
           </List>
-        </todoList__TodosList>
-        <todoList__ListPagination
+        </todoList__ListRow>
+        <todoList__PaginationRow
           defaultPageSize={3}
           onChange={[Function]}
           total={5}
@@ -1938,9 +1938,9 @@ exports[`TodoList should render correct with empty 1`] = `
               </Pagination>
             </LocaleReceiver>
           </Pagination>
-        </todoList__ListPagination>
+        </todoList__PaginationRow>
       </div>
-    </todoList__TodosListDiv>
+    </todoList__TodosListGrid>
   </TodoList>
 </Provider>
 `;
@@ -2048,7 +2048,7 @@ exports[`TodoList should render correct with todos 1`] = `
   todoLists={Array []}
 >
   <TodoList
-    todoLists={
+    todos={
       Array [
         Object {
           "complete": false,
@@ -2088,11 +2088,11 @@ exports[`TodoList should render correct with todos 1`] = `
       ]
     }
   >
-    <todoList__TodosListDiv>
+    <todoList__TodosListGrid>
       <div
         className="c0"
       >
-        <todoList__TodosList
+        <todoList__ListRow
           dataSource={
             Array [
               Object {
@@ -3682,8 +3682,8 @@ exports[`TodoList should render correct with todos 1`] = `
               </div>
             </div>
           </List>
-        </todoList__TodosList>
-        <todoList__ListPagination
+        </todoList__ListRow>
+        <todoList__PaginationRow
           defaultPageSize={3}
           onChange={[Function]}
           total={5}
@@ -3883,9 +3883,9 @@ exports[`TodoList should render correct with todos 1`] = `
               </Pagination>
             </LocaleReceiver>
           </Pagination>
-        </todoList__ListPagination>
+        </todoList__PaginationRow>
       </div>
-    </todoList__TodosListDiv>
+    </todoList__TodosListGrid>
   </TodoList>
 </Provider>
 `;

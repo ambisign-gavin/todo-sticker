@@ -6,11 +6,11 @@ import TodoItem from './todoItem';
 import styled from 'styled-components';
 
 type Props = {
-    todoLists: TodoState[]
+    todos: Array<TodoState>
 }
 
 type States = {
-    showingTodos: TodoState[]
+    showingTodos: Array<TodoState>
 }
 
 export default class TodoList extends React.Component<Props, States> {
@@ -31,12 +31,12 @@ export default class TodoList extends React.Component<Props, States> {
     }
 
     componentWillReceiveProps(nextProps: Props) {
-        if (nextProps.todoLists !== this.props.todoLists) {
-            this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todoLists);
+        if (nextProps.todos !== this.props.todos) {
+            this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todos);
         }
     }
 
-    _handlePageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todoLists) {
+    _handlePageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todos) {
         let allTodos: TodoState[] = todos;
         let showingTodos: TodoState[] = [];
         let startIndex: number = (page - 1) * pageSize;
@@ -51,8 +51,8 @@ export default class TodoList extends React.Component<Props, States> {
 
     render() {
         return (
-            <TodosListDiv>
-                <TodosList
+            <TodosListGrid>
+                <ListRow
                     dataSource={this.state.showingTodos}
                     renderItem={
                         (todo: TodoState) => (
@@ -60,18 +60,18 @@ export default class TodoList extends React.Component<Props, States> {
                         )
                     }
                 />
-                <ListPagination
-                    total={this.props.todoLists.length}
+                <PaginationRow
+                    total={this.props.todos.length}
                     defaultPageSize={this.defaultPaginSize}
                     onChange={this._handlePageChanged.bind(this)}
                 />
-            </TodosListDiv>
+            </TodosListGrid>
         );
     }
 
 }
 
-const TodosListDiv = styled.div`
+const TodosListGrid = styled.div`
     height: 100%;
     display: grid;
     grid-template-columns: 100%;
@@ -81,11 +81,11 @@ const TodosListDiv = styled.div`
     "list-pagination";
 `;
 
-const ListPagination = styled(Pagination)`
+const PaginationRow = styled(Pagination)`
     grid-area: list-pagination;
     justify-self: center;
 `;
 
-const TodosList = styled(List)`
+const ListRow = styled(List)`
     grid-area: list
 `;

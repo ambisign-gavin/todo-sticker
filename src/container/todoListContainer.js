@@ -62,7 +62,7 @@ function sortByColumn(todos: TodoState[], sortState: SortState): TodoState[] {
 
 const mapStateToProps = (state: AppState) => (
     {
-        todoLists: getListWithFilterAndSort(state)
+        todos: getListWithFilterAndSort(state)
     }
 );
 
