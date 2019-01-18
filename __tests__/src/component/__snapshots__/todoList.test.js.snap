@@ -330,6 +330,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -382,9 +383,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="1"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -440,9 +451,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="1"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -630,9 +651,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -674,9 +705,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -809,6 +850,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -861,9 +903,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="2"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -919,9 +971,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="2"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -1109,9 +1171,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -1153,9 +1225,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -1286,6 +1368,7 @@ exports[`TodoList should render correct with empty 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             todo={
                                               Object {
@@ -1315,9 +1398,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="3"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -1352,9 +1445,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="3"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -1521,9 +1624,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="3"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -1544,9 +1657,19 @@ exports[`TodoList should render correct with empty 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="3"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -2152,6 +2275,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -2204,9 +2328,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="1"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -2262,9 +2396,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="1"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -2452,9 +2596,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -2496,9 +2650,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="1"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -2631,6 +2795,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             enableComplete={true}
                                             enableEdit={true}
@@ -2683,9 +2848,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="2"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -2741,9 +2916,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="2"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -2931,9 +3116,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -2975,9 +3170,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="2"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -3108,6 +3313,7 @@ exports[`TodoList should render correct with todos 1`] = `
                                         >
                                           <TodoActionButton
                                             completeTodo={[Function]}
+                                            deleteTodo={[Function]}
                                             editTodo={[Function]}
                                             todo={
                                               Object {
@@ -3137,9 +3343,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                       </a>
                                                     </MenuItem>
                                                     <MenuItem>
-                                                      <Connect(DeleteTodoButton)
-                                                        todoId="3"
-                                                      />
+                                                      <ConfirmButton
+                                                        config={
+                                                          Object {
+                                                            "cancelText": "No",
+                                                            "okText": "Delete",
+                                                            "okType": "danger",
+                                                            "onOk": [Function],
+                                                            "title": "Are you sure delete this todo?",
+                                                          }
+                                                        }
+                                                      >
+                                                        Delete
+                                                      </ConfirmButton>
                                                     </MenuItem>
                                                   </Menu>
                                                 }
@@ -3174,9 +3390,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                         </a>
                                                       </MenuItem>
                                                       <MenuItem>
-                                                        <Connect(DeleteTodoButton)
-                                                          todoId="3"
-                                                        />
+                                                        <ConfirmButton
+                                                          config={
+                                                            Object {
+                                                              "cancelText": "No",
+                                                              "okText": "Delete",
+                                                              "okType": "danger",
+                                                              "onOk": [Function],
+                                                              "title": "Are you sure delete this todo?",
+                                                            }
+                                                          }
+                                                        >
+                                                          Delete
+                                                        </ConfirmButton>
                                                       </MenuItem>
                                                     </Menu>
                                                   }
@@ -3343,9 +3569,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="3"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }
@@ -3366,9 +3602,19 @@ exports[`TodoList should render correct with todos 1`] = `
                                                           </a>
                                                         </MenuItem>
                                                         <MenuItem>
-                                                          <Connect(DeleteTodoButton)
-                                                            todoId="3"
-                                                          />
+                                                          <ConfirmButton
+                                                            config={
+                                                              Object {
+                                                                "cancelText": "No",
+                                                                "okText": "Delete",
+                                                                "okType": "danger",
+                                                                "onOk": [Function],
+                                                                "title": "Are you sure delete this todo?",
+                                                              }
+                                                            }
+                                                          >
+                                                            Delete
+                                                          </ConfirmButton>
                                                         </MenuItem>
                                                       </Menu>
                                                     }

@@ -4,12 +4,11 @@ import { Icon } from 'antd';
 import { Menu, Dropdown, Button } from 'antd';
 import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
-import DeleteButtonContainer from './deleteButtonContainer';
 import { ipcRenderer } from 'electron';
 import AddNote from '../ipc/action/addNote';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
-import { editTodo, completeTodo } from '../actions';
+import { editTodo, completeTodo, deleteTodo } from '../actions';
 import ConfirmButton from '../component/confirmButton';
 
 type Props = {
@@ -18,6 +17,7 @@ type Props = {
     enableComplete?: boolean,
     editTodo: (todoState: TodoState) => void,
     completeTodo: (id: string) => void,
+    deleteTodo: (id: string) => void,
 }
 
 type States = {
@@ -56,6 +56,7 @@ class TodoActionButton extends React.Component<Props, States> {
             enableEdit,
             editTodo,
             completeTodo,
+            deleteTodo,
             ...others
         } = this.props;
 
@@ -90,7 +91,20 @@ class TodoActionButton extends React.Component<Props, States> {
                 </Menu.Item>
 
                 <Menu.Item>
-                    <DeleteButtonContainer todoId={todo.id} />
+                    <ConfirmButton
+                        config={{
+                            title: Translate.tr('Are you sure delete this todo?'),
+                            okText: Translate.tr('Delete'),
+                            okType: 'danger',
+                            cancelText: Translate.tr('No'),
+                            onOk: () => {
+                                deleteTodo(todo.id || '');
+                                return Promise.resolve();
+                            }
+                        }}
+                    >
+                        {Translate.tr('Delete')}
+                    </ConfirmButton>
                 </Menu.Item>
             </Menu>
         );
@@ -106,7 +120,8 @@ class TodoActionButton extends React.Component<Props, States> {
 
 const mapDispatchToProps = {
     editTodo,
-    completeTodo
+    completeTodo,
+    deleteTodo,
 };
 
 export default connect(

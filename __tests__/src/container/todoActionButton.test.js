@@ -6,7 +6,7 @@ import { Dropdown, Menu } from 'antd';
 import { ipcRenderer } from 'electron';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
 import configureStore from 'redux-mock-store';
-import { editTodo, completeTodo } from '../../../src/actions';
+import { editTodo, completeTodo, deleteTodo } from '../../../src/actions';
 import ConfirmButton from '../../../src/component/confirmButton';
 
 jest.mock('electron', () => {
@@ -81,6 +81,23 @@ describe('TodoActionButton', () => {
         expect(store.getActions()).toEqual([editTodo(todoState)]);
     });
 
+    it('should execute ipc sender method', () => {
+        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
+        menu.find(Menu.Item).at(2).find('a').at(0).simulate('click');
+        expect(ipcRenderer.send.mock.calls.length).toEqual(1);
+        expect(ipcRenderer.send.mock.calls[0][0]).toEqual('addNote');
+        expect(ipcRenderer.send.mock.calls[0][1]).toEqual({
+            id: '1',
+            noteDescription: 'Hello!',
+        });
+    });
+
+    it('should dispatch deleteTodo', () => {
+        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
+        menu.find(Menu.Item).at(3).find(ConfirmButton).prop('config').onOk();
+        expect(store.getActions()).toEqual([deleteTodo('1')]);
+    });
+
     it('should render correct with complete feature is enabled', () => {
         wrapper.setProps({
             enableEdit: false,
@@ -103,17 +120,6 @@ describe('TodoActionButton', () => {
             enableComplete: false,
         });
         expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should execute ipc sender method', () => {
-        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
-        menu.find(Menu.Item).at(0).find('a').at(0).simulate('click');
-        expect(ipcRenderer.send.mock.calls.length).toEqual(1);
-        expect(ipcRenderer.send.mock.calls[0][0]).toEqual('addNote');
-        expect(ipcRenderer.send.mock.calls[0][1]).toEqual({
-            id: '1',
-            noteDescription: 'Hello!',
-        });
     });
 
 });

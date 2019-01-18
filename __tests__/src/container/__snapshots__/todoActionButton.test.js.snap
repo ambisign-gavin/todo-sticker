@@ -30,9 +30,19 @@ exports[`TodoActionButton should render correct with complete and edit features 
           </a>
         </MenuItem>
         <MenuItem>
-          <Connect(DeleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Delete",
+                "okType": "danger",
+                "onOk": [Function],
+                "title": "Are you sure delete this todo?",
+              }
+            }
+          >
+            Delete
+          </ConfirmButton>
         </MenuItem>
       </Menu>
     }
@@ -108,9 +118,19 @@ exports[`TodoActionButton should render correct with complete and edit features 
           </a>
         </MenuItem>
         <MenuItem>
-          <Connect(DeleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Delete",
+                "okType": "danger",
+                "onOk": [Function],
+                "title": "Are you sure delete this todo?",
+              }
+            }
+          >
+            Delete
+          </ConfirmButton>
         </MenuItem>
       </Menu>
     }
@@ -179,9 +199,19 @@ exports[`TodoActionButton should render correct with complete feature is enabled
           </a>
         </MenuItem>
         <MenuItem>
-          <Connect(DeleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Delete",
+                "okType": "danger",
+                "onOk": [Function],
+                "title": "Are you sure delete this todo?",
+              }
+            }
+          >
+            Delete
+          </ConfirmButton>
         </MenuItem>
       </Menu>
     }
@@ -243,9 +273,19 @@ exports[`TodoActionButton should render correct with edit feature is enabled 1`]
           </a>
         </MenuItem>
         <MenuItem>
-          <Connect(DeleteTodoButton)
-            todoId="1"
-          />
+          <ConfirmButton
+            config={
+              Object {
+                "cancelText": "No",
+                "okText": "Delete",
+                "okType": "danger",
+                "onOk": [Function],
+                "title": "Are you sure delete this todo?",
+              }
+            }
+          >
+            Delete
+          </ConfirmButton>
         </MenuItem>
       </Menu>
     }
