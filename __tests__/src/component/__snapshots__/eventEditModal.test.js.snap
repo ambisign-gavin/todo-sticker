@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditModal should render correct 1`] = `
+exports[`EditModal with null todoState should render correct 1`] = `
 <Modal
   confirmLoading={false}
   defaultDescriptin=""
   destroyOnClose={true}
-  handleAddEvent={[MockFunction]}
   maskTransitionName="fade"
   okType="primary"
+  onCancel={[Function]}
   onOk={[Function]}
-  onSave={[MockFunction]}
   prefixCls="ant-modal"
   title="Title"
-  todoId="1"
   transitionName="zoom"
   visible={true}
   width={520}
@@ -58,7 +56,80 @@ exports[`EditModal should render correct 1`] = `
     eventDescription
   </p>
   <TextArea
-    defaultValue="Test description"
+    defaultValue=""
+    onChange={[Function]}
+    prefixCls="ant-input"
+    rows={4}
+  />
+</Modal>
+`;
+
+exports[`EditModal with todoState should render correct 1`] = `
+<Modal
+  confirmLoading={false}
+  defaultDescriptin=""
+  destroyOnClose={true}
+  maskTransitionName="fade"
+  okType="primary"
+  onCancel={[Function]}
+  onOk={[Function]}
+  prefixCls="ant-modal"
+  title="Title"
+  todoState={
+    Object {
+      "complete": false,
+      "createTime": 0,
+      "description": "Yo ~!",
+      "dueDatetime": 1547117100000,
+      "id": "1",
+    }
+  }
+  transitionName="zoom"
+  visible={true}
+  width={520}
+>
+  <p>
+    Due date
+  </p>
+  <PickerWrapper
+    allowClear={false}
+    defaultValue={"2019-01-10T10:45:00.000Z"}
+    format="YYYY-MM-DD"
+    inputPrefixCls="ant-input"
+    locale={Object {}}
+    onChange={[Function]}
+    onOk={[Function]}
+    onOpenChange={[Function]}
+    popupStyle={Object {}}
+    prefixCls="ant-calendar"
+    transitionName="slide-up"
+  />
+   
+  <TimePicker
+    align={
+      Object {
+        "offset": Array [
+          0,
+          -2,
+        ],
+      }
+    }
+    allowEmpty={false}
+    defaultValue={"2019-01-10T10:45:00.000Z"}
+    disabled={false}
+    focusOnOpen={true}
+    format="HH:mm"
+    hideDisabledOptions={false}
+    onChange={[Function]}
+    placement="bottomLeft"
+    prefixCls="ant-time-picker"
+    transitionName="slide-up"
+  />
+  <p>
+    eventDescription
+  </p>
+  <TextArea
+    defaultValue="Yo ~!"
     onChange={[Function]}
     prefixCls="ant-input"
     rows={4}

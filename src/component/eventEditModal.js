@@ -1,130 +1,166 @@
 // @flow
 import { Modal, DatePicker, TimePicker, Input } from 'antd';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import Translate from '../class/translate';
 import type {TodoState} from '../states';
 
 type Props = {
-    visible: boolean,
     title: string,
-    todoId?: string,
-    defaultDueDatetime?: number,
-    defaultDescription?: string,
-    handleAddEvent?: (eventState: TodoState) => void,
-    handleEditEvent?: (eventState: TodoState) => void,
-    onSave?: () => void,
+    todoState?: TodoState,
+    onSave: (newTodoState: TodoState) => void,
 }
 
 type States = {
-    dueDatetime: number,
-    desctiption: string
+    todoState: TodoState,
+    visible: boolean,
 }
 
 export default class EditModal extends React.Component<Props, States> {
-
-    handleDateChanged: Function;
-    handleTimeChanged: Function;
-    handleDescriptionChanged: Function;
-    handleOk: Function;
 
     static defaultProps = {
         visible: false,
         defaultDescriptin: '',
     }
 
-    state = {
-        dueDatetime: this.props.defaultDueDatetime || new Date().getTime(),
-        desctiption: this.props.defaultDescription || '',
-    };
-
     constructor(props: Props) {
         super(props);
-        moment.locale('en');
-        this.handleDateChanged = this.handleDateChanged.bind(this);
-        this.handleTimeChanged = this.handleTimeChanged.bind(this);
-        this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
-        this.handleOk = this.handleOk.bind(this);
-    }
 
-    componentWillReceiveProps(nextProps: Props) {
-        if (nextProps.defaultDueDatetime && nextProps.defaultDueDatetime !== this.props.defaultDueDatetime) {
-            this.setState({dueDatetime: nextProps.defaultDueDatetime});
-        }
-        if (nextProps.defaultDescription && nextProps.defaultDescription !== this.props.defaultDescription) {
-            this.setState({desctiption: nextProps.defaultDescription});
-        }
-        return true;
+        let defaultDate = new Date();
+        defaultDate.setUTCSeconds(0);
+
+        const {
+            todoState = {
+                dueDatetime: defaultDate.getTime(),
+                description: ''
+            }
+        } = this.props;
+
+        this.state = {
+            todoState,
+            visible: true,
+        };
     }
 
     handleDateChanged(dates: moment) {
-        let dueDate = new Date(this.state.dueDatetime);
-        dueDate.setUTCFullYear(dates.utc().get('year'));
-        dueDate.setUTCMonth(dates.utc().get('month'));
-        dueDate.setUTCDate(dates.utc().get('date'));
-        
+        let {
+            todoState
+        } = this.state;
+
+        let dueDatetime = new Date(todoState.dueDatetime);
+        dueDatetime.setUTCFullYear(dates.utc().get('year'));
+        dueDatetime.setUTCMonth(dates.utc().get('month'));
+        dueDatetime.setUTCDate(dates.utc().get('date'));
+        todoState.dueDatetime = dueDatetime.getTime();
+
         this.setState({
-            dueDatetime: dueDate.getTime()
+            todoState
         });
     }
 
     handleTimeChanged(time: moment) {
-        let dueDatetime = new Date(this.state.dueDatetime);
+        let {
+            todoState
+        } = this.state;
+
+        let dueDatetime = new Date(todoState.dueDatetime);
         dueDatetime.setUTCHours(time.utc().get('hour'));
         dueDatetime.setUTCMinutes(time.utc().get('minute'));
+        todoState.dueDatetime = dueDatetime.getTime();
 
         this.setState({
-            dueDatetime: dueDatetime.getTime()
+            todoState
         });
     }
 
     handleDescriptionChanged(event: SyntheticEvent<HTMLTextAreaElement>) {
-        let descriptin = event.currentTarget.value;
+        let {
+            todoState
+        } = this.state;
+        todoState.description = event.currentTarget.value;
+
         this.setState({
-            desctiption: descriptin
+            todoState
         });
     }
 
     handleOk() {
-        // set seconds to 00
-        let dueDatetime = new Date(this.state.dueDatetime);
-        dueDatetime.setUTCSeconds(0);
-        
-        let todoState: TodoState = {
-            description: this.state.desctiption,
-            dueDatetime: dueDatetime.getTime()
-        };
-        if (this.props.handleAddEvent) {
-            this.props.handleAddEvent(todoState);
-        }
-        if (this.props.handleEditEvent) {
-            todoState.id = this.props.todoId || '';
-            this.props.handleEditEvent(todoState);
-        }
+        this.props.onSave(this.state.todoState);
+        this.setState({
+            visible: false,
+        });
+    }
 
-        if (this.props.onSave) {
-            this.props.onSave();
-        }
-
+    _handleCancel() {
+        this.setState({
+            visible: false,
+        });
     }
 
     render() {
         const {
-            defaultDueDatetime,
-            defaultDescription,
+            onSave,
+            title,
+            // onClose,
             ...others
         } = this.props;
-        
+
+        const {
+            todoState
+        } = this.state;
+
         return (
-            <Modal destroyOnClose={true} onOk={this.handleOk} {...others} >
+            <Modal
+                {...others}
+                title={title}
+                destroyOnClose={true}
+                onOk={this.handleOk.bind(this)}
+                onCancel={this._handleCancel.bind(this)}
+                visible={this.state.visible}
+            >
                 <p>{Translate.tr('Due date')}</p>
-                <DatePicker allowClear={false} onChange={this.handleDateChanged} defaultValue={moment(defaultDueDatetime)} />
+                <DatePicker 
+                    allowClear={false}
+                    onChange={this.handleDateChanged.bind(this)}
+                    defaultValue={moment(todoState.dueDatetime)}
+                />
                 &nbsp;
-                <TimePicker allowEmpty={false} onChange={this.handleTimeChanged} defaultValue={moment(defaultDueDatetime)} format={'HH:mm'} />
+                <TimePicker
+                    allowEmpty={false}
+                    onChange={this.handleTimeChanged.bind(this)}
+                    defaultValue={moment(todoState.dueDatetime)}
+                    format={'HH:mm'}
+                />
                 <p>{Translate.tr('eventDescription')}</p>
-                <Input.TextArea defaultValue={defaultDescription} onChange={this.handleDescriptionChanged} rows={4} />
+                <Input.TextArea
+                    defaultValue={todoState.description}
+                    onChange={this.handleDescriptionChanged.bind(this)}
+                    rows={4}
+                />
             </Modal>
         );
     }
 }
+
+export const TodoEditableModal = {
+    show(props: Props) {
+        let wrapper = document.getElementById('todoModal');
+        if (!wrapper) {
+            return;
+        }
+
+        let cleanup = () => {
+            ReactDOM.unmountComponentAtNode(wrapper);
+        };
+
+        ReactDOM.render(
+            <EditModal
+                {...props}
+                afterClose={cleanup}
+            />
+            , wrapper
+        );
+    }
+};
