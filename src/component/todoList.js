@@ -10,50 +10,54 @@ type Props = {
 }
 
 type States = {
-    showingTodos: Array<TodoState>
+    page: number,
 }
+
+const COUNT_PER_PAGE = 3;
 
 export default class TodoList extends React.Component<Props, States> {
 
-    defaultPaginIndex: number = 1;
-    defaultPaginSize: number = 3;
-
     state: States = {
-        showingTodos: []
+        page: 1,
     }
 
     constructor(props: Props) {
         super(props);
     }
 
-    componentWillMount() {
-        this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize);
-    }
-
-    componentWillReceiveProps(nextProps: Props) {
-        if (nextProps.todos !== this.props.todos) {
-            this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todos);
-        }
-    }
-
-    _handlePageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todos) {
-        let allTodos: TodoState[] = todos;
-        let showingTodos: TodoState[] = [];
-        let startIndex: number = (page - 1) * pageSize;
-        let endIndex: number = (page * pageSize) > allTodos.length? allTodos.length: (page * pageSize);
-        for (let i = startIndex; i < endIndex; i++) {
-            showingTodos.push(allTodos[i]);
-        }
+    _handlePageChanged(page: number) {
         this.setState({
-            showingTodos: showingTodos
+            page,
         });
     }
 
+    _generateShowingTodos(page: number, todos: Array<TodoState> = this.props.todos): Array<TodoState> {
+        let allTodos: Array<TodoState> = todos;
+        let showingTodos: Array<TodoState> = [];
+        let startIndex: number = (page - 1) * COUNT_PER_PAGE;
+        let endIndex: number = (page * COUNT_PER_PAGE) > allTodos.length? allTodos.length: (page * COUNT_PER_PAGE);
+        for (let i = startIndex; i < endIndex; i++) {
+            showingTodos.push(allTodos[i]);
+        }
+        return showingTodos;
+    }
+
     render() {
+
+        const {
+            page
+        } = this.state;
+
+        const {
+            todos
+        } = this.props;
+
+        let showingTodos = this._generateShowingTodos(page, todos);
+
         return (
             <TodosListGrid>
                 <ListRow
-                    dataSource={this.state.showingTodos}
+                    dataSource={showingTodos}
                     renderItem={
                         (todo: TodoState) => (
                             <TodoItem todo={todo} />
@@ -61,8 +65,8 @@ export default class TodoList extends React.Component<Props, States> {
                     }
                 />
                 <PaginationRow
-                    total={this.props.todos.length}
-                    defaultPageSize={this.defaultPaginSize}
+                    total={todos.length}
+                    defaultPageSize={COUNT_PER_PAGE}
                     onChange={this._handlePageChanged.bind(this)}
                 />
             </TodosListGrid>
