@@ -2,8 +2,6 @@
 
 import React from 'react';
 import TodoListContainer from './todoListContainer';
-// import FilterPanelContainer from './filterPanelContainer';
-import SortButtonContainer from './sortButtonContainer';
 import styled from 'styled-components';
 import { TodoEditableModal } from '../component/eventEditModal';
 import Translate from '../class/translate';
@@ -11,6 +9,7 @@ import { addTodo } from '../actions';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
 import FilterPanel from '../container/filterPanel';
+import SortButton from './sortButton';
 
 type Props = {
     addTodo: () => void,
@@ -145,7 +144,7 @@ const TodoListDiv = styled.div`
     grid-area: listArea;
 `;
 
-const SortButtonDiv = styled(SortButtonContainer)`
+const SortButtonDiv = styled(SortButton)`
     grid-area: sort-btn;
     justify-self: end;
     align-self: end;
