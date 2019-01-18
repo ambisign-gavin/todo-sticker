@@ -6,7 +6,7 @@ type Config = {
     title: string,
     okText: string,
     cancelText: string,
-    onOk: () => void,
+    onOk: () => Promise<void>,
 }
 
 type Props = {
