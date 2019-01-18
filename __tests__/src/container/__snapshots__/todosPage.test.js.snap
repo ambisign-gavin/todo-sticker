@@ -29,9 +29,14 @@ exports[`TodosPage should render correct with origin component 1`] = `
   </todosPage__ToolBar>
   <todosPage__TodosView>
     <todosPage__FilterButtonDiv>
-      <FilterButton
+      <Button
+        ghost={false}
+        loading={false}
         onClick={[Function]}
-      />
+        prefixCls="ant-btn"
+      >
+        filter
+      </Button>
       <Connect(FilterPanel)
         onHidden={[Function]}
         show={false}
