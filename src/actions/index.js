@@ -34,7 +34,7 @@ export type CompleteAction = {|
     id: string
 |}
 
-export function addEvent(todoState: TodoState): AddAction {
+export function addTodo(todoState: TodoState): AddAction {
     return {
         type: ActionTypes.Add,
         todoState
