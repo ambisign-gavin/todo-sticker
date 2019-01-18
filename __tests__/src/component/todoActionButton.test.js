@@ -4,6 +4,7 @@ import { shallow, type ShallowWrapper } from 'enzyme';
 import TodoActionButton from '../../../src/component/todoActionButton';
 import { Dropdown, Menu } from 'antd';
 import { ipcRenderer } from 'electron';
+import { TodoEditableModal } from '../../../src/component/eventEditModal';
 
 jest.mock('electron', () => {
     let ipcRenderer = {
@@ -39,6 +40,13 @@ describe('TodoActionButton', () => {
             enableComplete: true,
         });
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should show editable modal', () => {
+        let show = jest.spyOn(TodoEditableModal, 'show');
+        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
+        menu.find(Menu.Item).at(1).find('a').at(0).simulate('click');
+        expect(show.mock.calls.length).toEqual(1);
     });
 
     it('should render correct with complete feature is enabled', () => {

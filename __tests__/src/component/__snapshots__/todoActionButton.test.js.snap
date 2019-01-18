@@ -43,15 +43,6 @@ exports[`TodoActionButton should render correct with complete and edit features 
       />
     </Button>
   </Dropdown>
-  <Connect(EditModal)
-    defaultDescription="Hello!"
-    defaultDueDatetime={10}
-    onCancel={[Function]}
-    onSave={[Function]}
-    title="Edit Todo"
-    todoId="1"
-    visible={false}
-  />
 </div>
 `;
 
@@ -110,15 +101,6 @@ exports[`TodoActionButton should render correct with complete and edit features 
       />
     </Button>
   </Dropdown>
-  <Connect(EditModal)
-    defaultDescription="Hello!"
-    defaultDueDatetime={10}
-    onCancel={[Function]}
-    onSave={[Function]}
-    title="Edit Todo"
-    todoId="1"
-    visible={false}
-  />
 </div>
 `;
 
@@ -170,15 +152,6 @@ exports[`TodoActionButton should render correct with complete feature is enabled
       />
     </Button>
   </Dropdown>
-  <Connect(EditModal)
-    defaultDescription="Hello!"
-    defaultDueDatetime={10}
-    onCancel={[Function]}
-    onSave={[Function]}
-    title="Edit Todo"
-    todoId="1"
-    visible={false}
-  />
 </div>
 `;
 
@@ -232,14 +205,5 @@ exports[`TodoActionButton should render correct with edit feature is enabled 1`]
       />
     </Button>
   </Dropdown>
-  <Connect(EditModal)
-    defaultDescription="Hello!"
-    defaultDueDatetime={10}
-    onCancel={[Function]}
-    onSave={[Function]}
-    title="Edit Todo"
-    todoId="1"
-    visible={false}
-  />
 </div>
 `;
