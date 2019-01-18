@@ -6,6 +6,7 @@ type Config = {
     title: string,
     okText: string,
     cancelText: string,
+    okType?: 'primary' | 'ghost' | 'dashed' | 'danger',
     onOk: () => Promise<void>,
 }
 
