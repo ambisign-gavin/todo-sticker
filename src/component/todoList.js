@@ -15,7 +15,6 @@ type States = {
 
 export default class TodoList extends React.Component<Props, States> {
 
-    onPageChanged: Function;
     defaultPaginIndex: number = 1;
     defaultPaginSize: number = 3;
 
@@ -25,20 +24,19 @@ export default class TodoList extends React.Component<Props, States> {
 
     constructor(props: Props) {
         super(props);
-        this.onPageChanged = this.onPageChanged.bind(this);
     }
 
     componentWillMount() {
-        this.onPageChanged(this.defaultPaginIndex, this.defaultPaginSize);
+        this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize);
     }
 
     componentWillReceiveProps(nextProps: Props) {
         if (nextProps.todoLists !== this.props.todoLists) {
-            this.onPageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todoLists);
+            this._handlePageChanged(this.defaultPaginIndex, this.defaultPaginSize, nextProps.todoLists);
         }
     }
 
-    onPageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todoLists) {
+    _handlePageChanged(page: number, pageSize: number, todos: TodoState[] = this.props.todoLists) {
         let allTodos: TodoState[] = todos;
         let showingTodos: TodoState[] = [];
         let startIndex: number = (page - 1) * pageSize;
@@ -65,7 +63,7 @@ export default class TodoList extends React.Component<Props, States> {
                 <ListPagination
                     total={this.props.todoLists.length}
                     defaultPageSize={this.defaultPaginSize}
-                    onChange={this.onPageChanged}
+                    onChange={this._handlePageChanged.bind(this)}
                 />
             </TodosListDiv>
         );

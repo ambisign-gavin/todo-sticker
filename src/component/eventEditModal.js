@@ -44,7 +44,7 @@ export default class EditModal extends React.Component<Props, States> {
         };
     }
 
-    handleDateChanged(dates: moment) {
+    _handleDateChanged(dates: moment) {
         let {
             todoState
         } = this.state;
@@ -60,7 +60,7 @@ export default class EditModal extends React.Component<Props, States> {
         });
     }
 
-    handleTimeChanged(time: moment) {
+    _handleTimeChanged(time: moment) {
         let {
             todoState
         } = this.state;
@@ -75,7 +75,7 @@ export default class EditModal extends React.Component<Props, States> {
         });
     }
 
-    handleDescriptionChanged(event: SyntheticEvent<HTMLTextAreaElement>) {
+    _handleDescriptionChanged(event: SyntheticEvent<HTMLTextAreaElement>) {
         let {
             todoState
         } = this.state;
@@ -86,7 +86,7 @@ export default class EditModal extends React.Component<Props, States> {
         });
     }
 
-    handleOk() {
+    _handleOk() {
         this.props.onSave(this.state.todoState);
         this.setState({
             visible: false,
@@ -116,27 +116,27 @@ export default class EditModal extends React.Component<Props, States> {
                 {...others}
                 title={title}
                 destroyOnClose={true}
-                onOk={this.handleOk.bind(this)}
+                onOk={this._handleOk.bind(this)}
                 onCancel={this._handleCancel.bind(this)}
                 visible={this.state.visible}
             >
                 <p>{Translate.tr('Due date')}</p>
                 <DatePicker 
                     allowClear={false}
-                    onChange={this.handleDateChanged.bind(this)}
+                    onChange={this._handleDateChanged.bind(this)}
                     defaultValue={moment(todoState.dueDatetime)}
                 />
                 &nbsp;
                 <TimePicker
                     allowEmpty={false}
-                    onChange={this.handleTimeChanged.bind(this)}
+                    onChange={this._handleTimeChanged.bind(this)}
                     defaultValue={moment(todoState.dueDatetime)}
                     format={'HH:mm'}
                 />
                 <p>{Translate.tr('eventDescription')}</p>
                 <Input.TextArea
                     defaultValue={todoState.description}
-                    onChange={this.handleDescriptionChanged.bind(this)}
+                    onChange={this._handleDescriptionChanged.bind(this)}
                     rows={4}
                 />
             </Modal>

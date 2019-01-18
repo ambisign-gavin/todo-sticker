@@ -34,7 +34,7 @@ class TodoActionButton extends React.Component<Props, States> {
         super(props);
     }
 
-    handleEdit() {
+    _handleEdit() {
         TodoEditableModal.show({
             title: Translate.tr('Edit Todo'),
             todoState: this.props.todo,
@@ -42,7 +42,7 @@ class TodoActionButton extends React.Component<Props, States> {
         });
     }
 
-    handleAddNote() {
+    _handleAddNote() {
         let addNote: AddNote = new AddNote();
         addNote.noteDescription = this.props.todo.description;
         addNote.id = this.props.todo.id || '';
@@ -82,12 +82,12 @@ class TodoActionButton extends React.Component<Props, States> {
 
                 {enableEdit? (
                     <Menu.Item>
-                        <a onClick={this.handleEdit.bind(this)} >Edit</a>
+                        <a onClick={this._handleEdit.bind(this)} >Edit</a>
                     </Menu.Item>
                 ): null}
 
                 <Menu.Item>
-                    <a onClick={this.handleAddNote.bind(this)} >Add Note</a>
+                    <a onClick={this._handleAddNote.bind(this)} >Add Note</a>
                 </Menu.Item>
 
                 <Menu.Item>

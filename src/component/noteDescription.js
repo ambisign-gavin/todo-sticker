@@ -14,23 +14,20 @@ type States = {
 
 export default class NoteDescription extends React.Component<Props, States> {
 
-    _handleNoteDescriptionSended: Function;
-
     state = {
         description: '',
     }
 
     constructor(props: Props) {
         super(props);
-        this._handleNoteDescriptionSended = this._handleNoteDescriptionSended.bind(this);
     }
     
     componentWillMount() {
-        ipcRenderer.on(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended);
+        ipcRenderer.on(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended.bind(this));
     }
 
     componentWillUnmount() {
-        ipcRenderer.removeListener(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended);
+        ipcRenderer.removeListener(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended.bind(this));
     }
 
     _handleNoteDescriptionSended(event: any, nodeDescription: string) {

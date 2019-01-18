@@ -13,16 +13,11 @@ type Props = {
 
 export default class TodoItem extends React.Component<Props> {
 
-    generateTodoActions: Function;
-    narrowDescriptionIfNeed: Function;
-
     constructor(props: Props) {
         super(props);
-        this.generateTodoActions = this.generateTodoActions.bind(this);
-        this.narrowDescriptionIfNeed = this.narrowDescriptionIfNeed.bind(this);
     }
 
-    generateTime(datetime: ?number) {
+    _generateTime(datetime: ?number) {
         let notificationString = '';
         if (datetime != null) {
             notificationString += moment(datetime).format('YYYY/MM/DD HH:mm');
@@ -30,7 +25,7 @@ export default class TodoItem extends React.Component<Props> {
         return notificationString;
     }
 
-    generateTodoActions() {
+    _generateTodoActions() {
         if (!this.props.todo.complete) {
             return (
                 <TodoActionButton todo={this.props.todo} enableEdit enableComplete />
@@ -41,7 +36,7 @@ export default class TodoItem extends React.Component<Props> {
         );
     }
 
-    narrowDescriptionIfNeed(description: string): string {
+    _narrowDescriptionIfNeed(description: string): string {
         let splitDescriptions: Array<string> = description.split(/\r\n|\r|\n/);
         let lineCount: number = splitDescriptions.length;
         if (lineCount <= 2) {
@@ -64,16 +59,16 @@ export default class TodoItem extends React.Component<Props> {
                         <Icon type="clock-circle-o" />
                     </ClockDiv>
                     <div style={{ gridArea: 'notification-time' }}>
-                        {this.generateTime(todo.dueDatetime)}
+                        {this._generateTime(todo.dueDatetime)}
                     </div>
                     <CreatedTimeDiv>
-                        <span>{Translate.tr('Creat at: ')}</span>{this.generateTime(todo.createTime)}
+                        <span>{Translate.tr('Creat at: ')}</span>{this._generateTime(todo.createTime)}
                     </CreatedTimeDiv>
                     <DescriptionDiv>
-                        <p>{this.narrowDescriptionIfNeed(todo.description)}</p>
+                        <p>{this._narrowDescriptionIfNeed(todo.description)}</p>
                     </DescriptionDiv>
                     <ActionButtonDiv>
-                        {this.generateTodoActions()}
+                        {this._generateTodoActions()}
                     </ActionButtonDiv>
                     {
                         todo.complete?<CompleteMarkDiv>Complete</CompleteMarkDiv>: null
