@@ -13,21 +13,21 @@ import type {AppState} from '../states/index';
 type Props = {
     sortColumn: SortColumn,
     sortByType: SortByType,
-    handleSortColumnSelected: (column: SortColumn) => void,
-    handleSortByChanged: (sortBy: SortByType) => void,
+    onSortColumnSelected: (column: SortColumn) => void,
+    onSortByChanged: (sortBy: SortByType) => void,
 }
 
 class SortButton extends React.Component<Props> {
 
     _handleSortColumnSelected(selectedMenu: any) {
-        this.props.handleSortColumnSelected(selectedMenu.key);
+        this.props.onSortColumnSelected(selectedMenu.key);
     }
 
     _handleSortByChanged() {
         if (this.props.sortByType === SortByTypeEnum.asc) {
-            this.props.handleSortByChanged(SortByTypeEnum.desc);
+            this.props.onSortByChanged(SortByTypeEnum.desc);
         } else if (this.props.sortByType === SortByTypeEnum.desc) {
-            this.props.handleSortByChanged(SortByTypeEnum.asc);
+            this.props.onSortByChanged(SortByTypeEnum.asc);
         }
     }
 
@@ -41,8 +41,8 @@ class SortButton extends React.Component<Props> {
         let {
             sortColumn,
             sortByType,
-            handleSortColumnSelected,
-            handleSortByChanged,
+            onSortColumnSelected: handleSortColumnSelected,
+            onSortByChanged: handleSortByChanged,
             ...others
         } = this.props;
 
@@ -92,8 +92,8 @@ const mapStateToProps = (state: AppState) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        handleSortColumnSelected: (column: SortColumn) => dispatch(settingSortColumn(column)),
-        handleSortByChanged: (sortBy: SortByType) => dispatch(settingSortBy(sortBy))
+        onSortColumnSelected: (column: SortColumn) => dispatch(settingSortColumn(column)),
+        onSortByChanged: (sortBy: SortByType) => dispatch(settingSortBy(sortBy))
     }
 );
 

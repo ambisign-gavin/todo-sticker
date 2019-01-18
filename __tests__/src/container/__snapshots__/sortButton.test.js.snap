@@ -86,8 +86,8 @@ exports[`SortButton should render correct as component 1`] = `
 
 exports[`SortButton should render correct as container 1`] = `
 <SortButton
-  handleSortByChanged={[Function]}
-  handleSortColumnSelected={[Function]}
+  onSortByChanged={[Function]}
+  onSortColumnSelected={[Function]}
   sortByType="asc"
   sortColumn="createTime"
   store={
