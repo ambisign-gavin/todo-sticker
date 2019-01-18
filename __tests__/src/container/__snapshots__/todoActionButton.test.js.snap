@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TodoActionButton should render correct with complete and edit features are disabled 1`] = `
-<div>
+<div
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
   <Dropdown
     mouseEnterDelay={0.15}
     mouseLeaveDelay={0.1}
@@ -47,7 +58,18 @@ exports[`TodoActionButton should render correct with complete and edit features 
 `;
 
 exports[`TodoActionButton should render correct with complete and edit features are enabled 1`] = `
-<div>
+<div
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
   <Dropdown
     mouseEnterDelay={0.15}
     mouseLeaveDelay={0.1}
@@ -105,7 +127,18 @@ exports[`TodoActionButton should render correct with complete and edit features 
 `;
 
 exports[`TodoActionButton should render correct with complete feature is enabled 1`] = `
-<div>
+<div
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
   <Dropdown
     mouseEnterDelay={0.15}
     mouseLeaveDelay={0.1}
@@ -156,7 +189,18 @@ exports[`TodoActionButton should render correct with complete feature is enabled
 `;
 
 exports[`TodoActionButton should render correct with edit feature is enabled 1`] = `
-<div>
+<div
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
   <Dropdown
     mouseEnterDelay={0.15}
     mouseLeaveDelay={0.1}

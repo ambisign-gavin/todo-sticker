@@ -5,6 +5,8 @@ import TodoActionButton from '../../../src/container/todoActionButton';
 import { Dropdown, Menu } from 'antd';
 import { ipcRenderer } from 'electron';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
+import configureStore from 'redux-mock-store';
+import { editTodo } from '../../../src/actions';
 
 jest.mock('electron', () => {
     let ipcRenderer = {
@@ -16,10 +18,11 @@ jest.mock('electron', () => {
 });
 
 describe('TodoActionButton', () => {
+    let wrapperContainer: ShallowWrapper;
     let wrapper: ShallowWrapper;
-
+    let store = configureStore()();
     beforeAll(() => {
-        wrapper= shallow(
+        wrapperContainer= shallow(
             <TodoActionButton
                 todo={{
                     id: '1',
@@ -30,8 +33,11 @@ describe('TodoActionButton', () => {
                 }}
                 enableEdit={true}
                 enableComplete={true}
+                store={store}
             />
         );
+
+        wrapper = wrapperContainer.shallow();
     });
 
     it('should render correct with complete and edit features are enabled', () => {
@@ -47,6 +53,21 @@ describe('TodoActionButton', () => {
         let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
         menu.find(Menu.Item).at(1).find('a').at(0).simulate('click');
         expect(show.mock.calls.length).toEqual(1);
+    });
+
+    it('should dispatch editTodo', () => {
+        let todoState = {
+            id: '2',
+            dueDatetime: 10,
+            description: 'Hello',
+            complete: false,
+            createTime: 0,
+        };
+        let show = jest.spyOn(TodoEditableModal, 'show');
+        let menu = shallow(wrapper.find(Dropdown).prop('overlay'));
+        menu.find(Menu.Item).at(1).find('a').at(0).simulate('click');
+        show.mock.calls[0][0].onSave(todoState);
+        expect(store.getActions()).toEqual([editTodo(todoState)]);
     });
 
     it('should render correct with complete feature is enabled', () => {

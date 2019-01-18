@@ -9,18 +9,21 @@ import CompleteTodoButtonContainer from './completeTodoButtonContainer';
 import { ipcRenderer } from 'electron';
 import AddNote from '../ipc/action/addNote';
 import { TodoEditableModal } from '../component/eventEditModal';
+import { connect } from 'react-redux';
+import { editTodo } from '../actions';
 
 type Props = {
     todo: TodoState,
     enableEdit?: boolean,
     enableComplete?: boolean,
+    editTodo: (todoState: TodoState) => void,
 }
 
 type States = {
     editModalVisible: boolean,
 }
 
-export default class TodoActionButton extends React.Component<Props, States> {
+class TodoActionButton extends React.Component<Props, States> {
 
     state: States = {
         editModalVisible: false,
@@ -34,7 +37,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
         TodoEditableModal.show({
             title: Translate.tr('Edit Todo'),
             todoState: this.props.todo,
-            onSave: () => console.log('todo: connect redux')
+            onSave: this.props.editTodo
         });
     }
 
@@ -50,6 +53,7 @@ export default class TodoActionButton extends React.Component<Props, States> {
             todo,
             enableComplete,
             enableEdit,
+            editTodo,
             ...others
         } = this.props;
 
@@ -85,3 +89,12 @@ export default class TodoActionButton extends React.Component<Props, States> {
         );
     }
 }
+
+const mapDispatchToProps = {
+    editTodo
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(TodoActionButton);
