@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterPanel should render correct as container 1`] = `
+<FilterPanel
+  completeStatus="all"
+  dueDate="all"
+  onCompleteStatusFilterChanged={[Function]}
+  onDueDateFilterChanged={[Function]}
+  onHide={[MockFunction]}
+  show={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`FilterPanel should render correct only component 1`] = `
+<div>
+  <FilterPanelDiv
+    className=""
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <FilterGroupDiv>
+      <p>
+        Due Date:
+      </p>
+      <RadioGroup
+        defaultValue="all"
+        disabled={false}
+        onChange={[Function]}
+      >
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="today"
+        >
+          Today
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="all"
+        >
+          All
+        </RadioButton>
+      </RadioGroup>
+    </FilterGroupDiv>
+    <hr />
+    <FilterGroupDiv>
+      <p>
+        Complete Status:
+      </p>
+      <RadioGroup
+        defaultValue="all"
+        disabled={false}
+        onChange={[Function]}
+      >
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="all"
+        >
+          All
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="complete"
+        >
+          Complete
+        </RadioButton>
+        <RadioButton
+          prefixCls="ant-radio-button"
+          value="uncomplete"
+        >
+          Uncompleted
+        </RadioButton>
+      </RadioGroup>
+    </FilterGroupDiv>
+  </FilterPanelDiv>
+  <MaskDiv
+    onClick={[Function]}
+  />
+</div>
+`;

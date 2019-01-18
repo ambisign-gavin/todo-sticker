@@ -4,19 +4,22 @@ import Translate from '../class/translate';
 import { Radio } from 'antd';
 import Classnames from 'classnames';
 import { CompleteStatusFilterEnum, DueDateFilterEnum} from '../constant/filter';
-import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { type DueDateFilter, type CompleteStatusFilter } from '../constant/filter';
+import { settingDueDateFilter, settingCompleteStatusFilter } from '../actions/filter';
+import { type AppState } from '../states/index';
 
 type Props = {
     show: boolean,
     onDueDateFilterChanged: (filter: DueDateFilter) => void,
     onCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => void,
     onHide: () => void,
-    defaultDueDateFilter: DueDateFilter,
-    defaultCompleteStatusFilter: CompleteStatusFilter,
+    dueDate: DueDateFilter,
+    completeStatus: CompleteStatusFilter,
 }
 
-export default class FilterPanel extends React.Component<Props> {
+class FilterPanel extends React.Component<Props> {
 
     static defaultProps = {
         show: false
@@ -42,8 +45,8 @@ export default class FilterPanel extends React.Component<Props> {
             onCompleteStatusFilterChanged,
             show,
             onHide: onHidden,
-            defaultDueDateFilter,
-            defaultCompleteStatusFilter,
+            dueDate,
+            completeStatus,
             ...others
         } = this.props;
 
@@ -61,7 +64,7 @@ export default class FilterPanel extends React.Component<Props> {
                         <p>{Translate.tr('Due Date:')}</p>
                         <Radio.Group 
                             onChange={this._handleDueDateFilterSelected.bind(this)}
-                            defaultValue={defaultDueDateFilter}
+                            defaultValue={dueDate}
                         >
                             <Radio.Button
                                 value={DueDateFilterEnum.today}
@@ -80,7 +83,7 @@ export default class FilterPanel extends React.Component<Props> {
                         <p>{Translate.tr('Complete Status:')}</p>
                         <Radio.Group
                             onChange={this._handleCompleteStatusFilterSelected.bind(this)}
-                            defaultValue={defaultCompleteStatusFilter}
+                            defaultValue={completeStatus}
                         >
                             <Radio.Button 
                                 value={CompleteStatusFilterEnum.all}
@@ -106,8 +109,27 @@ export default class FilterPanel extends React.Component<Props> {
             </div>
         );
     }
-
 }
+
+const mapStateToProps = (state: AppState) => (
+    {
+        dueDate: state.filter.dueDate,
+        completeStatus: state.filter.completeStatus,
+    }
+);
+
+const mapDispatchToProps = (dispatch) => (
+    {
+        onDueDateFilterChanged: (filter: DueDateFilter) => dispatch(settingDueDateFilter(filter)),
+        onCompleteStatusFilterChanged: (filter: CompleteStatusFilter) => dispatch(settingCompleteStatusFilter(filter))
+    }
+);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FilterPanel);
+
 
 const FilterPanelDiv = styled.div`
     position: absolute;

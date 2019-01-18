@@ -2,7 +2,7 @@
 
 import React from 'react';
 import TodoListContainer from './todoListContainer';
-import FilterPanelContainer from './filterPanelContainer';
+// import FilterPanelContainer from './filterPanelContainer';
 import SortButtonContainer from './sortButtonContainer';
 import styled from 'styled-components';
 import { TodoEditableModal } from '../component/eventEditModal';
@@ -10,6 +10,7 @@ import Translate from '../class/translate';
 import { addTodo } from '../actions';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
+import FilterPanel from '../container/filterPanel';
 
 type Props = {
     addTodo: () => void,
@@ -61,7 +62,7 @@ class TodosPage extends React.Component<Props, States> {
                         >
                             {Translate.tr('filter')}
                         </Button>
-                        <FilterPanelContainer
+                        <FilterPanel
                             onHide={this._handleFilterPanelHide.bind(this)}
                             show={this.state.showFilterPanel}
                         />

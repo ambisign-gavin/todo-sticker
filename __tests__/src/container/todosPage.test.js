@@ -2,11 +2,11 @@
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
 import TodosPage from '../../../src/container/todosPage';
-import FilterPanelContainer from '../../../src/container/filterPanelContainer';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
 import configureStore from 'redux-mock-store';
 import { addTodo } from '../../../src/actions';
 import { Button } from 'antd';
+import FilterPanel from '../../../src/container/filterPanel';
 
 describe('TodosPage', () => {
     let wrapperContainer: ShallowWrapper;
@@ -36,7 +36,7 @@ describe('TodosPage', () => {
     });
 
     it('should hide filter panel', () => {
-        wrapper.find(FilterPanelContainer).simulate('hide');
+        wrapper.find(FilterPanel).simulate('hide');
         expect(wrapper.state().showFilterPanel).toBeFalsy();
     });
 
