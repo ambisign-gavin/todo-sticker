@@ -41,6 +41,10 @@ module.exports = {
         "react/jsx-uses-vars": "error",
         "react/jsx-uses-react": "error",
         "no-console": "off",
-        "no-case-declarations": "off"
+        "no-case-declarations": "off",
+        "no-unused-vars": [
+            "error",
+            { "ignoreRestSiblings": true }
+        ]
     }
 };
