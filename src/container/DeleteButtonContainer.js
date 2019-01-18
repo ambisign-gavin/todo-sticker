@@ -1,5 +1,5 @@
 // @flow
-import deleteButton from '../component/deleteButton/deleteButton';
+import deleteButton from '../component/deleteButton';
 import {deleteTodo} from '../actions/index';
 import {connect} from 'react-redux';
 

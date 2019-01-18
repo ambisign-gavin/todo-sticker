@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import TodoActionButton from '../../../src/component/todoActionButton/TodoActionButton';
+import TodoActionButton from '../../../src/component/todoActionButton';
 import { Dropdown, Menu } from 'antd';
 import { ipcRenderer } from 'electron';
 

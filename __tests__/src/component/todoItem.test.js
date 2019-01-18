@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import TodoItem from '../../../src/component/todoItem/todoItem';
+import TodoItem from '../../../src/component/todoItem';
 
 describe('TodoItem', () => {
     let wrapper: ShallowWrapper;

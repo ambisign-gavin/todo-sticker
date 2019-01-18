@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import TodosPage from '../../../src/component/todosPage/todosPage';
-import FilterButton from '../../../src/component/filterButton/FilterButton';
+import TodosPage from '../../../src/component/todosPage';
+import FilterButton from '../../../src/component/filterButton';
 import FilterPanelContainer from '../../../src/container/FilterPanelContainer';
 
 describe('TodosPage', () => {

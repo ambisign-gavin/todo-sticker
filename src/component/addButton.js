@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import Translate from '../../class/translate';
-import AddModal from '../../container/addTodoModalContainer';
+import Translate from '../class/translate';
+import AddModal from '../container/addTodoModalContainer';
 import styled from 'styled-components';
 
 type Props = {

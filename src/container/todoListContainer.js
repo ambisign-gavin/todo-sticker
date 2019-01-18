@@ -1,5 +1,5 @@
 // @flow
-import TodoList from '../component/todoList/todoList';
+import TodoList from '../component/todoList';
 import type { AppState } from '../states';
 import {connect} from 'react-redux';
 import type {TodoState} from '../states/index';

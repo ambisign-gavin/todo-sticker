@@ -1,11 +1,11 @@
 //@flow
 
 import React from 'react';
-import AddEventButton from '../addButton/addButton';
-import TodoListContainer from '../../container/todoListContainer';
-import FilterButton from '../filterButton/FilterButton';
-import FilterPanelContainer from '../../container/FilterPanelContainer';
-import SortButtonContainer from '../../container/sortButtonContainer';
+import AddEventButton from './addButton';
+import TodoListContainer from '../container/todoListContainer';
+import FilterButton from './filterButton';
+import FilterPanelContainer from '../container/filterPanelContainer';
+import SortButtonContainer from '../container/sortButtonContainer';
 import styled from 'styled-components';
 
 type Props = {

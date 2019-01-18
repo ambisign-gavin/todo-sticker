@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import CompleteTodoButton from '../../../src/component/complteTodoButton/completeTodoButton';
+import CompleteTodoButton from '../../../src/component/completeTodoButton';
 import { Modal } from 'antd';
 
 jest.mock('antd', () => {

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Button } from 'antd';
-import Translate from '../../class/translate';
+import Translate from '../class/translate';
 
 type Props = {
     onClick: () => void,

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import SortButton from '../../../src/component/sortButton/sortButton';
+import SortButton from '../../../src/component/sortButton';
 import { SortColumnEnum, SortByTypeEnum } from '../../../src/constant/sort';
 import { Dropdown } from 'antd';
 

@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
 import { Icon } from 'antd';
-import type {TodoState} from '../../states/index';
+import type {TodoState} from '../states/index';
 import moment from 'moment';
-import TodoActionButton from '../todoActionButton/TodoActionButton';
-import Translate from '../../class/translate';
+import TodoActionButton from './todoActionButton';
+import Translate from '../class/translate';
 import styled from 'styled-components';
 
 type Props = {

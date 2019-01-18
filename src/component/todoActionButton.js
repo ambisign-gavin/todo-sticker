@@ -2,13 +2,13 @@
 import React from 'react';
 import { Icon } from 'antd';
 import { Menu, Dropdown, Button } from 'antd';
-import EditModal from '../../container/editTodoModalContainer';
-import Translate from '../../class/translate';
-import type {TodoState} from '../../states/index';
-import DeleteButtonContainer from '../../container/DeleteButtonContainer';
-import CompleteTodoButtonContainer from '../../container/completeTodoButtonContainer';
+import EditModal from '../container/editTodoModalContainer';
+import Translate from '../class/translate';
+import type {TodoState} from '../states/index';
+import DeleteButtonContainer from '../container/deleteButtonContainer';
+import CompleteTodoButtonContainer from '../container/completeTodoButtonContainer';
 import { ipcRenderer } from 'electron';
-import AddNote from '../../ipc/action/addNote';
+import AddNote from '../ipc/action/addNote';
 
 type Props = {
     todo: TodoState,

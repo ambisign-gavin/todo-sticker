@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import NoteDescription from '../../../src/component/note/noteDescription';
+import NoteDescription from '../../../src/component/noteDescription';
 import { IpcChannels } from '../../../src/ipc/channel';
 import { ipcRenderer } from 'electron';
 

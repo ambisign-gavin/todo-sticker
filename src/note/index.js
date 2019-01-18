@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NoteDescription from '../component/note/noteDescription';
+import NoteDescription from '../component/noteDescription';
 import './index.scss';
 
 const app = document.getElementById('app');

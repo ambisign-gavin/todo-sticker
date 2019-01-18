@@ -1,5 +1,5 @@
 // @flow
-import EditModal from '../component/eventEditModal/eventEditModal';
+import EditModal from '../component/eventEditModal';
 import type { TodoState } from '../states';
 import {addEvent} from '../actions';
 import {connect} from 'react-redux';

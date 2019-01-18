@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { List, Pagination } from 'antd';
-import type { TodoState } from '../../states';
-import TodoItem from '../todoItem/todoItem';
+import type { TodoState } from '../states';
+import TodoItem from './todoItem';
 import styled from 'styled-components';
 
 type Props = {

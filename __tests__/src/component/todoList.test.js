@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { mount, type ShallowWrapper } from 'enzyme';
-import TodoList from '../../../src/component/todoList/todoList';
+import TodoList from '../../../src/component/todoList';
 import { type TodoState } from '../../../src/states';
 // import createStore from 'antd/lib/table/createStore';
 import { Provider } from 'react-redux';

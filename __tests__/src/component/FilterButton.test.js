@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import FilterButton from '../../../src/component/filterButton/FilterButton';
+import FilterButton from '../../../src/component/filterButton';
 import { Button } from 'antd';
 
 describe('FilterButton', () => {

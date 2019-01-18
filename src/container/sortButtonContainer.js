@@ -1,5 +1,5 @@
 // @flow
-import SortButton from '../component/sortButton/sortButton';
+import SortButton from '../component/sortButton';
 import {connect} from 'react-redux';
 import type {SortColumn, SortByType} from '../constant/sort';
 import {settingSortColumn, settingSortBy} from '../actions/sort';

@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
 import { Modal } from 'antd';
-import DeleteTodoButton from '../../../src/component/deleteButton/deleteButton';
+import DeleteTodoButton from '../../../src/component/deleteButton';
 
 jest.mock('antd', () => {
     let Modal = {

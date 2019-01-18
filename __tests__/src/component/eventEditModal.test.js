@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import EditModal from '../../../src/component/eventEditModal/eventEditModal';
+import EditModal from '../../../src/component/eventEditModal';
 import { Modal, DatePicker, TimePicker, Input } from 'antd';
 import moment from 'moment';
 

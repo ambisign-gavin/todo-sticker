@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
-import Translate from '../../class/translate';
-import {SortColumnEnum, SortByTypeEnum} from '../../constant/sort';
-import type {SortColumn, SortByType} from '../../constant/sort';
+import Translate from '../class/translate';
+import {SortColumnEnum, SortByTypeEnum} from '../constant/sort';
+import type {SortColumn, SortByType} from '../constant/sort';
 import Classnames from 'classnames';
 import styled from 'styled-components';
 

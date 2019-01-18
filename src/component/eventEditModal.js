@@ -3,8 +3,8 @@ import { Modal, DatePicker, TimePicker, Input } from 'antd';
 import React from 'react';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import Translate from '../../class/translate';
-import type {TodoState} from '../../states';
+import Translate from '../class/translate';
+import type {TodoState} from '../states';
 
 type Props = {
     visible: boolean,

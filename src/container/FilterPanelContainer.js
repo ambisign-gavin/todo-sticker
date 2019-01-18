@@ -1,5 +1,5 @@
 // @flow
-import FilterPanel from '../component/filterPanel/FilterPanel';
+import FilterPanel from '../component/filterPanel';
 import {connect} from 'react-redux';
 import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 import {settingDueDateFilter, settingCompleteStatusFilter} from '../actions/filter';

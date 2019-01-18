@@ -1,5 +1,5 @@
 // @flow
-import CompleteTodoButton from '../component/complteTodoButton/completeTodoButton';
+import CompleteTodoButton from '../component/completeTodoButton';
 import {completeTodo} from '../actions/index';
 import {connect} from 'react-redux';
 

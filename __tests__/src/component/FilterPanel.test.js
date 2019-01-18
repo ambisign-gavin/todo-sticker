@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import FilterPanel from '../../../src/component/filterPanel/FilterPanel';
+import FilterPanel from '../../../src/component/filterPanel';
 import { Radio } from 'antd';
 import { DueDateFilterEnum, CompleteStatusFilterEnum } from '../../../src/constant/filter';
 

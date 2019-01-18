@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
-import Translate from '../../class/translate';
+import Translate from '../class/translate';
 import { Radio } from 'antd';
 import Classnames from 'classnames';
-import { CompleteStatusFilterEnum, DueDateFilterEnum} from '../../constant/filter';
-import type {DueDateFilter, CompleteStatusFilter} from '../../constant/filter';
+import { CompleteStatusFilterEnum, DueDateFilterEnum} from '../constant/filter';
+import type {DueDateFilter, CompleteStatusFilter} from '../constant/filter';
 import styled from 'styled-components';
 
 type Props = {

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import AddButton from '../../../src/component/addButton/addButton';
+import AddButton from '../../../src/component/addButton';
 import AddModal from '../../../src/container/addTodoModalContainer';
 
 describe('AddButton', () => {

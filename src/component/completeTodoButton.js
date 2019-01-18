@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Modal } from 'antd';
-import Translate from '../../class/translate';
+import Translate from '../class/translate';
 
 type Props = {
     todoId: number,
