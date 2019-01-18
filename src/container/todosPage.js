@@ -1,23 +1,25 @@
 //@flow
 
 import React from 'react';
-import TodoListContainer from '../container/todoListContainer';
-import FilterButton from './filterButton';
-import FilterPanelContainer from '../container/filterPanelContainer';
-import SortButtonContainer from '../container/sortButtonContainer';
+import TodoListContainer from './todoListContainer';
+import FilterButton from '../component/filterButton';
+import FilterPanelContainer from './filterPanelContainer';
+import SortButtonContainer from './sortButtonContainer';
 import styled from 'styled-components';
-import { TodoEditableModal } from './eventEditModal';
+import { TodoEditableModal } from '../component/eventEditModal';
 import Translate from '../class/translate';
+import { addTodo } from '../actions';
+import { connect } from 'react-redux';
 
 type Props = {
-
+    addTodo: () => void,
 }
 
 type States = {
     showPanel: boolean,
 }
 
-export default class TodosPage extends React.Component<Props, States> {
+class TodosPage extends React.Component<Props, States> {
 
     handlePanelHidden: Function;
 
@@ -38,7 +40,7 @@ export default class TodosPage extends React.Component<Props, States> {
 
     _handleOpenAddModal() {
         TodoEditableModal.show({
-            onSave: () => console.log('1'),
+            onSave: this.props.addTodo,
             title: Translate.tr('Add Event'),
         });
     }
@@ -70,6 +72,15 @@ export default class TodosPage extends React.Component<Props, States> {
         );
     }
 }
+
+const mapDispatchToProps = {
+    addTodo
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(TodosPage);
 
 const TodosContainer = styled.div`
     width: 100%;

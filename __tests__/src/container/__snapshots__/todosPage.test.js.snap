@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TodosPage should render correct 1`] = `
+<TodosPage
+  addTodo={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
+
+exports[`TodosPage should render correct with origin component 1`] = `
 <todosPage__TodosContainer>
   <todosPage__ToolBar>
     <AddButton
