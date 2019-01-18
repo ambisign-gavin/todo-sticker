@@ -9,7 +9,7 @@ import { TodoDescriptionChangedIPC } from '../ipc/action';
 import type { CloseTodoNoteIpcAction } from '../ipc/action';
 import { IpcChannels } from '../ipc/channel';
 
-function todos(state: TodoState[] = [], action: Actions) {
+function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
     switch (action.type) {
     case ActionTypes.Add:
