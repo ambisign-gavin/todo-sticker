@@ -3,9 +3,8 @@ import nodeSchedule, { Job } from 'node-schedule';
 import Translate from '../translate';
 import Notification from '../notification';
 
-export default class NotifyServer {
+class NotifyServer {
     _notificationQueue: Map<string, Job>;
-    static instance: NotifyServer = new NotifyServer();
 
     constructor() {
         this._notificationQueue = new Map();
@@ -58,3 +57,6 @@ export default class NotifyServer {
     }
 
 }
+
+const notifyServer = new NotifyServer();
+export default notifyServer;

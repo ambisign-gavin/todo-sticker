@@ -11,7 +11,7 @@ jest.mock('../../../src/class/notify/notifyServer', () => {
     };
 });
 
-describe('ss', () => {
+describe('notificationSyncer', () => {
     let store= configureStore([notificationSyncer])({});
 
     it('should add schedule', () => {

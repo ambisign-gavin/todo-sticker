@@ -1,4 +1,4 @@
-import NotifyServer from '../../../src/class/notify/notifyServer';
+import notifyServer from '../../../src/class/notify/notifyServer';
 import nodeSchedule from 'node-schedule';
 import Notification from '../../../src/class/notification';
 
@@ -7,7 +7,6 @@ jest.mock('../../../src/class/notification', () => {
 });
 
 describe('NotifyServer', () => {
-    let notifyServer = new NotifyServer();
 
     afterEach(() => {
         notifyServer._notificationQueue.clear();

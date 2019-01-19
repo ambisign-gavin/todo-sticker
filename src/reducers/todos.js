@@ -2,7 +2,7 @@
 import type {Actions, EditAction, DeleteAction, CompleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
-import NotifyServer from '../class/notify/notifyServer';
+import notifyServer from '../class/notify/notifyServer';
 import { ipcRenderer } from 'electron';
 import { TodoDescriptionChangedIPC } from '../ipc/action';
 import type { CloseTodoNoteIpcAction } from '../ipc/action';
@@ -12,10 +12,6 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
     switch (action.type) {
     case ActionTypes.Add:
-
-        if (action.todoState.dueDatetime > new Date().getTime()) {
-            NotifyServer.instance.addSchedule(action.todoState.id || '', action.todoState.dueDatetime, action.todoState.description);
-        }
         
         return ([
             ...state,
@@ -29,15 +25,6 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
         ipc.id = editAction.todoState.id || '';
         ipc.description = editAction.todoState.description;
         ipcRenderer.send(IpcChannels.todoDescriptionChanged, ipc);
-        
-        NotifyServer.instance.removeSchedule(editAction.todoState.id || '');
-        if (editAction.todoState.dueDatetime > new Date().getTime()) {
-            NotifyServer.instance.addSchedule(
-                (editAction.todoState.id || ''),
-                editAction.todoState.dueDatetime,
-                editAction.todoState.description
-            );
-        }
 
         return (
             state.map( todoState => {
@@ -58,14 +45,11 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
             id: deleteAction.id,
         };
         ipcRenderer.send(IpcChannels.closeTodoNote, closeTodoNoteIpcAction);
-        
-        NotifyServer.instance.removeSchedule(deleteAction.id);
 
         return state.filter(todoState => todoState.id !== deleteAction.id);
 
     case ActionTypes.Complete:
         let completeAction: CompleteAction = action;
-        NotifyServer.instance.removeSchedule(completeAction.id);
         return (
             state.map( todoState => {
                 if (todoState.id === completeAction.id) {
