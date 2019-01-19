@@ -25,6 +25,19 @@ export default class TodoList extends React.Component<Props, States> {
         super(props);
     }
 
+    static getDerivedStateFromProps(props: Props, state: States): ?States {
+        let pageIndex = props.todos.length / COUNT_PER_PAGE;
+        if (props.todos.length % COUNT_PER_PAGE > 0) {
+            pageIndex++;
+        }
+        if (state.page > pageIndex) {
+            return {
+                page: pageIndex
+            };
+        }
+        return null;
+    }
+
     _handlePageChanged(page: number) {
         this.setState({
             page,
@@ -89,7 +102,8 @@ const PaginationRow = styled(Pagination)`
     grid-area: list-pagination;
     justify-self: center;
 `;
+PaginationRow.displayName = 'PaginationRow';
 
 const ListRow = styled(List)`
-    grid-area: list
+    grid-area: list;
 `;

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { mount, type ShallowWrapper } from 'enzyme';
+import { shallow, type ShallowWrapper } from 'enzyme';
 import TodoList from '../../../src/component/todoList';
 import { type TodoState } from '../../../src/states';
 import { Provider } from 'react-redux';
@@ -49,12 +49,10 @@ describe('TodoList', () => {
 
     beforeAll(() => {
         jest.spyOn(Date.prototype, 'getTime').mockReturnValue(0);
-        wrapper = mount(
-            <Provider store={configureStore()()}>
-                <TodoList
-                    todos={todoLists}
-                />
-            </Provider>
+        wrapper = shallow(
+            <TodoList
+                todos={todoLists}
+            />
         );
     });
 
@@ -67,6 +65,31 @@ describe('TodoList', () => {
 
     it('should render correct with todos', () => {
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should handle page changed', () => {
+        wrapper.find('PaginationRow').simulate('change', 2);
+        expect(wrapper.state().page).toEqual(2);
+    });
+
+    it('should generate showing todos when page changed', () => {
+        wrapper.find('PaginationRow').simulate('change', 2);
+        expect(wrapper.find('todoList__ListRow').prop('dataSource')).toEqual([
+            todoLists[3],
+            todoLists[4],
+        ]);
+    });
+
+    it('should auto change to last page when todos moved', () => {
+        expect(wrapper.state().page).toEqual(2);
+        wrapper.setProps({
+            todos: [
+                todoLists[0],
+                todoLists[1],
+                todoLists[2],
+            ]
+        });
+        expect(wrapper.state().page).toEqual(1);
     });
 
 });
