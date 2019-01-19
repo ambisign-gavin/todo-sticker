@@ -20,7 +20,7 @@ export default class TodoItem extends React.Component<Props> {
     _generateTime(datetime: ?number) {
         let notificationString = '';
         if (datetime != null) {
-            notificationString += moment(datetime).format('YYYY/MM/DD HH:mm');
+            notificationString += moment(datetime).format('LLLL');
         }
         return notificationString;
     }
