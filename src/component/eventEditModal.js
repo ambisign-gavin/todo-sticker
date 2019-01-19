@@ -3,7 +3,6 @@ import { Modal, DatePicker, TimePicker, Input } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-import 'moment/locale/zh-cn';
 import Translate from '../class/translate';
 import type {TodoState} from '../states';
 
@@ -49,11 +48,11 @@ export default class EditModal extends React.Component<Props, States> {
             todoState
         } = this.state;
 
-        let dueDatetime = new Date(todoState.dueDatetime);
-        dueDatetime.setUTCFullYear(dates.utc().get('year'));
-        dueDatetime.setUTCMonth(dates.utc().get('month'));
-        dueDatetime.setUTCDate(dates.utc().get('date'));
-        todoState.dueDatetime = dueDatetime.getTime();
+        let dueDatetime = moment(todoState.dueDatetime);
+        dueDatetime.set('year', dates.get('year'));
+        dueDatetime.set('month', dates.get('month'));
+        dueDatetime.set('date', dates.get('date'));
+        todoState.dueDatetime = dueDatetime.toDate().getTime();
 
         this.setState({
             todoState
@@ -65,10 +64,10 @@ export default class EditModal extends React.Component<Props, States> {
             todoState
         } = this.state;
 
-        let dueDatetime = new Date(todoState.dueDatetime);
-        dueDatetime.setUTCHours(time.utc().get('hour'));
-        dueDatetime.setUTCMinutes(time.utc().get('minute'));
-        todoState.dueDatetime = dueDatetime.getTime();
+        let dueDatetime = moment(todoState.dueDatetime);
+        dueDatetime.set('hour', time.get('hour'));
+        dueDatetime.set('minute', time.get('minute'));
+        todoState.dueDatetime = dueDatetime.toDate().getTime();
 
         this.setState({
             todoState
