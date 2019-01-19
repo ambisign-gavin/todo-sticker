@@ -3,8 +3,6 @@ import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
 import TodoList from '../../../src/component/todoList';
 import { type TodoState } from '../../../src/states';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 
 describe('TodoList', () => {
     let wrapper: ShallowWrapper;

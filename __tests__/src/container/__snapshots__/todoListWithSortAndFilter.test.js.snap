@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoListWithSortAndFilter should render correct 1`] = `
+<TodoList
+  dispatch={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+  todos={
+    Array [
+      Object {
+        "complete": true,
+        "createTime": 1549987200000,
+        "description": "Hello",
+        "dueDatetime": 1550160000000,
+        "id": "4",
+      },
+      Object {
+        "complete": true,
+        "createTime": 1549900800000,
+        "description": "Hello",
+        "dueDatetime": 1549728000000,
+        "id": "2",
+      },
+      Object {
+        "complete": true,
+        "createTime": 1549814400000,
+        "description": "Hello",
+        "dueDatetime": 1550419200000,
+        "id": "1",
+      },
+    ]
+  }
+/>
+`;

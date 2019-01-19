@@ -1,7 +1,7 @@
 //@flow
 
 import React from 'react';
-import TodoListContainer from './todoListContainer';
+import TodoListWithSortAndFilter from './todoListWithSortAndFilter';
 import styled from 'styled-components';
 import { TodoEditableModal } from '../component/eventEditModal';
 import Translate from '../class/translate';
@@ -67,7 +67,7 @@ class TodosPage extends React.Component<Props, States> {
                         />
                     </FilterButtonDiv>
                     <TodoListDiv>
-                        <TodoListContainer />
+                        <TodoListWithSortAndFilter/>
                     </TodoListDiv>
 
                     <SortButtonDiv style={{display: 'inline'}}/>
