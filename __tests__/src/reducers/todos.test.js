@@ -2,6 +2,10 @@
 import todos from '../../../src/reducers/todos';
 import { type TodoState } from '../../../src/states';
 
+jest.mock('../../../src/class/notification', () => {
+    return jest.fn();
+});
+
 jest.mock('electron', () => {
     let ipcRenderer = {
         send: jest.fn(),

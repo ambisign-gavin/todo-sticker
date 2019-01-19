@@ -1,8 +1,7 @@
 // @flow
 import nodeSchedule, { Job } from 'node-schedule';
 import Translate from '../translate';
-
-declare var Notification: any; //html notification api
+import Notification from '../notification';
 
 export default class NotifyServer {
     _notificationQueue: Map<string, Job>;
@@ -38,17 +37,22 @@ export default class NotifyServer {
     }
 
     removeSchedule(scheduleId: string): boolean {
-        if (this._notificationQueue.has(scheduleId)) {
-            return this._notificationQueue.delete(scheduleId);
+        if (!this._notificationQueue.has(scheduleId)) {
+            return false;
         }
-        return false;
+        let job: Job = this._notificationQueue.get(scheduleId);
+        if (job) {
+            job.cancel();
+        }
+        this._notificationQueue.delete(scheduleId);
+        return true;
     }
 
     _generateScheduleJob(timestamp: number, message: string): Job {
+        let options: NotificationOptions = { };
+        options.body = message;
         let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
-            new Notification(Translate.tr('Notification from Tips'), {
-                body: message
-            });
+            new Notification(Translate.tr('Notification from Tips'), options);
         });
         return job;
     }
