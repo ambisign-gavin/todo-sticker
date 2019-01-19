@@ -2,7 +2,6 @@
 import type {Actions, EditAction, DeleteAction, CompleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
-import uniqid from 'uniqid';
 import NotifyServer from '../class/notify/notifyServer';
 import { ipcRenderer } from 'electron';
 import { TodoDescriptionChangedIPC } from '../ipc/action';
@@ -13,21 +12,14 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
     switch (action.type) {
     case ActionTypes.Add:
-        let newTodo: TodoState = {
-            id: uniqid(),
-            description: action.todoState.description,
-            dueDatetime: action.todoState.dueDatetime,
-            complete: false,
-            createTime: new Date().getTime(),
-        };
 
         if (action.todoState.dueDatetime > new Date().getTime()) {
-            NotifyServer.instance.addSchedule(newTodo.id || '', newTodo.dueDatetime, newTodo.description);
+            NotifyServer.instance.addSchedule(action.todoState.id || '', action.todoState.dueDatetime, action.todoState.description);
         }
         
         return ([
             ...state,
-            newTodo
+            action.todoState
         ]);
 
     case ActionTypes.Edit:

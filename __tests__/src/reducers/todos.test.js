@@ -25,8 +25,11 @@ describe('todos reducer with add event', () => {
         let result = todos(undefined, {
             type: 'add',
             todoState: {
+                id: '1',
                 description: 'test todo',
                 dueDatetime: 5566,
+                complete: false,
+                createTime: 0,
             }
         });
         expect(result).toEqual([{

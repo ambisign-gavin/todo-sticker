@@ -1,5 +1,4 @@
 //@flow
-
 import React from 'react';
 import TodoListWithSortAndFilter from './todoListWithSortAndFilter';
 import styled from 'styled-components';
@@ -10,9 +9,11 @@ import { connect } from 'react-redux';
 import { Button } from 'antd';
 import FilterPanel from '../container/filterPanel';
 import SortButton from './sortButton';
+import { type TodoState } from '../states';
+import uniqid from 'uniqid';
 
 type Props = {
-    addTodo: () => void,
+    addTodo: (todoState: TodoState) => void,
 }
 
 type States = {
@@ -37,7 +38,12 @@ class TodosPage extends React.Component<Props, States> {
 
     _handleOpenAddModal() {
         TodoEditableModal.show({
-            onSave: this.props.addTodo,
+            onSave: (todo: TodoState) => {
+                todo.id = uniqid();
+                todo.createTime = new Date().getTime();
+                todo.complete = false;
+                this.props.addTodo(todo);
+            },
             title: Translate.tr('Add Event'),
         });
     }

@@ -47,6 +47,7 @@ describe('TodosPage', () => {
     });
 
     it('should call addTodo', () => {
+        jest.spyOn(Date.prototype, 'getTime').mockReturnValue(10);
         let todoState = {
             dueDatetime: 0,
             description: 'Hello',
@@ -54,7 +55,13 @@ describe('TodosPage', () => {
         let show = jest.spyOn(TodoEditableModal, 'show');
         wrapper.find('AddButton').simulate('click');
         show.mock.calls[0][0].onSave(todoState);
-        expect(store.getActions()).toEqual([addTodo(todoState)]);
+        expect(store.getActions()).toEqual([addTodo({
+            id: '1',
+            dueDatetime: 0,
+            description: 'Hello',
+            complete: false,
+            createTime: 10,
+        })]);
     });
 
 });
