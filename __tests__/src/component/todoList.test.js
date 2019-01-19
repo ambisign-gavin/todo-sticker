@@ -90,4 +90,26 @@ describe('TodoList', () => {
         expect(wrapper.state().page).toEqual(1);
     });
 
+    it('should generate dataSource correct when todos become empty from nonempty', () => {
+        expect(wrapper.state().page).toEqual(1);
+        wrapper.setProps({
+            todos: []
+        });
+        expect(wrapper.find('todoList__ListRow').prop('dataSource')).toEqual([]);
+    });
+
+    it('should generate dataSource correct when todos become nonempty from empty', () => {
+        expect(wrapper.state().page).toEqual(0);
+        wrapper.setProps({
+            todos: [
+                todoLists[0],
+                todoLists[1],
+            ]
+        });
+        expect(wrapper.find('todoList__ListRow').prop('dataSource')).toEqual([
+            todoLists[0],
+            todoLists[1],
+        ]);
+    });
+
 });

@@ -45,6 +45,12 @@ export default class TodoList extends React.Component<Props, States> {
     }
 
     _generateShowingTodos(page: number, todos: Array<TodoState> = this.props.todos): Array<TodoState> {
+        if (todos.length === 0) {
+            return [];
+        }
+        if (page === 0) {
+            page = 1;
+        }
         let allTodos: Array<TodoState> = todos;
         let showingTodos: Array<TodoState> = [];
         let startIndex: number = (page - 1) * COUNT_PER_PAGE;
