@@ -1,7 +1,7 @@
 // @flow
 import nodeSchedule, { Job } from 'node-schedule';
-import Translate from '../translate';
-import Notification from '../notification';
+import Translate from '../class/translate';
+import Notification from '../class/notification';
 
 class NotifyServer {
     _notificationQueue: Map<string, Job>;

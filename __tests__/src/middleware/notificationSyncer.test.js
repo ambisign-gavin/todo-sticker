@@ -1,9 +1,9 @@
 // @flow
 import configureStore from 'redux-mock-store';
 import { notificationSyncer } from '../../../src/middleware/notificationSyncer';
-import notifyServer from '../../../src/class/notify/notifyServer';
+import notifyServer from '../../../src/tool/notifyServer';
 
-jest.mock('../../../src/class/notify/notifyServer', () => {
+jest.mock('../../../src/tool/notifyServer', () => {
     return {
         addSchedule: jest.fn(),
         updateSchedule: jest.fn(),

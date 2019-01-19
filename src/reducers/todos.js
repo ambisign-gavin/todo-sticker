@@ -2,7 +2,6 @@
 import type {Actions, EditAction, DeleteAction, CompleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
-import notifyServer from '../class/notify/notifyServer';
 import { ipcRenderer } from 'electron';
 import { TodoDescriptionChangedIPC } from '../ipc/action';
 import type { CloseTodoNoteIpcAction } from '../ipc/action';

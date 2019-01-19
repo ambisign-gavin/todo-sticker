@@ -9,7 +9,7 @@ import rootReducer from './reducers';
 import '../node_modules/antd/dist/antd.min.css';
 import '../node_modules/antd/dist/antd.min.js';
 import type {TodoState} from './states/index';
-import notifyServer from './class/notify/notifyServer';
+import notifyServer from './tool/notifyServer';
 import { notificationSyncer } from './middleware/notificationSyncer';
 
 // localStorage.removeItem('todos');

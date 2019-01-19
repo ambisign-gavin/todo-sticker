@@ -1,4 +1,4 @@
-import notifyServer from '../../../src/class/notify/notifyServer';
+import notifyServer from '../../../src/tool/notifyServer';
 import nodeSchedule from 'node-schedule';
 import Notification from '../../../src/class/notification';
 

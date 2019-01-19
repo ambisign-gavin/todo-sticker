@@ -1,6 +1,6 @@
 // @flow
 import { type Actions, ActionTypes } from '../actions';
-import notifyServer from '../class/notify/notifyServer';
+import notifyServer from '../tool/notifyServer';
 
 export function notificationSyncer() {
     
