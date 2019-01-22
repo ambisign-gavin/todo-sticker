@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { ipcRenderer } from 'electron';
-import { IpcChannels } from '../ipc/channel';
+import { IpcChannels } from '../sticker/channel';
 import styled from 'styled-components';
 
 type Props = {

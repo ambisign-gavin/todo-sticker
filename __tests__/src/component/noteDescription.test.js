@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
 import NoteDescription from '../../../src/component/noteDescription';
-import { IpcChannels } from '../../../src/ipc/channel';
+import { IpcChannels } from '../../../src/sticker/channel';
 import { ipcRenderer } from 'electron';
 
 jest.mock('electron', () => {

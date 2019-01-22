@@ -1,9 +1,9 @@
 // @flow
 import { type Actions, ActionTypes } from '../actions';
 import { ipcRenderer } from 'electron';
-import { TodoDescriptionChangedIPC } from '../ipc/action';
-import type { CloseTodoNoteIpcAction } from '../ipc/action';
-import { IpcChannels } from '../ipc/channel';
+import { TodoDescriptionChangedIPC } from '../sticker/action';
+import type { CloseTodoNoteIpcAction } from '../sticker/action';
+import { IpcChannels } from '../sticker/channel';
 
 export function stickerSyncer() {
     return (next: (actions: Actions) => Actions) => (action: Actions) => {

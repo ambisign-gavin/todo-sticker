@@ -5,7 +5,7 @@ import { Menu, Dropdown, Button } from 'antd';
 import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
 import { ipcRenderer } from 'electron';
-import AddNote from '../ipc/action/addNote';
+import AddNote from '../sticker/action/addNote';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
 import { editTodo, completeTodo, deleteTodo } from '../actions';

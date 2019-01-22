@@ -1,8 +1,8 @@
 // @flow
-import IpcHandler from '../../../src/ipc/ipcHandler';
+import IpcHandler from '../../../src/sticker/ipcHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
-import AddNote from '../../../src/ipc/action/addNote';
-import { TodoDescriptionChangedIPC } from '../../../src/ipc/action';
+import AddNote from '../../../src/sticker/action/addNote';
+import { TodoDescriptionChangedIPC } from '../../../src/sticker/action';
 jest.mock('electron');
 
 describe('IpcHandler wieh add new note', () => {
