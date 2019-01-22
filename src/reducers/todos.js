@@ -2,10 +2,6 @@
 import type {Actions, EditAction, DeleteAction, CompleteAction} from '../actions';
 import type {TodoState} from '../states';
 import {ActionTypes} from '../actions';
-import { ipcRenderer } from 'electron';
-import { TodoDescriptionChangedIPC } from '../ipc/action';
-import type { CloseTodoNoteIpcAction } from '../ipc/action';
-import { IpcChannels } from '../ipc/channel';
 
 function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
@@ -19,11 +15,6 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
     case ActionTypes.Edit:
         let editAction: EditAction = action;
-        
-        let ipc: TodoDescriptionChangedIPC = new TodoDescriptionChangedIPC();
-        ipc.id = editAction.todoState.id || '';
-        ipc.description = editAction.todoState.description;
-        ipcRenderer.send(IpcChannels.todoDescriptionChanged, ipc);
 
         return (
             state.map( todoState => {
@@ -39,11 +30,6 @@ function todos(state: TodoState[] = [], action: Actions): Array<TodoState> {
 
     case ActionTypes.Delete:
         let deleteAction: DeleteAction = action;
-
-        let closeTodoNoteIpcAction: CloseTodoNoteIpcAction = {
-            id: deleteAction.id,
-        };
-        ipcRenderer.send(IpcChannels.closeTodoNote, closeTodoNoteIpcAction);
 
         return state.filter(todoState => todoState.id !== deleteAction.id);
 

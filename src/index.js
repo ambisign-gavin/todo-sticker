@@ -11,13 +11,14 @@ import '../node_modules/antd/dist/antd.min.js';
 import type {TodoState} from './states/index';
 import notifyServer from './tool/notifyServer';
 import { notificationSyncer } from './middleware/notificationSyncer';
+import { stickerSyncer } from './middleware/stickerSyncer';
 
 // localStorage.removeItem('todos');
 const initStorageData = localStorage.getItem('todos') || '{}';
 const store: Store = createStore(
     rootReducer,
     JSON.parse(initStorageData),
-    applyMiddleware(notificationSyncer)
+    applyMiddleware(notificationSyncer, stickerSyncer)
 );
 store.subscribe(() => {
     localStorage.setItem('todos', JSON.stringify(store.getState()));
