@@ -1,9 +1,9 @@
 // @flow
-import stickerHandler from '../../../src/sticker/ipcHandler';
+import stickerHandler from '../../../src/sticker/stickerHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
 jest.mock('electron');
 
-describe('stickerHandler wieh add new note', () => {
+describe('stickerHandler with create sticker', () => {
     let action = {
         channel: 'createSticker',
         id: '123',
@@ -14,13 +14,13 @@ describe('stickerHandler wieh add new note', () => {
         stickerHandler.registerListener();
     });
 
-    it('should create note success', () => {
+    it('should create sticker success', () => {
         ipcRenderer.send('createSticker', action);
-        expect(stickerHandler.notes.size).toEqual(1);
+        expect(stickerHandler.stickers.size).toEqual(1);
     });
 
-    it('should send note description channel when browser window dom ready', () => {
-        let win: BrowserWindow = stickerHandler.notes.get('123');
+    it('should editSticker channel when browser window dom ready', () => {
+        let win: BrowserWindow = stickerHandler.stickers.get('123');
         win.webContents.send = jest.fn();
         win.webContents.emit('dom-ready');
         expect(win.webContents.send.mock.calls.length).toEqual(1);
@@ -28,17 +28,17 @@ describe('stickerHandler wieh add new note', () => {
         expect(win.webContents.send.mock.calls[0][1]).toEqual('Hello! Testing now.');
     });
 
-    it('should focus window when add duplicate note', () => {
-        let win: BrowserWindow = stickerHandler.notes.get('123');
+    it('should focus window when create duplicate sticker', () => {
+        let win: BrowserWindow = stickerHandler.stickers.get('123');
         win.focus = jest.fn();
         ipcRenderer.send('createSticker', action);
         expect(win.focus.mock.calls.length).toEqual(1);
     });
 
-    it('should remove note from map when browser window closed', () => {
-        let win: BrowserWindow = stickerHandler.notes.get('123');
+    it('should remove sticker from map when browser window closed', () => {
+        let win: BrowserWindow = stickerHandler.stickers.get('123');
         win.emit('closed');
-        expect(stickerHandler.notes.has('123')).toBeFalsy();
+        expect(stickerHandler.stickers.has('123')).toBeFalsy();
     });
 });
 
@@ -51,11 +51,11 @@ describe('stickerHandler with edit sticker', () => {
 
     beforeAll(() => {
         stickerHandler.registerListener();
-        stickerHandler.notes.set(action.id, new BrowserWindow());
+        stickerHandler.stickers.set(action.id, new BrowserWindow());
     });
 
     it('should webContent send new description', () => {
-        let win: BrowserWindow = stickerHandler.notes.get(action.id);
+        let win: BrowserWindow = stickerHandler.stickers.get(action.id);
         win.webContents.send = jest.fn();
 
         ipcRenderer.send('editSticker', {
@@ -69,8 +69,8 @@ describe('stickerHandler with edit sticker', () => {
         expect(win.webContents.send.mock.calls[0][1]).toEqual('New desctiptions');
     });
 
-    it('should be removed from notes when window is null', () => {
-        stickerHandler.notes.set(action.id, null);
+    it('should be removed from stickers when window is null', () => {
+        stickerHandler.stickers.set(action.id, null);
 
         ipcRenderer.send('editSticker', {
             channel: 'editSticker',
@@ -78,21 +78,21 @@ describe('stickerHandler with edit sticker', () => {
             description: 'New desctiptions'
         });
 
-        expect(stickerHandler.notes.has(action.id)).toBeFalsy();
+        expect(stickerHandler.stickers.has(action.id)).toBeFalsy();
     });
     
 });
 
-describe('stickerHandler with delete note', () => {
+describe('stickerHandler with delete sticker', () => {
     let id = '12';
 
     beforeAll(() => {
         stickerHandler.registerListener();
-        stickerHandler.notes.set(id, new BrowserWindow());
+        stickerHandler.stickers.set(id, new BrowserWindow());
     });
 
     it('should call window destory', () => {
-        let win: BrowserWindow = stickerHandler.notes.get(id);
+        let win: BrowserWindow = stickerHandler.stickers.get(id);
         win.destroy = jest.fn();
 
         ipcRenderer.send('deleteSticker', {
@@ -101,13 +101,13 @@ describe('stickerHandler with delete note', () => {
         expect(win.destroy.mock.calls.length).toEqual(1);
     });
 
-    it('should be removed from notes when window is null', () => {
-        stickerHandler.notes.set(id, null);
+    it('should be removed from stickers when window is null', () => {
+        stickerHandler.stickers.set(id, null);
 
         ipcRenderer.send('deleteSticker', {
             id: id
         });
-        expect(stickerHandler.notes.has(id)).toBeFalsy();
+        expect(stickerHandler.stickers.has(id)).toBeFalsy();
     });
     
 });

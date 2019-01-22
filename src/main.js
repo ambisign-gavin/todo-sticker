@@ -1,5 +1,5 @@
 // @flow
-import stickerHandler from './sticker/ipcHandler';
+import stickerHandler from './sticker/stickerHandler';
 const { app, BrowserWindow } = require('electron');
 
 // 保持一个对于 window 对象的全局引用，如果你不这样做，
