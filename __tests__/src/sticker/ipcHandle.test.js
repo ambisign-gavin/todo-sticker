@@ -1,7 +1,6 @@
 // @flow
 import stickerHandler from '../../../src/sticker/ipcHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
-import AddNote from '../../../src/sticker/action/addNote';
 jest.mock('electron');
 
 describe('stickerHandler wieh add new note', () => {
@@ -84,33 +83,31 @@ describe('stickerHandler with edit sticker', () => {
     
 });
 
-describe('stickerHandler wieh delete note', () => {
-    let note = new AddNote();
+describe('stickerHandler with delete note', () => {
+    let id = '12';
 
     beforeAll(() => {
         stickerHandler.registerListener();
-        note.id = '123';
-        note.noteDescription = 'Hello! Testing now.';
-        stickerHandler.notes.set(note.id, new BrowserWindow());
+        stickerHandler.notes.set(id, new BrowserWindow());
     });
 
     it('should call window destory', () => {
-        let win: BrowserWindow = stickerHandler.notes.get(note.id);
+        let win: BrowserWindow = stickerHandler.notes.get(id);
         win.destroy = jest.fn();
 
-        ipcRenderer.send('closeTodoNote', {
-            id: note.id
+        ipcRenderer.send('deleteSticker', {
+            id
         });
         expect(win.destroy.mock.calls.length).toEqual(1);
     });
 
     it('should be removed from notes when window is null', () => {
-        stickerHandler.notes.set(note.id, null);
+        stickerHandler.notes.set(id, null);
 
-        ipcRenderer.send('closeTodoNote', {
-            id: note.id
+        ipcRenderer.send('deleteSticker', {
+            id: id
         });
-        expect(stickerHandler.notes.has(note.id)).toBeFalsy();
+        expect(stickerHandler.notes.has(id)).toBeFalsy();
     });
     
 });

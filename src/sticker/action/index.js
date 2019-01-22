@@ -1,17 +1,9 @@
 // @flow
 import { IpcChannels } from '../channel';
 
-export class TodoDescriptionChangedIPC {
-    id: string;
-    description: string;
-}
-
-export type CloseTodoNoteIpcAction = {
-    id: string;
-}
-
 export type StickerActions = CreateStickerAction
-    | EditStickerAction;
+    | EditStickerAction
+    | DeleteStickerAction;
 
 type StickerActionBase = {
     channel: string,
@@ -40,5 +32,16 @@ export function editSticker(id: string, description: string): EditStickerAction 
         channel: IpcChannels.editSticker,
         id,
         description,
+    };
+}
+
+export type DeleteStickerAction = StickerActionBase & {
+    id: string,
+}
+
+export function deleteSticker(id: string): DeleteStickerAction {
+    return {
+        channel: IpcChannels.deleteSticker,
+        id,
     };
 }

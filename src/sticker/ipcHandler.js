@@ -1,9 +1,7 @@
 // @flow
 import { ipcMain, BrowserWindow, Electron } from 'electron';
 import { IpcChannels } from './channel';
-import { TodoDescriptionChangedIPC } from './action';
-import type { CloseTodoNoteIpcAction } from './action';
-import type { CreateStickerAction, EditStickerAction } from './action';
+import type { CreateStickerAction, EditStickerAction, DeleteStickerAction } from './action';
 
 declare var __dirname: any;
 declare var process: any;
@@ -33,7 +31,7 @@ class StickerHandler {
     registerListener() {
         ipcMain.on(IpcChannels.createSticker, this._createNoteAndSendDescription);
         ipcMain.on(IpcChannels.editSticker, this._updateTodoNoteDescription);
-        ipcMain.on(IpcChannels.closeTodoNote, this._closeTodoNote);
+        ipcMain.on(IpcChannels.deleteSticker, this._closeTodoNote);
     }
 
     _createNoteAndSendDescription(event: Electron.event, action: CreateStickerAction) {
@@ -69,10 +67,10 @@ class StickerHandler {
         win.webContents.send(action.channel, action.description);
     }
 
-    _closeTodoNote(event: Electron.event, closeTodoNoteIpcAction: CloseTodoNoteIpcAction) {
-        let win: BrowserWindow = this.notes.get(closeTodoNoteIpcAction.id);
+    _closeTodoNote(event: Electron.event, action: DeleteStickerAction) {
+        let win: BrowserWindow = this.notes.get(action.id);
         if (!win) {
-            this.notes.delete(closeTodoNoteIpcAction.id);
+            this.notes.delete(action.id);
             return;
         }
         

@@ -1,7 +1,6 @@
 // @flow
 import configureStore from 'redux-mock-store';
 import { stickerSyncer } from '../../../src/middleware/stickerSyncer';
-import { ipcRenderer } from 'electron';
 import stickerDispatcher from '../../../src/sticker/dispatcher';
 
 describe('StickerSyncer', () => {
@@ -28,16 +27,16 @@ describe('StickerSyncer', () => {
         });
     });
 
-    it('should closing sticker be sent', () => {
-        let send = jest.spyOn(ipcRenderer, 'send');
+    it('should deleteSticker be dispatched', () => {
+        let dispatch = jest.spyOn(stickerDispatcher, 'dispatch');
         store.dispatch({
             type: 'delete',
             id: 'd56'
         });
         
-        expect(send.mock.calls.length).toEqual(1);
-        expect(send.mock.calls[0][0]).toEqual('closeTodoNote');
-        expect(send.mock.calls[0][1]).toEqual({
+        expect(dispatch.mock.calls.length).toEqual(1);
+        expect(dispatch.mock.calls[0][0]).toEqual({
+            channel: 'deleteSticker',
             id: 'd56',
         });
     });
