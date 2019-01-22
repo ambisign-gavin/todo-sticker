@@ -4,12 +4,12 @@ import { Icon } from 'antd';
 import { Menu, Dropdown, Button } from 'antd';
 import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
-import { ipcRenderer } from 'electron';
-import AddNote from '../sticker/action/addNote';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
 import { editTodo, completeTodo, deleteTodo } from '../actions';
 import ConfirmButton from '../component/confirmButton';
+import { createSticker } from '../sticker/action';
+import stickerDispatcher from '../sticker/dispatcher';
 
 type Props = {
     todo: TodoState,
@@ -43,10 +43,11 @@ class TodoActionButton extends React.Component<Props, States> {
     }
 
     _handleAddNote() {
-        let addNote: AddNote = new AddNote();
-        addNote.noteDescription = this.props.todo.description;
-        addNote.id = this.props.todo.id || '';
-        ipcRenderer.send(AddNote.ipcChannel, addNote);
+        const {
+            id = '',
+            description
+        } = this.props.todo;
+        stickerDispatcher.dispatch(createSticker(id, description));
     }
 
     render() {
