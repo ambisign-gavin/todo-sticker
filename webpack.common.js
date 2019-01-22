@@ -40,12 +40,6 @@ module.exports = {
             {
                 test: /\.js?$/,
                 exclude: /(node_modules|bower_components|__tests__|__mocks__)/,
-                enforce: 'pre',
-                loader: 'eslint-loader'
-            },
-            {
-                test: /\.js?$/,
-                exclude: /(node_modules|bower_components|__tests__|__mocks__)/,
                 loader: 'babel-loader'
             },
 
