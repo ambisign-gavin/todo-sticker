@@ -23,11 +23,11 @@ export default class NoteDescription extends React.Component<Props, States> {
     }
     
     componentWillMount() {
-        ipcRenderer.on(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended.bind(this));
+        ipcRenderer.on(IpcChannels.editSticker, this._handleNoteDescriptionSended.bind(this));
     }
 
     componentWillUnmount() {
-        ipcRenderer.removeListener(IpcChannels.noteDescriptionSend, this._handleNoteDescriptionSended.bind(this));
+        ipcRenderer.removeListener(IpcChannels.editSticker, this._handleNoteDescriptionSended.bind(this));
     }
 
     _handleNoteDescriptionSended(event: any, nodeDescription: string) {

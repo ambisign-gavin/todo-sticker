@@ -3,7 +3,7 @@ import { ipcMain, BrowserWindow, Electron } from 'electron';
 import { IpcChannels } from './channel';
 import { TodoDescriptionChangedIPC } from './action';
 import type { CloseTodoNoteIpcAction } from './action';
-import type { CreateStickerAction } from './action';
+import type { CreateStickerAction, EditStickerAction } from './action';
 
 declare var __dirname: any;
 declare var process: any;
@@ -32,7 +32,7 @@ class StickerHandler {
 
     registerListener() {
         ipcMain.on(IpcChannels.createSticker, this._createNoteAndSendDescription);
-        ipcMain.on(IpcChannels.todoDescriptionChanged, this._updateTodoNoteDescription);
+        ipcMain.on(IpcChannels.editSticker, this._updateTodoNoteDescription);
         ipcMain.on(IpcChannels.closeTodoNote, this._closeTodoNote);
     }
 
@@ -53,20 +53,20 @@ class StickerHandler {
         }
 
         win.webContents.on('dom-ready', () => {
-            win.webContents.send(IpcChannels.noteDescriptionSend, action.description);
+            win.webContents.send(IpcChannels.editSticker, action.description);
         });
         this.notes.set(action.id, win);
         win.on('closed', () => this._removeTodoNotes(action.id));
     }
 
-    _updateTodoNoteDescription(event: Electron.event, container: TodoDescriptionChangedIPC) {
-        let id = container.id;
+    _updateTodoNoteDescription(event: Electron.event, action: EditStickerAction) {
+        let id = action.id;
         let win: BrowserWindow = this.notes.get(id);
         if (!win) {
             this.notes.delete(id);
             return;
         }
-        win.webContents.send(IpcChannels.noteDescriptionSend, container.description);
+        win.webContents.send(action.channel, action.description);
     }
 
     _closeTodoNote(event: Electron.event, closeTodoNoteIpcAction: CloseTodoNoteIpcAction) {

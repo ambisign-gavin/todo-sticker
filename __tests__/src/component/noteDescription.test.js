@@ -34,7 +34,7 @@ describe('NodeDescription', () => {
     });
 
     it('should set description when ipcRenderer send new message', () => {
-        ipcRenderer.send(IpcChannels.noteDescriptionSend, '123');
+        ipcRenderer.send(IpcChannels.editSticker, '123');
         expect(wrapper.state().description).toEqual('123');
     });
 

@@ -1,19 +1,17 @@
 // @flow
 import { type Actions, ActionTypes } from '../actions';
 import { ipcRenderer } from 'electron';
-import { TodoDescriptionChangedIPC } from '../sticker/action';
+import { editSticker } from '../sticker/action';
 import type { CloseTodoNoteIpcAction } from '../sticker/action';
 import { IpcChannels } from '../sticker/channel';
+import stickerDispatcher from '../sticker/dispatcher';
 
 export function stickerSyncer() {
     return (next: (actions: Actions) => Actions) => (action: Actions) => {
         let returnValue = next(action);
         switch (action.type) {
         case ActionTypes.Edit:
-            let ipc: TodoDescriptionChangedIPC = new TodoDescriptionChangedIPC();
-            ipc.id = action.todoState.id || '';
-            ipc.description = action.todoState.description;
-            ipcRenderer.send(IpcChannels.todoDescriptionChanged, ipc);
+            stickerDispatcher.dispatch(editSticker(action.todoState.id || '', action.todoState.description));
             break;
         case ActionTypes.Delete:
             let closeTodoNoteIpcAction: CloseTodoNoteIpcAction = {

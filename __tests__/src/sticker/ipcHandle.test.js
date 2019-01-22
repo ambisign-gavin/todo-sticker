@@ -2,7 +2,6 @@
 import stickerHandler from '../../../src/sticker/ipcHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
 import AddNote from '../../../src/sticker/action/addNote';
-import { TodoDescriptionChangedIPC } from '../../../src/sticker/action';
 jest.mock('electron');
 
 describe('stickerHandler wieh add new note', () => {
@@ -26,7 +25,7 @@ describe('stickerHandler wieh add new note', () => {
         win.webContents.send = jest.fn();
         win.webContents.emit('dom-ready');
         expect(win.webContents.send.mock.calls.length).toEqual(1);
-        expect(win.webContents.send.mock.calls[0][0]).toEqual('noteDescriptionSend');
+        expect(win.webContents.send.mock.calls[0][0]).toEqual('editSticker');
         expect(win.webContents.send.mock.calls[0][1]).toEqual('Hello! Testing now.');
     });
 
@@ -44,39 +43,43 @@ describe('stickerHandler wieh add new note', () => {
     });
 });
 
-describe('IpcHandler wieh update note', () => {
-    let note = new AddNote();
+describe('stickerHandler with edit sticker', () => {
+    let action = {
+        channel: 'editSticker',
+        id: '123',
+        description: 'Hello! Testing now.'
+    };
 
     beforeAll(() => {
         stickerHandler.registerListener();
-        note.id = '123';
-        note.noteDescription = 'Hello! Testing now.';
-        stickerHandler.notes.set(note.id, new BrowserWindow());
+        stickerHandler.notes.set(action.id, new BrowserWindow());
     });
 
     it('should webContent send new description', () => {
-        let win: BrowserWindow = stickerHandler.notes.get(note.id);
+        let win: BrowserWindow = stickerHandler.notes.get(action.id);
         win.webContents.send = jest.fn();
 
-        let action = new TodoDescriptionChangedIPC();
-        action.description = 'New desctiptions';
-        action.id = note.id;
-        ipcRenderer.send('todoDescriptionChanged', action);
+        ipcRenderer.send('editSticker', {
+            channel: 'editSticker',
+            id: action.id,
+            description: 'New desctiptions'
+        });
         
         expect(win.webContents.send.mock.calls.length).toEqual(1);
-        expect(win.webContents.send.mock.calls[0][0]).toEqual('noteDescriptionSend');
-        expect(win.webContents.send.mock.calls[0][1]).toEqual(action.description);
+        expect(win.webContents.send.mock.calls[0][0]).toEqual('editSticker');
+        expect(win.webContents.send.mock.calls[0][1]).toEqual('New desctiptions');
     });
 
     it('should be removed from notes when window is null', () => {
-        stickerHandler.notes.set(note.id, null);
+        stickerHandler.notes.set(action.id, null);
 
-        let action = new TodoDescriptionChangedIPC();
-        action.description = 'New desctiptions';
-        action.id = note.id;
-        ipcRenderer.send('todoDescriptionChanged', action);
+        ipcRenderer.send('editSticker', {
+            channel: 'editSticker',
+            id: action.id,
+            description: 'New desctiptions'
+        });
 
-        expect(stickerHandler.notes.has(note.id)).toBeFalsy();
+        expect(stickerHandler.notes.has(action.id)).toBeFalsy();
     });
     
 });
