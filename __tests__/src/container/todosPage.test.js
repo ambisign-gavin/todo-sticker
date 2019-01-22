@@ -4,7 +4,7 @@ import { shallow, type ShallowWrapper } from 'enzyme';
 import TodosPage from '../../../src/container/todosPage';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
 import configureStore from 'redux-mock-store';
-import { addTodo } from '../../../src/actions';
+import { addTodo } from '../../../src/actions/todo';
 import { Button } from 'antd';
 import FilterPanel from '../../../src/container/filterPanel';
 

@@ -4,7 +4,7 @@ import TodoListWithSortAndFilter from './todoListWithSortAndFilter';
 import styled from 'styled-components';
 import { TodoEditableModal } from '../component/eventEditModal';
 import Translate from '../class/translate';
-import { addTodo } from '../actions';
+import { addTodo } from '../actions/todo';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
 import FilterPanel from '../container/filterPanel';

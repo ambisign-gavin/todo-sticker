@@ -5,7 +5,7 @@ import TodoActionButton from '../../../src/container/todoActionButton';
 import { Dropdown, Menu } from 'antd';
 import { TodoEditableModal } from '../../../src/component/eventEditModal';
 import configureStore from 'redux-mock-store';
-import { editTodo, completeTodo, deleteTodo } from '../../../src/actions';
+import { editTodo, completeTodo, deleteTodo } from '../../../src/actions/todo';
 import ConfirmButton from '../../../src/component/confirmButton';
 import stickerDispatcher from '../../../src/sticker/dispatcher';
 

@@ -1,5 +1,5 @@
 // @flow
-import { addTodo, editTodo, deleteTodo, completeTodo } from '../../../src/actions';
+import { addTodo, editTodo, deleteTodo, completeTodo } from '../../../src/actions/todo';
 import { type TodoState } from '../../../src/states';
 
 describe('index action', () => {

@@ -6,7 +6,7 @@ import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
-import { editTodo, completeTodo, deleteTodo } from '../actions';
+import { editTodo, completeTodo, deleteTodo } from '../actions/todo';
 import ConfirmButton from '../component/confirmButton';
 import { createSticker } from '../sticker/action';
 import stickerDispatcher from '../sticker/dispatcher';

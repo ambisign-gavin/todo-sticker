@@ -1,63 +1,9 @@
 // @flow
-import type { TodoState } from '../states';
+import type { TodoActions } from './todo';
+import type { FilterActions } from './filter';
+import type { SortActions } from './sort';
 
 export type Actions =
-    | AddAction
-    | EditAction
-    | DeleteAction
-    | CompleteAction;
-
-export const ActionTypes = {
-    Add: 'add',
-    Edit: 'edit',
-    Delete: 'delete',
-    Complete: 'complete'
-};
-
-export type AddAction = {|
-    type: 'add',
-    todoState: TodoState
-|}
-
-export type EditAction = {|
-    type: 'edit',
-    todoState: TodoState
-|}
-
-export type DeleteAction = {|
-    type: 'delete',
-    id: string
-|}
-
-export type CompleteAction = {|
-    type: 'complete',
-    id: string
-|}
-
-export function addTodo(todoState: TodoState): AddAction {
-    return {
-        type: ActionTypes.Add,
-        todoState
-    };
-}
-
-export function editTodo(todoState: TodoState): EditAction {
-    return {
-        type: ActionTypes.Edit,
-        todoState
-    };
-}
-
-export function deleteTodo(id: string): DeleteAction {
-    return {
-        type: ActionTypes.Delete,
-        id
-    };
-}
-
-export function completeTodo(id: string): CompleteAction {
-    return {
-        type: ActionTypes.Complete,
-        id
-    };
-}
+    | TodoActions
+    | FilterActions
+    | SortActions;

@@ -1,18 +1,19 @@
 // @flow
-import { type Actions, ActionTypes } from '../actions';
+import { type Actions } from '../actions';
 import notifyServer from '../tool/notifyServer';
+import { TodoActionTypeEnum } from '../actions/todo';
 
 export function notificationSyncer() {
     
     return (next: (actions: Actions) => Actions) => (action: Actions) => {
         let returnValue = next(action);
         switch (action.type) {
-        case ActionTypes.Add:
+        case TodoActionTypeEnum.Add:
             if (action.todoState.dueDatetime > new Date().getTime()) {
                 notifyServer.addSchedule(action.todoState.id || '', action.todoState.dueDatetime, action.todoState.description);
             }
             break;
-        case ActionTypes.Edit:
+        case TodoActionTypeEnum.Edit:
             if (action.todoState.dueDatetime > new Date().getTime()) {
                 notifyServer.updateSchedule(
                     (action.todoState.id || ''),
@@ -21,10 +22,10 @@ export function notificationSyncer() {
                 );
             }
             break;
-        case ActionTypes.Delete:
+        case TodoActionTypeEnum.Delete:
             notifyServer.removeSchedule(action.id);
             break;
-        case ActionTypes.Complete:
+        case TodoActionTypeEnum.Complete:
             notifyServer.removeSchedule(action.id);
             break;
         default:
