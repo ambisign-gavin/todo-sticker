@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { shallow, type ShallowWrapper } from 'enzyme';
-import NoteDescription from '../../../src/component/noteDescription';
+import StickerDescription from '../../../src/component/stickerDescription';
 import { IpcChannels } from '../../../src/sticker/channel';
 import { ipcRenderer } from 'electron';
 
@@ -20,12 +20,12 @@ jest.mock('electron', () => {
     };
 });
 
-describe('NodeDescription', () => {
+describe('StickerDescription', () => {
     let wrapper: ShallowWrapper;
 
     beforeAll(() => {
         wrapper = shallow(
-            <NoteDescription/>
+            <StickerDescription/>
         );
     });
 

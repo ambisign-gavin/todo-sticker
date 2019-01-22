@@ -1,13 +1,13 @@
 // @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NoteDescription from '../../component/noteDescription';
+import StickerDescription from '../../component/stickerDescription';
 import { injectGlobal } from 'styled-components';
 
 const app = document.getElementById('app');
 
 app && ReactDOM.render(
-    <NoteDescription />,
+    <StickerDescription />,
     app
 );
 

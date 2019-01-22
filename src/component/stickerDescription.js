@@ -12,7 +12,7 @@ type States = {
     description: string,
 };
 
-export default class NoteDescription extends React.Component<Props, States> {
+export default class StickerDescription extends React.Component<Props, States> {
 
     state = {
         description: '',
@@ -23,28 +23,28 @@ export default class NoteDescription extends React.Component<Props, States> {
     }
     
     componentWillMount() {
-        ipcRenderer.on(IpcChannels.editSticker, this._handleNoteDescriptionSended.bind(this));
+        ipcRenderer.on(IpcChannels.editSticker, this._handleEditSticker.bind(this));
     }
 
     componentWillUnmount() {
-        ipcRenderer.removeListener(IpcChannels.editSticker, this._handleNoteDescriptionSended.bind(this));
+        ipcRenderer.removeListener(IpcChannels.editSticker, this._handleEditSticker.bind(this));
     }
 
-    _handleNoteDescriptionSended(event: any, nodeDescription: string) {
+    _handleEditSticker(event: any, description: string) {
         this.setState({
-            description: nodeDescription,
+            description: description,
         });
     }
 
     render() {
         return (
-            <NoteDescriptionDiv>{this.state.description}</NoteDescriptionDiv>
+            <StickerDescriptionDiv>{this.state.description}</StickerDescriptionDiv>
         );
     }
 
 }
 
-const NoteDescriptionDiv = styled.div`
+const StickerDescriptionDiv = styled.div`
     white-space: pre-line;
     padding: 20px 15px;
 `;
