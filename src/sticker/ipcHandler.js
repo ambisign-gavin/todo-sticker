@@ -1,14 +1,14 @@
 // @flow
 import { ipcMain, BrowserWindow, Electron } from 'electron';
-import AddNote from './action/addNote';
 import { IpcChannels } from './channel';
 import { TodoDescriptionChangedIPC } from './action';
 import type { CloseTodoNoteIpcAction } from './action';
+import type { CreateStickerAction } from './action';
 
 declare var __dirname: any;
 declare var process: any;
 
-export default class IpcHandler {
+class StickerHandler {
 
     notes: Map<string, BrowserWindow>;
     _createNoteAndSendDescription: Function;
@@ -31,15 +31,15 @@ export default class IpcHandler {
     }
 
     registerListener() {
-        ipcMain.on(AddNote.ipcChannel, this._createNoteAndSendDescription);
+        ipcMain.on(IpcChannels.createSticker, this._createNoteAndSendDescription);
         ipcMain.on(IpcChannels.todoDescriptionChanged, this._updateTodoNoteDescription);
         ipcMain.on(IpcChannels.closeTodoNote, this._closeTodoNote);
     }
 
-    _createNoteAndSendDescription(event: Electron.event, addNote: AddNote) {
+    _createNoteAndSendDescription(event: Electron.event, action: CreateStickerAction) {
 
-        if (this.notes.has(addNote.id) && this.notes.get(addNote.id)) {
-            let win: BrowserWindow = this.notes.get(addNote.id);
+        if (this.notes.has(action.id) && this.notes.get(action.id)) {
+            let win: BrowserWindow = this.notes.get(action.id);
             win.focus();
             return;
         }
@@ -53,10 +53,10 @@ export default class IpcHandler {
         }
 
         win.webContents.on('dom-ready', () => {
-            win.webContents.send(IpcChannels.noteDescriptionSend, addNote.noteDescription);
+            win.webContents.send(IpcChannels.noteDescriptionSend, action.description);
         });
-        this.notes.set(addNote.id, win);
-        win.on('closed', () => this._removeTodoNotes(addNote.id));
+        this.notes.set(action.id, win);
+        win.on('closed', () => this._removeTodoNotes(action.id));
     }
 
     _updateTodoNoteDescription(event: Electron.event, container: TodoDescriptionChangedIPC) {
@@ -86,3 +86,6 @@ export default class IpcHandler {
         this.notes.delete(id);
     }
 }
+
+const stickerHandler = new StickerHandler();
+export default stickerHandler;

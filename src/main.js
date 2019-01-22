@@ -1,5 +1,5 @@
 // @flow
-import IpcHandler from './sticker/ipcHandler';
+import stickerHandler from './sticker/ipcHandler';
 const { app, BrowserWindow } = require('electron');
 
 // 保持一个对于 window 对象的全局引用，如果你不这样做，
@@ -31,13 +31,12 @@ function createWindow() {
 
 }
 
+stickerHandler.registerListener();
+
 // Electron 会在初始化后并准备
 // 创建浏览器窗口时，调用这个函数。
 // 部分 API 在 ready 事件触发后才能使用。
 app.on('ready', createWindow);
-
-let icHandler = new IpcHandler();
-icHandler.registerListener();
 
 // 当全部窗口关闭时退出。
 app.on('window-all-closed', () => {

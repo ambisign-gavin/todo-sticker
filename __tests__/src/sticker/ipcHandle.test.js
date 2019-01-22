@@ -1,27 +1,28 @@
 // @flow
-import IpcHandler from '../../../src/sticker/ipcHandler';
+import stickerHandler from '../../../src/sticker/ipcHandler';
 import { ipcRenderer, BrowserWindow } from 'electron';
 import AddNote from '../../../src/sticker/action/addNote';
 import { TodoDescriptionChangedIPC } from '../../../src/sticker/action';
 jest.mock('electron');
 
-describe('IpcHandler wieh add new note', () => {
-    let ipcHandle = new IpcHandler();
-    let note = new AddNote();
-
+describe('stickerHandler wieh add new note', () => {
+    let action = {
+        channel: 'createSticker',
+        id: '123',
+        description: 'Hello! Testing now.',
+    };
+    
     beforeAll(() => {
-        ipcHandle.registerListener();
-        note.id = '123';
-        note.noteDescription = 'Hello! Testing now.';
+        stickerHandler.registerListener();
     });
 
     it('should create note success', () => {
-        ipcRenderer.send('addNote', note);
-        expect(ipcHandle.notes.size).toEqual(1);
+        ipcRenderer.send('createSticker', action);
+        expect(stickerHandler.notes.size).toEqual(1);
     });
 
     it('should send note description channel when browser window dom ready', () => {
-        let win: BrowserWindow = ipcHandle.notes.get('123');
+        let win: BrowserWindow = stickerHandler.notes.get('123');
         win.webContents.send = jest.fn();
         win.webContents.emit('dom-ready');
         expect(win.webContents.send.mock.calls.length).toEqual(1);
@@ -30,32 +31,31 @@ describe('IpcHandler wieh add new note', () => {
     });
 
     it('should focus window when add duplicate note', () => {
-        let win: BrowserWindow = ipcHandle.notes.get('123');
+        let win: BrowserWindow = stickerHandler.notes.get('123');
         win.focus = jest.fn();
-        ipcRenderer.send('addNote', note);
+        ipcRenderer.send('createSticker', action);
         expect(win.focus.mock.calls.length).toEqual(1);
     });
 
     it('should remove note from map when browser window closed', () => {
-        let win: BrowserWindow = ipcHandle.notes.get('123');
+        let win: BrowserWindow = stickerHandler.notes.get('123');
         win.emit('closed');
-        expect(ipcHandle.notes.has('123')).toBeFalsy();
+        expect(stickerHandler.notes.has('123')).toBeFalsy();
     });
 });
 
 describe('IpcHandler wieh update note', () => {
-    let ipcHandle = new IpcHandler();
     let note = new AddNote();
 
     beforeAll(() => {
-        ipcHandle.registerListener();
+        stickerHandler.registerListener();
         note.id = '123';
         note.noteDescription = 'Hello! Testing now.';
-        ipcHandle.notes.set(note.id, new BrowserWindow());
+        stickerHandler.notes.set(note.id, new BrowserWindow());
     });
 
     it('should webContent send new description', () => {
-        let win: BrowserWindow = ipcHandle.notes.get(note.id);
+        let win: BrowserWindow = stickerHandler.notes.get(note.id);
         win.webContents.send = jest.fn();
 
         let action = new TodoDescriptionChangedIPC();
@@ -69,31 +69,30 @@ describe('IpcHandler wieh update note', () => {
     });
 
     it('should be removed from notes when window is null', () => {
-        ipcHandle.notes.set(note.id, null);
+        stickerHandler.notes.set(note.id, null);
 
         let action = new TodoDescriptionChangedIPC();
         action.description = 'New desctiptions';
         action.id = note.id;
         ipcRenderer.send('todoDescriptionChanged', action);
 
-        expect(ipcHandle.notes.has(note.id)).toBeFalsy();
+        expect(stickerHandler.notes.has(note.id)).toBeFalsy();
     });
     
 });
 
-describe('IpcHandler wieh delete note', () => {
-    let ipcHandle = new IpcHandler();
+describe('stickerHandler wieh delete note', () => {
     let note = new AddNote();
 
     beforeAll(() => {
-        ipcHandle.registerListener();
+        stickerHandler.registerListener();
         note.id = '123';
         note.noteDescription = 'Hello! Testing now.';
-        ipcHandle.notes.set(note.id, new BrowserWindow());
+        stickerHandler.notes.set(note.id, new BrowserWindow());
     });
 
     it('should call window destory', () => {
-        let win: BrowserWindow = ipcHandle.notes.get(note.id);
+        let win: BrowserWindow = stickerHandler.notes.get(note.id);
         win.destroy = jest.fn();
 
         ipcRenderer.send('closeTodoNote', {
@@ -103,12 +102,12 @@ describe('IpcHandler wieh delete note', () => {
     });
 
     it('should be removed from notes when window is null', () => {
-        ipcHandle.notes.set(note.id, null);
+        stickerHandler.notes.set(note.id, null);
 
         ipcRenderer.send('closeTodoNote', {
             id: note.id
         });
-        expect(ipcHandle.notes.has(note.id)).toBeFalsy();
+        expect(stickerHandler.notes.has(note.id)).toBeFalsy();
     });
     
 });
