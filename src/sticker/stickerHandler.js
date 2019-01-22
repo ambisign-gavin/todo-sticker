@@ -38,7 +38,7 @@ class StickerHandler {
 
         let win: BrowserWindow = new BrowserWindow(this._windowOptions);
 
-        win.loadURL(`file://${__dirname}/note.html`);
+        win.loadURL(`file://${__dirname}/sticker.html`);
 
         if (process.env.NODE_ENV === 'development') {
             win.webContents.openDevTools();

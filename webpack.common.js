@@ -9,11 +9,11 @@ const AppHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     chunks: ['app'],
 });
 
-const NoteHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: `${__dirname}/src/note/index.html`,
-    filename: __dirname + '/dist/note.html',
+const StickerHTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: `${__dirname}/src/sticker/html/index.html`,
+    filename: __dirname + '/dist/sticker.html',
     inject: 'body',
-    chunks: ['note'],
+    chunks: ['sticker'],
 });
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
     entry: {
         main: './src/main.js',
         app: './src/index.js',
-        note: './src/note/index.js',
+        sticker: './src/sticker/html/index.js',
     },
     output: {
         filename: '[name].js',
@@ -71,6 +71,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         AppHTMLWebpackPluginConfig,
-        NoteHTMLWebpackPluginConfig
+        StickerHTMLWebpackPluginConfig
     ]
 };
