@@ -9,11 +9,11 @@
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
     "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
     "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js && cp -f ./package.json ./dist",
-    "pack": "electron-packager ./dist --out ./OutApp --asar --platform darwin --arch=x64 --overwrite --darwin-dark-mode-support"
+    "pack": "electron-packager ./dist --out ./OutApp --asar --platform darwin --arch=x64 --overwrite --darwin-dark-mode-support",
+    "installer-mac": "electron-installer-dmg ./OutApp/Tips-darwin-x64/Tips.app Tips --out=./OutInstaller/mac --overwrite"
   },
   "dependencies": {},
   "devDependencies": {
-    "styled-components": "^3.4.10",
     "antd": "^3.3.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -30,6 +30,7 @@
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
     "electron": "^4.0.5",
+    "electron-installer-dmg": "^2.0.0",
     "electron-packager": "^13.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
@@ -54,6 +55,7 @@
     "sass-loader": "^6.0.7",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.20.3",
+    "styled-components": "^3.4.10",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "uniqid": "^4.1.1",
     "webpack": "^4.2.0",
