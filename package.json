@@ -9,8 +9,8 @@
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
     "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
     "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js && cp -f ./package.json ./dist",
-    "pack": "electron-packager ./dist --out ./OutApp --asar --platform darwin --arch=x64 --overwrite --darwin-dark-mode-support",
-    "installer-mac": "electron-installer-dmg ./OutApp/Tips-darwin-x64/Tips.app Tips --out=./OutInstaller/mac --overwrite"
+    "pack-mac": "electron-packager ./dist --out ./OutApp --asar --platform darwin --arch=x64 --overwrite --icon=assets/icons/mac/icon.icns",
+    "installer-mac": "electron-installer-dmg ./OutApp/Tips-darwin-x64/Tips.app Tips --out=./OutInstaller/mac --overwrite --icon=assets/icons/mac/icon.icns"
   },
   "dependencies": {},
   "devDependencies": {
