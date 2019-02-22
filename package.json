@@ -1,24 +1,19 @@
 {
   "name": "Tips",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "main.js",
   "license": "MIT",
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix ./src/*/*/*.js",
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
-    "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron-forge start",
-    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "start": "yarn build-production && electron-forge start",
-    "package": "yarn build-production && electron-forge package",
-    "make": "electron-forge make"
+    "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
+    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js && cp -f ./package.json ./dist",
+    "pack": "electron-packager ./dist --out ./OutApp --asar --platform darwin --arch=x64 --overwrite --darwin-dark-mode-support"
   },
-  "dependencies": {
-    "electron-compile": "^6.4.2",
-    "electron-squirrel-startup": "^1.0.0",
-    "styled-components": "^3.4.10"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "styled-components": "^3.4.10",
     "antd": "^3.3.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -34,8 +29,8 @@
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
-    "electron-forge": "^5.1.1",
-    "electron-prebuilt-compile": "1.8.4",
+    "electron": "^4.0.5",
+    "electron-packager": "^13.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
@@ -65,37 +60,5 @@
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.2"
-  },
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {
-        "packageManager": "yarn"
-      },
-      "electronWinstallerConfig": {
-        "name": "Tips"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "Tips"
-      }
-    }
   }
 }
