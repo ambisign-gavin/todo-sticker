@@ -26,6 +26,30 @@ class StickerHandler {
         ipcMain.on(IpcChannels.createSticker, this._createStickerAndSendEdit.bind(this));
         ipcMain.on(IpcChannels.editSticker, this._editSticker.bind(this));
         ipcMain.on(IpcChannels.deleteSticker, this._deleteSticker.bind(this));
+        ipcMain.on(IpcChannels.closeStickerWindow, () => this._operateWindowMode('close'));
+        ipcMain.on(IpcChannels.maximizeStickerWindow, () => this._operateWindowMode('maximize'));
+        ipcMain.on(IpcChannels.minimizeStickerWindow, () => this._operateWindowMode('minimize'));
+    }
+
+    _operateWindowMode(mode: 'close' | 'minimize' | 'maximize') {
+        let focusWin = BrowserWindow.getFocusedWindow();
+        if (focusWin == null) {
+            return;
+        }
+        switch (mode) {
+        case 'close':
+            focusWin.close();
+            break;
+        case 'maximize':
+            focusWin.maximize();
+            break;
+        case 'minimize':
+            focusWin.minimize();
+            break;
+        default:
+            break;
+        }
+        
     }
 
     _createStickerAndSendEdit(event: Electron.event, action: CreateStickerAction) {

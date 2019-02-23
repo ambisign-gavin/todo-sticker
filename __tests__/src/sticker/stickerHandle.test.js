@@ -111,3 +111,28 @@ describe('stickerHandler with delete sticker', () => {
     });
     
 });
+
+describe('stickerHandler with operate sticker window', () => {
+
+    beforeAll(() => {
+        stickerHandler.registerListener();
+    });
+
+    it('should close sticker window success', () => {
+        let mockMethod = jest.spyOn(BrowserWindow.prototype, 'close');
+        ipcRenderer.send('closeStickerWindow');
+        expect(mockMethod.mock.calls.length).toEqual(1);
+    });
+
+    it('should minimize sticker window success', () => {
+        let mockMethod = jest.spyOn(BrowserWindow.prototype, 'minimize');
+        ipcRenderer.send('minimizeStickerWindow');
+        expect(mockMethod.mock.calls.length).toEqual(1);
+    });
+
+    it('should maximize sticker window success', () => {
+        let mockMethod = jest.spyOn(BrowserWindow.prototype, 'maximize');
+        ipcRenderer.send('maximizeStickerWindow');
+        expect(mockMethod.mock.calls.length).toEqual(1);
+    });
+});
