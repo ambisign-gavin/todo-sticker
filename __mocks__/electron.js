@@ -45,9 +45,10 @@ class BrowserWindow {
         this._listeners = new Map();
     }
 
-    loadURL() {
-
-    }
+    loadURL() { }
+    close() { }
+    maximize() { }
+    minimize() { }
 
     on(channel: string, listener: Function) {
         this._listeners.set(channel, listener);
@@ -59,6 +60,11 @@ class BrowserWindow {
             listener(...args);
         }
     }
+
+    static getFocusedWindow(): BrowserWindow {
+        return new BrowserWindow();
+    }
+
 }
 
 const ipcMain = new IpcMain();
