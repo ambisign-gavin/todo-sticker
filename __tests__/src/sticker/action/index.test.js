@@ -1,5 +1,5 @@
 // @flow
-import { createSticker, editSticker } from '../../../../src/sticker/action';
+import { createSticker, editSticker, closeStickerWindow, minimizeStickerWindow, maximizeStickerWindow } from '../../../../src/sticker/action';
 
 describe('StickerActions', () => {
     it('should correct with createSticker', () => {
@@ -15,6 +15,24 @@ describe('StickerActions', () => {
             channel: 'editSticker',
             id: 'id1',
             description: 'Hello'
+        });
+    });
+
+    it('should correct with closeStickerWindow', () => {
+        expect(closeStickerWindow()).toEqual({
+            channel: 'closeStickerWindow',
+        });
+    });
+
+    it('should correct with minimizeStickerWindow', () => {
+        expect(minimizeStickerWindow()).toEqual({
+            channel: 'minimizeStickerWindow',
+        });
+    });
+
+    it('should correct with maximizeStickerWindow', () => {
+        expect(maximizeStickerWindow()).toEqual({
+            channel: 'maximizeStickerWindow',
         });
     });
 });

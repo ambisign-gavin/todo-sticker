@@ -3,7 +3,10 @@ import { IpcChannels } from '../channel';
 
 export type StickerActions = CreateStickerAction
     | EditStickerAction
-    | DeleteStickerAction;
+    | DeleteStickerAction
+    | CloseStickerWindowAction
+    | MaximizeStickerWindowAction
+    | MinimizeStickerWindowAction;
 
 type StickerActionBase = {
     channel: string,
@@ -43,5 +46,29 @@ export function deleteSticker(id: string): DeleteStickerAction {
     return {
         channel: IpcChannels.deleteSticker,
         id,
+    };
+}
+
+export type CloseStickerWindowAction = StickerActionBase;
+
+export function closeStickerWindow(): CloseStickerWindowAction {
+    return {
+        channel: IpcChannels.closeStickerWindow
+    };
+}
+
+export type MaximizeStickerWindowAction = StickerActionBase;
+
+export function maximizeStickerWindow(): MaximizeStickerWindowAction {
+    return {
+        channel: IpcChannels.maximizeStickerWindow
+    };
+}
+
+export type MinimizeStickerWindowAction = StickerActionBase;
+
+export function minimizeStickerWindow(): MinimizeStickerWindowAction {
+    return {
+        channel: IpcChannels.minimizeStickerWindow
     };
 }

@@ -3,5 +3,8 @@ export const IpcChannels = {
     createSticker: 'createSticker',
     editSticker: 'editSticker',
     deleteSticker: 'deleteSticker',
-    closeTodoNote: 'closeTodoNote'
+    closeTodoNote: 'closeTodoNote',
+    closeStickerWindow: 'closeStickerWindow',
+    minimizeStickerWindow: 'minimizeStickerWindow',
+    maximizeStickerWindow: 'maximizeStickerWindow',
 };
