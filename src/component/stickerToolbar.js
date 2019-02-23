@@ -1,13 +1,24 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import stickerDispatcher from '../sticker/dispatcher';
+import { closeStickerWindow, minimizeStickerWindow, maximizeStickerWindow } from '../sticker/action';
 
 const StickerToolBar = () => {
     return (
         <Container>
-            <ToolButton className="far fa-window-minimize"/>
-            <ToolButton className="far fa-window-maximize"/>
-            <ToolButton className="far fa-window-close"/>
+            <ToolButton
+                onClick={() => stickerDispatcher.dispatch(minimizeStickerWindow())}
+                className='far fa-window-minimize'
+            />
+            <ToolButton
+                onClick={() => stickerDispatcher.dispatch(maximizeStickerWindow())}
+                className='far fa-window-maximize'
+            />
+            <ToolButton
+                onClick={() => stickerDispatcher.dispatch(closeStickerWindow())}
+                className='far fa-window-close'
+            />
         </Container>
     );
 };
@@ -28,3 +39,5 @@ const ToolButton = styled.span`
     margin-right: 20px;
     cursor: pointer;
 `;
+
+ToolButton.displayName='ToolButton';

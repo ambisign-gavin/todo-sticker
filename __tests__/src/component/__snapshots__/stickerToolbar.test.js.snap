@@ -2,14 +2,17 @@
 
 exports[`StickerToolbar should render correct 1`] = `
 <stickerToolbar__Container>
-  <stickerToolbar__ToolButton
+  <ToolButton
     className="far fa-window-minimize"
+    onClick={[Function]}
   />
-  <stickerToolbar__ToolButton
+  <ToolButton
     className="far fa-window-maximize"
+    onClick={[Function]}
   />
-  <stickerToolbar__ToolButton
+  <ToolButton
     className="far fa-window-close"
+    onClick={[Function]}
   />
 </stickerToolbar__Container>
 `;
