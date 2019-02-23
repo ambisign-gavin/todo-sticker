@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StickerToolbar should not render when platform is mac 1`] = `
+<div>
+  <StickerDescription />
+</div>
+`;
+
+exports[`StickerToolbar should render correct when platform is windows 1`] = `
+<div>
+  <StickerToolBar />
+  <StickerDescription />
+</div>
+`;

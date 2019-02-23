@@ -7,10 +7,20 @@ import StickerToolBar from '../../component/stickerToolbar';
 
 const app = document.getElementById('app');
 
-const Sticker = () => {
+function renderToolBarIfOnWindows() {
+    console.log('process.platform', process.platform);
+    
+    if (/^win/i.test(process.platform)) {
+        return (
+            <StickerToolBar />
+        );
+    }
+}
+
+export const Sticker = () => {
     return (
         <div>
-            <StickerToolBar />
+            {renderToolBarIfOnWindows()}
             <StickerDescription />
         </div>
     );
