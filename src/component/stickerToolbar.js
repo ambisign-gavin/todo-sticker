@@ -34,6 +34,7 @@ const Container = styled.div`
 `;
 
 const ToolButton = styled.span`
+    -webkit-app-region: no-drag;
     text-align: center;
     margin-top: 5px;
     margin-right: 20px;
