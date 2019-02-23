@@ -135,4 +135,11 @@ describe('stickerHandler with operate sticker window', () => {
         ipcRenderer.send('maximizeStickerWindow');
         expect(mockMethod.mock.calls.length).toEqual(1);
     });
+
+    it('should unmaximize sticker window success', () => {
+        jest.spyOn(BrowserWindow.prototype, 'isMaximized').mockReturnValue(true);
+        let mockMethod = jest.spyOn(BrowserWindow.prototype, 'unmaximize');
+        ipcRenderer.send('maximizeStickerWindow');
+        expect(mockMethod.mock.calls.length).toEqual(1);
+    });
 });

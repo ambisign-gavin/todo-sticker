@@ -41,7 +41,11 @@ class StickerHandler {
             focusWin.close();
             break;
         case 'maximize':
-            focusWin.maximize();
+            if (focusWin.isMaximized()) {
+                focusWin.unmaximize();
+            } else {
+                focusWin.maximize();
+            }
             break;
         case 'minimize':
             focusWin.minimize();
@@ -61,7 +65,6 @@ class StickerHandler {
         }
 
         let win: BrowserWindow = new BrowserWindow(this._windowOptions);
-
         win.loadURL(`file://${__dirname}/sticker.html`);
 
         if (process.env.NODE_ENV === 'development') {

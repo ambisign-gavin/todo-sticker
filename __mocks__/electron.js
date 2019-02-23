@@ -44,10 +44,13 @@ class BrowserWindow {
     constructor() {
         this._listeners = new Map();
     }
-
+    isMaximized() {
+        return false;
+    }
     loadURL() { }
     close() { }
     maximize() { }
+    unmaximize() { }
     minimize() { }
 
     on(channel: string, listener: Function) {
