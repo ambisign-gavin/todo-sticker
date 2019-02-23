@@ -3,11 +3,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import StickerDescription from '../../component/stickerDescription';
 import { injectGlobal } from 'styled-components';
+import StickerToolBar from '../../component/stickerToolbar';
 
 const app = document.getElementById('app');
 
+const Sticker = () => {
+    return (
+        <div>
+            <StickerToolBar />
+            <StickerDescription />
+        </div>
+    );
+};
+
 app && ReactDOM.render(
-    <StickerDescription />,
+    <Sticker />,
     app
 );
 

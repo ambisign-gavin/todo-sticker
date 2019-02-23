@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StickerToolbar should render correct 1`] = `
+<stickerToolbar__Container>
+  <stickerToolbar__ToolButton
+    className="far fa-window-minimize"
+  />
+  <stickerToolbar__ToolButton
+    className="far fa-window-maximize"
+  />
+  <stickerToolbar__ToolButton
+    className="far fa-window-close"
+  />
+</stickerToolbar__Container>
+`;
