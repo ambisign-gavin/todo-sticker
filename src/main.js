@@ -10,6 +10,8 @@ declare var __dirname: any;
 declare var process: any;
 
 function createWindow() {
+    // app.setAppUserModelId('com.gavin.todo');
+
     // 创建浏览器窗口。
     win = new BrowserWindow({ width: 1024, height: 768 });
 
@@ -36,7 +38,12 @@ stickerHandler.registerListener();
 // Electron 会在初始化后并准备
 // 创建浏览器窗口时，调用这个函数。
 // 部分 API 在 ready 事件触发后才能使用。
-app.on('ready', createWindow);
+app.on('ready', () => {
+    createWindow();
+    if (/^win/i.test(process.platform)) {
+        app.setAppUserModelId("com.gavin.todosticker");
+    }
+});
 
 // 当全部窗口关闭时退出。
 app.on('window-all-closed', () => {
@@ -54,6 +61,8 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+
 
 // 在这文件，你可以续写应用剩下主进程代码。
 // 也可以拆分成几个文件，然后用 require 导入。

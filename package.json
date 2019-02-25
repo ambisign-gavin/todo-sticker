@@ -1,7 +1,7 @@
 {
   "name": "Tips",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "dist/main.js",
   "license": "MIT",
   "author": "GavinWang",
   "description": "The todo app",
@@ -10,11 +10,11 @@
     "lint": "eslint --fix ./src/*/*/*.js",
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
     "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
-    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js && cp -f ./package.json ./dist",
+    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "pack-mac": "electron-packager ./dist --out ./OutApp/mac --asar --platform darwin --arch=x64 --overwrite --icon=assets/icons/mac/icon.icns",
-    "pack-windows": "electron-packager ./dist --out ./OutApp/windows --asar --platform win32 --arch=x64 --overwrite --icon=assets/icons/windows/icon.ico",
     "installer-mac": "electron-installer-dmg ./OutApp/Tips-darwin-x64/Tips.app Tips --out=./OutInstaller/mac --overwrite --icon=assets/icons/mac/icon.icns",
-    "installer-win": "electron-installer-windows --src ./OutApp/windows/Tips-win32-x64 --config win.config.json"
+    "pack": "electron-builder --dir",
+    "installer": "electron-builder"
   },
   "dependencies": {},
   "devDependencies": {
@@ -34,8 +34,8 @@
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
     "electron": "^4.0.5",
+    "electron-builder": "^20.38.5",
     "electron-installer-dmg": "^2.0.0",
-    "electron-installer-windows": "^1.1.1",
     "electron-packager": "^13.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
@@ -67,5 +67,15 @@
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.2"
+  },
+  "build": {
+    "appId": "com.gavin.todosticker",
+    "files": [
+      "dist/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "build-dist"
+    }
   }
 }
