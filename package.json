@@ -11,8 +11,6 @@
     "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
     "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
     "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "pack-mac": "electron-packager ./dist --out ./OutApp/mac --asar --platform darwin --arch=x64 --overwrite --icon=assets/icons/mac/icon.icns",
-    "installer-mac": "electron-installer-dmg ./OutApp/Tips-darwin-x64/Tips.app Tips --out=./OutInstaller/mac --overwrite --icon=assets/icons/mac/icon.icns",
     "pack": "electron-builder --dir",
     "installer": "electron-builder"
   },
@@ -35,8 +33,6 @@
     "css-loader": "^0.28.11",
     "electron": "^4.0.5",
     "electron-builder": "^20.38.5",
-    "electron-installer-dmg": "^2.0.0",
-    "electron-packager": "^13.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
@@ -76,6 +72,9 @@
     ],
     "directories": {
       "output": "build-dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
     }
   }
 }

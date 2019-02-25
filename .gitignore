@@ -4,3 +4,4 @@ dist
 out/
 OutApp
 OutInstaller
+build-dist
