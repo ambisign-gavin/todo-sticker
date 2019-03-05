@@ -67,7 +67,7 @@ class TodoActionButton extends React.Component<Props, States> {
                     <Menu.Item>
                         <ConfirmButton
                             config={{
-                                title: Translate.tr('Are you sure complete this todo?'),
+                                title: Translate.tr('Are you sure want to complete this todo?'),
                                 okText: Translate.tr('Complete'),
                                 cancelText: Translate.tr('No'),
                                 onOk: () => { 
@@ -88,13 +88,13 @@ class TodoActionButton extends React.Component<Props, States> {
                 ): null}
 
                 <Menu.Item>
-                    <a onClick={this._handleAddNote.bind(this)} >Add Note</a>
+                    <a onClick={this._handleAddNote.bind(this)} >Add Sticker</a>
                 </Menu.Item>
 
                 <Menu.Item>
                     <ConfirmButton
                         config={{
-                            title: Translate.tr('Are you sure delete this todo?'),
+                            title: Translate.tr('Are you sure want to delete this todo?'),
                             okText: Translate.tr('Delete'),
                             okType: 'danger',
                             cancelText: Translate.tr('No'),
