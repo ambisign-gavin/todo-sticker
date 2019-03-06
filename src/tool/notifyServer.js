@@ -1,6 +1,5 @@
 // @flow
 import nodeSchedule, { Job } from 'node-schedule';
-import Translate from '../class/translate';
 import Notification from '../class/notification';
 
 class NotifyServer {
@@ -51,7 +50,7 @@ class NotifyServer {
         let options: NotificationOptions = { };
         options.body = message;
         let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
-            new Notification(Translate.tr('Notification from Todo Sticker'), options);
+            new Notification('Notification from Todo Sticker', options);
         });
         return job;
     }

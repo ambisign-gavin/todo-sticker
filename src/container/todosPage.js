@@ -3,7 +3,6 @@ import React from 'react';
 import TodoListWithSortAndFilter from './todoListWithSortAndFilter';
 import styled from 'styled-components';
 import { TodoEditableModal } from '../component/eventEditModal';
-import Translate from '../class/translate';
 import { addTodo } from '../actions/todo';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
@@ -44,7 +43,7 @@ class TodosPage extends React.Component<Props, States> {
                 todo.complete = false;
                 this.props.addTodo(todo);
             },
-            title: Translate.tr('Add Event'),
+            title: 'Add Todo',
         });
     }
 
@@ -65,7 +64,7 @@ class TodosPage extends React.Component<Props, States> {
                         <Button 
                             onClick={() => this.setState({showFilterPanel: !this.state.showFilterPanel})}
                         >
-                            {Translate.tr('Filter')}
+                            Filter
                         </Button>
                         <FilterPanel
                             onHide={this._handleFilterPanelHide.bind(this)}

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Icon } from 'antd';
 import { Menu, Dropdown, Button } from 'antd';
-import Translate from '../class/translate';
 import type {TodoState} from '../states/index';
 import { TodoEditableModal } from '../component/eventEditModal';
 import { connect } from 'react-redux';
@@ -36,7 +35,7 @@ class TodoActionButton extends React.Component<Props, States> {
 
     _handleEdit() {
         TodoEditableModal.show({
-            title: Translate.tr('Edit Todo'),
+            title: 'Edit Todo',
             todoState: this.props.todo,
             onSave: this.props.editTodo
         });
@@ -67,16 +66,16 @@ class TodoActionButton extends React.Component<Props, States> {
                     <Menu.Item>
                         <ConfirmButton
                             config={{
-                                title: Translate.tr('Are you sure want to complete this todo?'),
-                                okText: Translate.tr('Complete'),
-                                cancelText: Translate.tr('No'),
+                                title: 'Are you sure want to complete this todo?',
+                                okText: 'Complete',
+                                cancelText: 'No',
                                 onOk: () => { 
                                     completeTodo(todo.id || '');
                                     return Promise.resolve();
                                 }
                             }}
                         >
-                            {Translate.tr('Complete')}
+                            Complete
                         </ConfirmButton>
                     </Menu.Item>
                 ): null}
@@ -94,17 +93,17 @@ class TodoActionButton extends React.Component<Props, States> {
                 <Menu.Item>
                     <ConfirmButton
                         config={{
-                            title: Translate.tr('Are you sure want to delete this todo?'),
-                            okText: Translate.tr('Delete'),
+                            title: 'Are you sure want to delete this todo?',
+                            okText: 'Delete',
                             okType: 'danger',
-                            cancelText: Translate.tr('No'),
+                            cancelText: 'No',
                             onOk: () => {
                                 deleteTodo(todo.id || '');
                                 return Promise.resolve();
                             }
                         }}
                     >
-                        {Translate.tr('Delete')}
+                        Delete
                     </ConfirmButton>
                 </Menu.Item>
             </Menu>

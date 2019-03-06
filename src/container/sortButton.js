@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
-import Translate from '../class/translate';
 import {SortColumnEnum, SortByTypeEnum} from '../constant/sort';
 import type {SortColumn, SortByType} from '../constant/sort';
 import Classnames from 'classnames';
@@ -53,12 +52,12 @@ class SortButton extends React.Component<Props> {
                 <Menu.Item 
                     key={SortColumnEnum.dueDate}
                 >
-                    <a>{Translate.tr('Due Date')}</a>
+                    <a>Due Date</a>
                 </Menu.Item>
                 <Menu.Item
                     key={SortColumnEnum.createTime}
                 >
-                    <a>{Translate.tr('Create Time')}</a>
+                    <a>Create Time</a>
                 </Menu.Item>
             </Menu>
         );
@@ -66,7 +65,7 @@ class SortButton extends React.Component<Props> {
         return (
             <div {...others} >
                 <p style={{display: 'inline'}} >
-                    {Translate.tr(' Sort by ')}
+                    Sort by
                 </p>
                 <Dropdown 
                     overlay={menu}

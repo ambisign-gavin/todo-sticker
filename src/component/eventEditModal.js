@@ -3,7 +3,6 @@ import { Modal, DatePicker, TimePicker, Input } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-import Translate from '../class/translate';
 import type {TodoState} from '../states';
 
 type Props = {
@@ -119,7 +118,7 @@ export default class EditModal extends React.Component<Props, States> {
                 onCancel={this._handleCancel.bind(this)}
                 visible={this.state.visible}
             >
-                <p>{Translate.tr('Due date')}</p>
+                <p>Due Date</p>
                 <DatePicker 
                     allowClear={false}
                     onChange={this._handleDateChanged.bind(this)}
@@ -132,7 +131,7 @@ export default class EditModal extends React.Component<Props, States> {
                     defaultValue={moment(todoState.dueDatetime)}
                     format={'HH:mm'}
                 />
-                <p>{Translate.tr('eventDescription')}</p>
+                <p>Description</p>
                 <Input.TextArea
                     defaultValue={todoState.description}
                     onChange={this._handleDescriptionChanged.bind(this)}

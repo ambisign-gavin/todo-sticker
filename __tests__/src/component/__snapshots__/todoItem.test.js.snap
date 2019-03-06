@@ -19,7 +19,7 @@ exports[`TodoItem should render correct with completed 1`] = `
     </div>
     <todoItem__CreatedTimeDiv>
       <span>
-        Creat at: 
+        Creat at:
       </span>
       Thursday, January 1, 1970 8:00 AM
     </todoItem__CreatedTimeDiv>
@@ -67,7 +67,7 @@ exports[`TodoItem should render correct with long description 1`] = `
     </div>
     <todoItem__CreatedTimeDiv>
       <span>
-        Creat at: 
+        Creat at:
       </span>
       Thursday, January 1, 1970 8:00 AM
     </todoItem__CreatedTimeDiv>
@@ -118,7 +118,7 @@ exports[`TodoItem should render correct with short description 1`] = `
     </div>
     <todoItem__CreatedTimeDiv>
       <span>
-        Creat at: 
+        Creat at:
       </span>
       Thursday, January 1, 1970 8:00 AM
     </todoItem__CreatedTimeDiv>

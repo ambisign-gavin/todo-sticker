@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import Translate from '../class/translate';
 import { Radio } from 'antd';
 import Classnames from 'classnames';
 import { CompleteStatusFilterEnum, DueDateFilterEnum} from '../constant/filter';
@@ -61,7 +60,7 @@ class FilterPanel extends React.Component<Props> {
                     className={usedClassName}
                 >
                     <FilterGroupDiv>
-                        <p>{Translate.tr('Due Date:')}</p>
+                        <p>Due Date:</p>
                         <Radio.Group 
                             onChange={this._handleDueDateFilterSelected.bind(this)}
                             defaultValue={dueDate}
@@ -69,18 +68,18 @@ class FilterPanel extends React.Component<Props> {
                             <Radio.Button
                                 value={DueDateFilterEnum.today}
                             >
-                                {Translate.tr('Today')}
+                                Today
                             </Radio.Button>
                             <Radio.Button
                                 value={DueDateFilterEnum.all}
                             >
-                                {Translate.tr('All')}
+                                All
                             </Radio.Button>
                         </Radio.Group>
                     </FilterGroupDiv>
                     <hr/>
                     <FilterGroupDiv >
-                        <p>{Translate.tr('Complete Status:')}</p>
+                        <p>Complete Status:</p>
                         <Radio.Group
                             onChange={this._handleCompleteStatusFilterSelected.bind(this)}
                             defaultValue={completeStatus}
@@ -88,17 +87,17 @@ class FilterPanel extends React.Component<Props> {
                             <Radio.Button 
                                 value={CompleteStatusFilterEnum.all}
                             >
-                                {Translate.tr('All')}
+                                All
                             </Radio.Button>
                             <Radio.Button
                                 value={CompleteStatusFilterEnum.complete}
                             >
-                                {Translate.tr('Complete')}
+                                Complete
                             </Radio.Button>
                             <Radio.Button
                                 value={CompleteStatusFilterEnum.uncomplete}
                             >
-                                {Translate.tr('Uncompleted')}
+                                Uncompleted
                             </Radio.Button>
                         </Radio.Group>
                     </FilterGroupDiv>

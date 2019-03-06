@@ -4,7 +4,6 @@ import { Icon } from 'antd';
 import type {TodoState} from '../states/index';
 import moment from 'moment';
 import TodoActionButton from '../container/todoActionButton';
-import Translate from '../class/translate';
 import styled from 'styled-components';
 
 type Props = {
@@ -62,7 +61,7 @@ export default class TodoItem extends React.Component<Props> {
                         {this._generateTime(todo.dueDatetime)}
                     </div>
                     <CreatedTimeDiv>
-                        <span>{Translate.tr('Creat at: ')}</span>{this._generateTime(todo.createTime)}
+                        <span>Creat at:</span>{this._generateTime(todo.createTime)}
                     </CreatedTimeDiv>
                     <DescriptionDiv>
                         <p>{this._narrowDescriptionIfNeed(todo.description)}</p>

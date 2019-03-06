@@ -16,7 +16,7 @@ exports[`EditModal with null todoState should render correct 1`] = `
   width={520}
 >
   <p>
-    Due date
+    Due Date
   </p>
   <PickerWrapper
     allowClear={false}
@@ -53,7 +53,7 @@ exports[`EditModal with null todoState should render correct 1`] = `
     transitionName="slide-up"
   />
   <p>
-    eventDescription
+    Description
   </p>
   <TextArea
     defaultValue=""
@@ -89,7 +89,7 @@ exports[`EditModal with todoState should render correct 1`] = `
   width={520}
 >
   <p>
-    Due date
+    Due Date
   </p>
   <PickerWrapper
     allowClear={false}
@@ -126,7 +126,7 @@ exports[`EditModal with todoState should render correct 1`] = `
     transitionName="slide-up"
   />
   <p>
-    eventDescription
+    Description
   </p>
   <TextArea
     defaultValue="Yo ~!"
