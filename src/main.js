@@ -8,7 +8,12 @@ declare var __dirname: any;
 declare var process: any;
 
 function createWindow() {
-    win = new BrowserWindow({ width: 1024, height: 768 });
+    win = new BrowserWindow({ 
+        width: 1024, 
+        height: 768,
+        minWidth: 600,
+        minHeight: 480,
+    });
     win.loadURL(`file://${__dirname}/app.html`);
 
     if (process.env.NODE_ENV === 'development') {
