@@ -51,7 +51,7 @@ class NotifyServer {
         let options: NotificationOptions = { };
         options.body = message;
         let job: Job = nodeSchedule.scheduleJob(new Date(timestamp), () => {
-            new Notification(Translate.tr('Notification from Tips'), options);
+            new Notification(Translate.tr('Notification from Todo Sticker'), options);
         });
         return job;
     }
