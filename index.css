@@ -11,7 +11,6 @@ body {
     padding: 30px 0;
     width: 100%;
     text-align: center;
-    position: relative;
 }
 
 .heading .logo {
@@ -30,16 +29,8 @@ body {
     margin: 0 auto;
 }
 
-.heading .github {
-    display: block;
-    height: 150px;
-    position: absolute;
-    bottom: 20px;
-    right: 5vw;
-}
-
-.heading .github img {
-    height: 100%;
+.info {
+    position: relative;
 }
 
 .screenshot {
@@ -78,8 +69,14 @@ body {
     margin-right: 5px;
 }
 
-footer {
-    margin-top: 30px;
-    background-color: #2c313c;
-    height: 50px;
+.info .github {
+    display: block;
+    height: 150px;
+    position: absolute;
+    bottom: 0px;
+    right: 10%;
+}
+
+.info .github img {
+    height: 100%;
 }
