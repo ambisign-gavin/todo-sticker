@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    background-color: #fbfbfb;
+    font-family: 'Open Sans', sans-serif;
+    padding-bottom: 30px;
+}
+
+.heading {
+    margin-bottom: 30px;
+    background-color: #2c313c;
+    padding: 30px 0;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.heading .logo {
+    width: 100px;
+    height: 100px;
+}
+
+.heading h1 {
+    color: #fbfbfb;
+    font-family: 'Proza Libre', sans-serif;
+}
+
+.heading h3 {
+    color: #fbfbfb;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.heading .github {
+    display: block;
+    height: 150px;
+    position: absolute;
+    bottom: 20px;
+    right: 5vw;
+}
+
+.heading .github img {
+    height: 100%;
+}
+
+.screenshot {
+    width: 680px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.screenshot img {
+    width: 100%;
+}
+
+.features {
+    width: 680px;
+    margin: 0 auto;
+}
+
+.downloads {
+    text-align: center;
+}
+
+.download {
+    display: inline-flex;
+    height: 50px;
+    width: 300px;
+    background-color: #2c313c;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    color: #fbfbfb;
+    text-decoration: none;
+}
+
+.download > img {
+    height: 30px;
+    margin-right: 5px;
+}
+
+footer {
+    margin-top: 30px;
+    background-color: #2c313c;
+    height: 50px;
+}
