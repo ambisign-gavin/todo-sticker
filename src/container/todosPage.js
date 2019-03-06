@@ -65,7 +65,7 @@ class TodosPage extends React.Component<Props, States> {
                         <Button 
                             onClick={() => this.setState({showFilterPanel: !this.state.showFilterPanel})}
                         >
-                            {Translate.tr('filter')}
+                            {Translate.tr('Filter')}
                         </Button>
                         <FilterPanel
                             onHide={this._handleFilterPanelHide.bind(this)}

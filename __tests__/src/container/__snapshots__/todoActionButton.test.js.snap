@@ -26,7 +26,7 @@ exports[`TodoActionButton should render correct with complete and edit features 
           <a
             onClick={[Function]}
           >
-            Add Note
+            Add Sticker
           </a>
         </MenuItem>
         <MenuItem>
@@ -37,7 +37,7 @@ exports[`TodoActionButton should render correct with complete and edit features 
                 "okText": "Delete",
                 "okType": "danger",
                 "onOk": [Function],
-                "title": "Are you sure delete this todo?",
+                "title": "Are you sure want to delete this todo?",
               }
             }
           >
@@ -96,7 +96,7 @@ exports[`TodoActionButton should render correct with complete and edit features 
                 "cancelText": "No",
                 "okText": "Complete",
                 "onOk": [Function],
-                "title": "Are you sure complete this todo?",
+                "title": "Are you sure want to complete this todo?",
               }
             }
           >
@@ -114,7 +114,7 @@ exports[`TodoActionButton should render correct with complete and edit features 
           <a
             onClick={[Function]}
           >
-            Add Note
+            Add Sticker
           </a>
         </MenuItem>
         <MenuItem>
@@ -125,7 +125,7 @@ exports[`TodoActionButton should render correct with complete and edit features 
                 "okText": "Delete",
                 "okType": "danger",
                 "onOk": [Function],
-                "title": "Are you sure delete this todo?",
+                "title": "Are you sure want to delete this todo?",
               }
             }
           >
@@ -184,7 +184,7 @@ exports[`TodoActionButton should render correct with complete feature is enabled
                 "cancelText": "No",
                 "okText": "Complete",
                 "onOk": [Function],
-                "title": "Are you sure complete this todo?",
+                "title": "Are you sure want to complete this todo?",
               }
             }
           >
@@ -195,7 +195,7 @@ exports[`TodoActionButton should render correct with complete feature is enabled
           <a
             onClick={[Function]}
           >
-            Add Note
+            Add Sticker
           </a>
         </MenuItem>
         <MenuItem>
@@ -206,7 +206,7 @@ exports[`TodoActionButton should render correct with complete feature is enabled
                 "okText": "Delete",
                 "okType": "danger",
                 "onOk": [Function],
-                "title": "Are you sure delete this todo?",
+                "title": "Are you sure want to delete this todo?",
               }
             }
           >
@@ -269,7 +269,7 @@ exports[`TodoActionButton should render correct with edit feature is enabled 1`]
           <a
             onClick={[Function]}
           >
-            Add Note
+            Add Sticker
           </a>
         </MenuItem>
         <MenuItem>
@@ -280,7 +280,7 @@ exports[`TodoActionButton should render correct with edit feature is enabled 1`]
                 "okText": "Delete",
                 "okType": "danger",
                 "onOk": [Function],
-                "title": "Are you sure delete this todo?",
+                "title": "Are you sure want to delete this todo?",
               }
             }
           >

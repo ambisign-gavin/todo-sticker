@@ -35,7 +35,7 @@ exports[`TodosPage should render correct with origin component 1`] = `
         onClick={[Function]}
         prefixCls="ant-btn"
       >
-        filter
+        Filter
       </Button>
       <Connect(FilterPanel)
         onHide={[Function]}
