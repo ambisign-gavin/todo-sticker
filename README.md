@@ -14,7 +14,7 @@ This is a simple to-do app, which can make sticky notes and time-reminder functi
 *   Clone the repo
 
 ```sh
-    git clone git@github.com:ambisign-gavin/todo-sticker.git
+    git clone https://github.com/ambisign-gavin/todo-sticker.git
     cd todo-sticker
     npm install
 ```
