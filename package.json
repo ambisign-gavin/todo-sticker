@@ -1,10 +1,10 @@
 {
-  "name": "Tips",
+  "name": "todoSticker",
   "version": "1.0.0",
   "main": "dist/main.js",
   "license": "MIT",
   "author": "GavinWang",
-  "description": "The todo app",
+  "description": "This is a simple to-do app, which can make a sticker to desktop and time-reminder functions.",
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix ./src/*/*/*.js",
@@ -66,6 +66,7 @@
   },
   "build": {
     "appId": "com.gavin.todosticker",
+    "productName": "Todo Sticker",
     "files": [
       "dist/*",
       "package.json"
