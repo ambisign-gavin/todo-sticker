@@ -50,6 +50,7 @@ body {
 
 .downloads {
     text-align: center;
+    margin: 30px 0;
 }
 
 .download {
@@ -73,10 +74,17 @@ body {
     display: block;
     height: 150px;
     position: absolute;
-    bottom: 0px;
-    right: 10%;
+    bottom: 20px;
+    right: 12%;
+    text-align: center;
 }
 
 .info .github img {
     height: 100%;
+    display: block;
+}
+
+.info .github .hint {
+    text-decoration: none;
+    color: #2c313c;
 }
