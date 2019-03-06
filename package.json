@@ -8,9 +8,9 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix ./src/*/*/*.js",
-    "devServer": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
-    "devStart": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
-    "build-production": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "dev:server": "cross-env NODE_ENV=development webpack-dev-server --devtool eval --progress --colors --content-base webpack --mode development --config webpack.dev.js",
+    "dev:electron": "cross-env NODE_ENV=development webpack --config webpack.dev.js && electron ./dist/main.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "pack": "electron-builder --dir",
     "installer": "electron-builder"
   },
