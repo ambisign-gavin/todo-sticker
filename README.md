@@ -4,12 +4,12 @@ This is a simple to-do app, which can make sticky notes and time-reminder functi
 
 ![todometer](screenshot.png)
 
-### Features
+## Features
 *   Add to-do as sticky notes.
 *   Time-reminder function.
 *   Filter to-do function.
 
-### Development
+## Development
 
 *   Clone the repo
 
@@ -30,3 +30,7 @@ This is a simple to-do app, which can make sticky notes and time-reminder functi
 ```sh
     npm run dev:electron
 ```
+
+## License
+
+MIT
