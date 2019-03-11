@@ -1,13 +1,13 @@
-# Todo Sticker
+# [Todo Sticker](https://todosticker.gavinwang.net/)
 
-This is a simple to-do app, which can make sticky notes and time-reminder functions.
+Easy-to-use To-Do App, which can create sticky notes with time-reminder function.
 
 ![todometer](screenshot.png)
 
 ## Features
-*   Add to-do as sticky notes.
-*   Time-reminder function.
-*   Filter to-do function.
+*   Create the sticky note of to-do.
+*   Time-reminder.
+*   Filter and sort to-do list.
 
 ## Development
 
